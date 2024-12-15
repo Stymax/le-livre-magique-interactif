@@ -1,9 +1,10 @@
 import { useState } from "react";
 import MagicBook from "@/components/MagicBook";
 import MagicParticles from "@/components/MagicParticles";
+import StorySelection from "@/components/StorySelection";
 
 const Index = () => {
-  const [isIntroVisible, setIsIntroVisible] = useState(true);
+  const [currentStep, setCurrentStep] = useState<'intro' | 'bookClosed' | 'bookOpen'>('intro');
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-magical-blue to-black relative overflow-hidden">
@@ -15,7 +16,7 @@ const Index = () => {
             Le Livre Magique des Contes
           </h1>
           
-          {isIntroVisible ? (
+          {currentStep === 'intro' && (
             <div className="space-y-6">
               <div className="relative w-full h-[400px] mx-auto">
                 <img 
@@ -28,13 +29,15 @@ const Index = () => {
                 "Dans une vieille bibliothèque, un livre mystérieux attend d'être découvert..."
               </p>
               <button
-                onClick={() => setIsIntroVisible(false)}
+                onClick={() => setCurrentStep('bookClosed')}
                 className="px-8 py-3 bg-magical-gold/20 rounded-full text-magical-gold hover:bg-magical-gold/30 transition-colors duration-300"
               >
                 Commencer l'aventure
               </button>
             </div>
-          ) : (
+          )}
+
+          {currentStep === 'bookClosed' && (
             <div className="flex flex-col items-center space-y-8 animate-fade-in">
               <div className="relative w-full h-[400px] mx-auto">
                 <img 
@@ -48,12 +51,18 @@ const Index = () => {
                   "Bonjour, jeune aventurier. Oseras-tu découvrir les plus grands contes du monde ?"
                 </p>
                 <button
-                  onClick={() => setIsIntroVisible(true)}
+                  onClick={() => setCurrentStep('bookOpen')}
                   className="mt-4 px-6 py-2 bg-magical-turquoise/20 rounded-full text-magical-turquoise hover:bg-magical-turquoise/30 transition-colors duration-300"
                 >
-                  Retourner à l'accueil
+                  Ouvrir le livre
                 </button>
               </div>
+            </div>
+          )}
+
+          {currentStep === 'bookOpen' && (
+            <div className="animate-fade-in">
+              <StorySelection onBack={() => setCurrentStep('bookClosed')} />
             </div>
           )}
         </div>
