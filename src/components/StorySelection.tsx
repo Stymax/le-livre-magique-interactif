@@ -1,5 +1,7 @@
 import { Sparkles, ChevronLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import GrimmTales from "./GrimmTales";
 
 interface StorySelectionProps {
   onBack: () => void;
@@ -33,6 +35,12 @@ const storyOptions = [
 ];
 
 const StorySelection = ({ onBack }: StorySelectionProps) => {
+  const [selectedCollection, setSelectedCollection] = useState<string | null>(null);
+
+  if (selectedCollection === "grimm") {
+    return <GrimmTales onBack={() => setSelectedCollection(null)} />;
+  }
+
   return (
     <div className="space-y-8">
       <div className="relative">
@@ -51,6 +59,7 @@ const StorySelection = ({ onBack }: StorySelectionProps) => {
         {storyOptions.map((option) => (
           <motion.button
             key={option.id}
+            onClick={() => setSelectedCollection(option.id)}
             whileHover={{ scale: 1.02 }}
             className={`relative p-6 rounded-xl bg-gradient-to-br ${option.color} border border-white/10 text-left group`}
           >
