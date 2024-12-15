@@ -16,8 +16,15 @@ const Index = () => {
           </h1>
           
           {isIntroVisible ? (
-            <div className="space-y-6 text-white/90">
-              <p className="text-xl">
+            <div className="space-y-6">
+              <div className="relative w-full h-[400px] mx-auto">
+                <img 
+                  src="/lovable-uploads/761141cc-ceb1-430d-91d1-9cf151edff86.png"
+                  alt="Léa découvrant le livre magique"
+                  className="w-full h-full object-contain animate-float"
+                />
+              </div>
+              <p className="text-xl text-white/90">
                 "Dans une vieille bibliothèque, un livre mystérieux attend d'être découvert..."
               </p>
               <button
@@ -29,7 +36,13 @@ const Index = () => {
             </div>
           ) : (
             <div className="flex flex-col items-center space-y-8 animate-fade-in">
-              <MagicBook />
+              <div className="relative w-full h-[400px] mx-auto">
+                <img 
+                  src="/lovable-uploads/2d336b02-5dde-4b75-96f7-ba33c3f66b25.png"
+                  alt="La magie du livre s'éveille"
+                  className="w-full h-full object-contain animate-float"
+                />
+              </div>
               <div className="prose prose-invert">
                 <p className="text-magical-turquoise text-lg">
                   "Bonjour, jeune aventurier. Oseras-tu découvrir les plus grands contes du monde ?"
@@ -38,7 +51,7 @@ const Index = () => {
                   onClick={() => setIsIntroVisible(true)}
                   className="mt-4 px-6 py-2 bg-magical-turquoise/20 rounded-full text-magical-turquoise hover:bg-magical-turquoise/30 transition-colors duration-300"
                 >
-                  Ouvrir le livre
+                  Retourner à l'accueil
                 </button>
               </div>
             </div>
