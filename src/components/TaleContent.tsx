@@ -257,29 +257,20 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
   if (!tale) return null;
 
   const handleNarration = async () => {
-    if (!import.meta.env.VITE_ELEVEN_LABS_API_KEY) {
-      toast({
-        title: "Configuration requise",
-        description: "Une clé API Eleven Labs est nécessaire pour la narration. Veuillez la configurer dans les paramètres du projet.",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    if (isPlaying && audio) {
-      audio.pause();
-      setIsPlaying(false);
-      return;
-    }
-
     try {
+      if (isPlaying && audio) {
+        audio.pause();
+        setIsPlaying(false);
+        return;
+      }
+
       const text = tale.content.map(segment => segment.text).join(" ");
       
       const response = await fetch("https://api.elevenlabs.io/v1/text-to-speech/EXAVITQu4vr4xnSDxMaL/stream", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "xi-api-key": import.meta.env.VITE_ELEVEN_LABS_API_KEY
+          "xi-api-key": import.meta.env.VITE_ELEVEN_LABS_API_KEY || ''
         },
         body: JSON.stringify({
           text,
@@ -291,7 +282,9 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
         })
       });
 
-      if (!response.ok) throw new Error("Erreur lors de la génération de la narration");
+      if (!response.ok) {
+        throw new Error(`Erreur API: ${response.status}`);
+      }
 
       const blob = await response.blob();
       const audioUrl = URL.createObjectURL(blob);
@@ -302,12 +295,13 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       };
 
       setAudio(newAudio);
-      newAudio.play();
+      await newAudio.play();
       setIsPlaying(true);
     } catch (error) {
+      console.error('Erreur de narration:', error);
       toast({
-        title: "Erreur",
-        description: "Impossible de générer la narration pour le moment.",
+        title: "Erreur de narration",
+        description: "Impossible de générer la narration. Veuillez vérifier votre clé API Eleven Labs.",
         variant: "destructive"
       });
     }
