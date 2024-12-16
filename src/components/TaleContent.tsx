@@ -257,10 +257,10 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
   if (!tale) return null;
 
   const handleNarration = async () => {
-    if (!process.env.ELEVEN_LABS_API_KEY) {
+    if (!import.meta.env.VITE_ELEVEN_LABS_API_KEY) {
       toast({
         title: "Configuration requise",
-        description: "Veuillez configurer votre clé API Eleven Labs pour activer la narration.",
+        description: "Une clé API Eleven Labs est nécessaire pour la narration. Veuillez la configurer dans les paramètres du projet.",
         variant: "destructive"
       });
       return;
@@ -279,7 +279,7 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "xi-api-key": process.env.ELEVEN_LABS_API_KEY
+          "xi-api-key": import.meta.env.VITE_ELEVEN_LABS_API_KEY
         },
         body: JSON.stringify({
           text,
