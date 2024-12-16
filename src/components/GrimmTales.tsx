@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import { useState } from "react";
+import TaleContent from "./TaleContent";
 
 const grimmTales = [
   {
@@ -49,6 +51,12 @@ interface GrimmTalesProps {
 }
 
 const GrimmTales = ({ onBack }: GrimmTalesProps) => {
+  const [selectedTale, setSelectedTale] = useState<string | null>(null);
+
+  if (selectedTale) {
+    return <TaleContent id={selectedTale} onBack={() => setSelectedTale(null)} />;
+  }
+
   return (
     <div className="space-y-6">
       <button
@@ -62,6 +70,7 @@ const GrimmTales = ({ onBack }: GrimmTalesProps) => {
         {grimmTales.map((tale) => (
           <motion.button
             key={tale.id}
+            onClick={() => setSelectedTale(tale.id)}
             whileHover={{ scale: 1.02 }}
             className={`relative p-6 rounded-xl bg-gradient-to-br ${tale.color} border border-white/10 text-left group`}
           >
