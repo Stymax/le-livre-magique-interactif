@@ -18,7 +18,7 @@ export const useNarration = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "xi-api-key": import.meta.env.VITE_ELEVEN_LABS_API_KEY
+          "xi-api-key": import.meta.env.VITE_ELEVEN_LABS_API_KEY || ""
         },
         body: JSON.stringify({
           text,
@@ -31,8 +31,9 @@ export const useNarration = () => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail?.message || `Erreur API: ${response.status}`);
+        const errorData = await response.text();
+        console.error("ElevenLabs API Error:", errorData);
+        throw new Error("Erreur lors de la génération de la narration. Vérifiez votre clé API.");
       }
 
       const blob = await response.blob();
@@ -53,6 +54,7 @@ export const useNarration = () => {
         description: error instanceof Error ? error.message : "Erreur inconnue lors de la narration",
         variant: "destructive"
       });
+      setIsPlaying(false);
     }
   };
 
