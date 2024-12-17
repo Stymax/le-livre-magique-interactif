@@ -18,7 +18,7 @@ export const useNarration = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "xi-api-key": import.meta.env.VITE_ELEVEN_LABS_API_KEY || ""
+          "xi-api-key": "sk_d8f3096db19a3cca303106ef419242221eaf1e1cc1de5325"
         },
         body: JSON.stringify({
           text,
@@ -33,7 +33,7 @@ export const useNarration = () => {
       if (!response.ok) {
         const errorData = await response.text();
         console.error("ElevenLabs API Error:", errorData);
-        throw new Error("Erreur lors de la génération de la narration. Vérifiez votre clé API.");
+        throw new Error("Erreur lors de la génération de la narration");
       }
 
       const blob = await response.blob();

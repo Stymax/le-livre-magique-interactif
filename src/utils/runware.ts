@@ -1,6 +1,6 @@
 import { RunwareService, GenerateImageParams } from "@/types/runware";
 
-const runwareService = new RunwareService("YOUR_API_KEY"); // Temporary solution - will be replaced with proper API key management
+const runwareService = new RunwareService("Gw1IoDST4VnjEt4xg8N6JXF9QdlY55mk");
 
 export const generateStoryImage = async (prompt: string): Promise<string> => {
   try {
