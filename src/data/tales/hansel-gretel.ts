@@ -1,7 +1,7 @@
 import { Tale } from "@/types/tale";
 import { generateStoryImage } from "@/utils/imageGeneration";
 
-const createTale = async (): Promise<Tale> => {
+export const createHanselGretel = async (): Promise<Tale> => {
   const images = await Promise.all([
     generateStoryImage("A poor woodcutter's family at the edge of a dark forest, two children Hansel and Gretel, fairy tale style illustration"),
     generateStoryImage("A worried woodcutter lying in bed at night, thinking about his family's hunger, fairy tale style illustration"),
@@ -37,5 +37,3 @@ const createTale = async (): Promise<Tale> => {
     moral: "Le courage et l'intelligence permettent de surmonter les plus grandes épreuves."
   };
 };
-
-export const hanselGretel = await createTale();

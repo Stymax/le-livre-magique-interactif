@@ -1,7 +1,7 @@
 import { Tale } from "@/types/tale";
 import { generateStoryImage } from "@/utils/imageGeneration";
 
-const createTale = async (): Promise<Tale> => {
+export const createBouclesOr = async (): Promise<Tale> => {
   const images = await Promise.all([
     generateStoryImage("Three bears' cozy cottage in the forest, with three different sized bears, fairy tale style illustration"),
     generateStoryImage("A curious little girl with golden curls discovering a cottage in the woods, fairy tale style illustration"),
@@ -42,5 +42,3 @@ const createTale = async (): Promise<Tale> => {
     moral: "Il faut respecter la propriété d'autrui et ne pas entrer chez les gens sans y être invité."
   };
 };
-
-export const bouclesOr = await createTale();

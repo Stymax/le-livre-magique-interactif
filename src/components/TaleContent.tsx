@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { ChevronLeft, Volume2, VolumeX } from "lucide-react";
 import TaleStory from "./TaleStory";
 import { useNarration } from "@/utils/useNarration";
-import { taleContents } from "@/data/tales";
+import { taleContents, loadTales } from "@/data/tales";
+import { useEffect, useState } from "react";
 
 interface TaleContentProps {
   id: string;
@@ -11,9 +12,25 @@ interface TaleContentProps {
 
 const TaleContent = ({ id, onBack }: TaleContentProps) => {
   const { isPlaying, generateNarration } = useNarration();
+  const [isLoading, setIsLoading] = useState(true);
   const tale = taleContents[id as keyof typeof taleContents];
 
-  if (!tale) return null;
+  useEffect(() => {
+    const initTales = async () => {
+      setIsLoading(true);
+      await loadTales();
+      setIsLoading(false);
+    };
+    initTales();
+  }, []);
+
+  if (!tale || isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-magical-gold"></div>
+      </div>
+    );
+  }
 
   const handleNarration = () => {
     const text = tale.content.map(segment => segment.text).join(" ");

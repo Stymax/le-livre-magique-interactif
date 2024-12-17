@@ -1,12 +1,19 @@
 import OpenAI from "openai";
 
+const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+
 const openai = new OpenAI({
-  apiKey: process.env.VITE_OPENAI_API_KEY,
+  apiKey: OPENAI_API_KEY,
   dangerouslyAllowBrowser: true
 });
 
 export const generateStoryImage = async (prompt: string): Promise<string> => {
   try {
+    if (!OPENAI_API_KEY) {
+      console.warn("No OpenAI API key found, using fallback images from Unsplash");
+      return `https://source.unsplash.com/random/1024x1024/?${encodeURIComponent(prompt)}`;
+    }
+
     const response = await openai.images.generate({
       model: "dall-e-3",
       prompt: prompt,
@@ -19,7 +26,6 @@ export const generateStoryImage = async (prompt: string): Promise<string> => {
     return response.data[0].url;
   } catch (error) {
     console.error("Error generating image:", error);
-    // Retourner une image par défaut d'Unsplash en cas d'erreur
     return `https://source.unsplash.com/random/1024x1024/?${encodeURIComponent(prompt)}`;
   }
 };
