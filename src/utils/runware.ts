@@ -1,6 +1,6 @@
 import { RunwareService, GenerateImageParams } from "@/types/runware";
 
-const runwareService = new RunwareService("Gw1IoDST4VnjEt4xg8N6JXF9QdlY55mk");
+const runwareService = new RunwareService("Ojr4T1JQ0YgouYCmmIQjzs3vkRYLDjZi");
 
 export const generateStoryImage = async (prompt: string): Promise<string> => {
   try {
