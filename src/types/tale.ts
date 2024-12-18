@@ -1,6 +1,7 @@
 export interface TaleSegment {
   text: string;
   image?: string;
+  imagePrompt?: string;
 }
 
 export interface Tale {
