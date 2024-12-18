@@ -18,17 +18,11 @@ const TaleStory = ({ content, title }: TaleStoryProps) => {
           className="space-y-4"
         >
           {segment.image && (
-            <div className="relative w-full h-64">
-              <img
-                src={segment.image}
-                alt={`Illustration ${index + 1} de ${title}`}
-                className="w-full h-full object-cover rounded-xl"
-                onError={(e) => {
-                  console.error(`Error loading image for ${title}, segment ${index + 1}`);
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
-            </div>
+            <img
+              src={segment.image}
+              alt={`Illustration ${index + 1} de ${title}`}
+              className="w-full h-64 object-cover rounded-xl"
+            />
           )}
           <p className="leading-relaxed">{segment.text}</p>
         </motion.div>

@@ -1,6 +1,6 @@
 import { RunwareService, GenerateImageParams } from "@/types/runware";
 
-const runwareService = new RunwareService("Ojr4T1JQ0YgouYCmmIQjzs3vkRYLDjZi");
+const runwareService = new RunwareService("Gw1IoDST4VnjEt4xg8N6JXF9QdlY55mk");
 
 export const generateStoryImage = async (prompt: string): Promise<string> => {
   try {
@@ -10,11 +10,9 @@ export const generateStoryImage = async (prompt: string): Promise<string> => {
       numberResults: 1,
       width: 1024,
       height: 1024,
-      outputFormat: "WEBP",
     };
 
     const result = await runwareService.generateImage(params);
-    console.log("Generated image URL:", result.imageURL);
     return result.imageURL;
   } catch (error) {
     console.error("Error generating image:", error);
