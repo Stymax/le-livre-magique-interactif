@@ -3,6 +3,8 @@ import { ChevronLeft, Volume2, VolumeX } from "lucide-react";
 import TaleStory from "./TaleStory";
 import { useNarration } from "@/utils/useNarration";
 import { taleContents } from "@/data/tales";
+import { generateAndSaveImage } from "@/utils/imageGenerator";
+import { useState, useEffect } from "react";
 
 interface TaleContentProps {
   id: string;
@@ -11,7 +13,32 @@ interface TaleContentProps {
 
 const TaleContent = ({ id, onBack }: TaleContentProps) => {
   const { isPlaying, generateNarration } = useNarration();
+  const [isGeneratingImages, setIsGeneratingImages] = useState(false);
   const tale = taleContents[id as keyof typeof taleContents];
+
+  useEffect(() => {
+    const generateMissingImages = async () => {
+      if (!tale) return;
+      
+      setIsGeneratingImages(true);
+      
+      for (let i = 0; i < tale.content.length; i++) {
+        const segment = tale.content[i];
+        if (segment.image && segment.imagePrompt) {
+          const fileName = `${id}-${i + 1}.png`;
+          await generateAndSaveImage({
+            prompt: segment.imagePrompt,
+            fileName,
+            title: tale.title
+          });
+        }
+      }
+      
+      setIsGeneratingImages(false);
+    };
+
+    generateMissingImages();
+  }, [id, tale]);
 
   if (!tale) return null;
 
@@ -46,6 +73,12 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       </div>
 
       <h2 className="text-3xl font-bold text-magical-gold mb-8">{tale.title}</h2>
+
+      {isGeneratingImages && (
+        <div className="text-center text-magical-turquoise">
+          Génération des images en cours...
+        </div>
+      )}
 
       <TaleStory content={tale.content} title={tale.title} />
 
