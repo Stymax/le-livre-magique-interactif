@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { TaleSegment } from "@/types/tale";
 import { useState } from "react";
+import { toast } from "sonner";
 
 interface TaleStoryProps {
   content: TaleSegment[];
@@ -12,6 +13,7 @@ const TaleStory = ({ content, title }: TaleStoryProps) => {
 
   const handleImageError = (index: number) => {
     setFailedImages(prev => new Set([...prev, index]));
+    toast.error(`Impossible de charger l'image ${index + 1} pour ${title}`);
     console.error(`Error loading image for ${title}, segment ${index + 1}`);
   };
 
@@ -26,12 +28,14 @@ const TaleStory = ({ content, title }: TaleStoryProps) => {
           className="space-y-4"
         >
           {segment.image && !failedImages.has(index) && (
-            <img
-              src={segment.image}
-              alt={`Illustration ${index + 1} de ${title}`}
-              className="w-full h-64 object-cover rounded-xl"
-              onError={() => handleImageError(index)}
-            />
+            <div className="relative w-full h-64 rounded-xl overflow-hidden bg-magical-gold/10">
+              <img
+                src={segment.image}
+                alt={`Illustration ${index + 1} de ${title}`}
+                className="w-full h-full object-cover"
+                onError={() => handleImageError(index)}
+              />
+            </div>
           )}
           <p className="leading-relaxed">{segment.text}</p>
         </motion.div>
