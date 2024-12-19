@@ -1,13 +1,13 @@
-import { RunwareService } from "./runware";
+import { RunwareService, type GenerateImageParams } from "./runware";
 import { toast } from "sonner";
-
-const runwareService = new RunwareService("Ojr4T1JQ0YgouYCmmIQjzs3vkRYLDjZi");
 
 interface GenerateAndSaveImageProps {
   prompt: string;
   fileName: string;
   title: string;
 }
+
+const runwareService = new RunwareService("Ojr4T1JQ0YgouYCmmIQjzs3vkRYLDjZi");
 
 export const generateAndSaveImage = async ({ prompt, fileName, title }: GenerateAndSaveImageProps) => {
   try {
