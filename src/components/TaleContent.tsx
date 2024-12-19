@@ -5,6 +5,7 @@ import { useNarration } from "@/utils/useNarration";
 import { taleContents } from "@/data/tales";
 import { generateAndSaveImage } from "@/utils/imageGenerator";
 import { useState, useEffect } from "react";
+import { toast } from "sonner";
 
 interface TaleContentProps {
   id: string;
@@ -21,20 +22,27 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       if (!tale) return;
       
       setIsGeneratingImages(true);
+      toast.info(`Vérification des images pour ${tale.title}...`);
       
-      for (let i = 0; i < tale.content.length; i++) {
-        const segment = tale.content[i];
-        if (segment.image && segment.imagePrompt) {
-          const fileName = `${id}-${i + 1}.png`;
-          await generateAndSaveImage({
-            prompt: segment.imagePrompt,
-            fileName,
-            title: tale.title
-          });
+      try {
+        for (let i = 0; i < tale.content.length; i++) {
+          const segment = tale.content[i];
+          if (segment.image && segment.imagePrompt) {
+            const fileName = `${id}-${i + 1}.png`;
+            await generateAndSaveImage({
+              prompt: segment.imagePrompt,
+              fileName,
+              title: tale.title
+            });
+          }
         }
+        toast.success(`Images vérifiées pour ${tale.title}`);
+      } catch (error) {
+        console.error('Error generating images:', error);
+        toast.error(`Erreur lors de la génération des images pour ${tale.title}`);
+      } finally {
+        setIsGeneratingImages(false);
       }
-      
-      setIsGeneratingImages(false);
     };
 
     generateMissingImages();
@@ -75,7 +83,7 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       <h2 className="text-3xl font-bold text-magical-gold mb-8">{tale.title}</h2>
 
       {isGeneratingImages && (
-        <div className="text-center text-magical-turquoise">
+        <div className="text-center text-magical-turquoise animate-pulse">
           Génération des images en cours...
         </div>
       )}
