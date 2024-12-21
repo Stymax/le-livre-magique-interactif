@@ -64,26 +64,32 @@ const TaleStory = ({ content, title }: TaleStoryProps) => {
           ))}
         </CarouselContent>
 
-        <div className="flex justify-center gap-4 mt-6">
-          {!isFirstSlide && (
-            <CarouselPrevious className="relative inset-0 translate-x-0 h-12 w-32 bg-magical-gold/20 hover:bg-magical-gold/40 border-none">
+        {isFirstSlide ? (
+          <CarouselNext className="absolute right-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none">
+            <span className="text-magical-gold font-medium">Début</span>
+          </CarouselNext>
+        ) : !isLastSlide ? (
+          <>
+            <CarouselPrevious className="absolute left-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none">
               <span className="text-magical-gold font-medium">Retour</span>
             </CarouselPrevious>
-          )}
-          
-          {!isLastSlide ? (
-            <CarouselNext className="relative inset-0 translate-x-0 h-12 w-32 bg-magical-gold/20 hover:bg-magical-gold/40 border-none">
+            <CarouselNext className="absolute right-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none">
               <span className="text-magical-gold font-medium">Suivant</span>
             </CarouselNext>
-          ) : (
+          </>
+        ) : (
+          <>
+            <CarouselPrevious className="absolute left-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none">
+              <span className="text-magical-gold font-medium">Retour</span>
+            </CarouselPrevious>
             <Button
               onClick={handleReset}
-              className="h-12 w-32 bg-magical-gold/20 hover:bg-magical-gold/40 text-magical-gold font-medium"
+              className="absolute right-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 text-magical-gold font-medium"
             >
               Fin
             </Button>
-          )}
-        </div>
+          </>
+        )}
       </Carousel>
 
       <div className="mt-4 text-center text-magical-gold/60">
