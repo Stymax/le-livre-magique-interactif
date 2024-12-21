@@ -8,7 +8,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { useEffect } from "react";
 import { Button } from "./ui/button";
 
 interface TaleStoryProps {
@@ -19,6 +18,7 @@ interface TaleStoryProps {
 const TaleStory = ({ content, title }: TaleStoryProps) => {
   const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
   const [currentSlide, setCurrentSlide] = useState(0);
+  const isFirstSlide = currentSlide === 0;
   const isLastSlide = currentSlide === content.length - 1;
 
   const handleImageError = (index: number) => {
@@ -64,25 +64,26 @@ const TaleStory = ({ content, title }: TaleStoryProps) => {
           ))}
         </CarouselContent>
 
-        {!isLastSlide ? (
-          <>
-            <CarouselPrevious className="left-4 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none">
-              <span className="text-magical-gold font-medium">Précédent</span>
+        <div className="flex justify-center gap-4 mt-6">
+          {!isFirstSlide && (
+            <CarouselPrevious className="relative inset-0 translate-x-0 h-12 w-32 bg-magical-gold/20 hover:bg-magical-gold/40 border-none">
+              <span className="text-magical-gold font-medium">Retour</span>
             </CarouselPrevious>
-            <CarouselNext className="right-4 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none">
+          )}
+          
+          {!isLastSlide ? (
+            <CarouselNext className="relative inset-0 translate-x-0 h-12 w-32 bg-magical-gold/20 hover:bg-magical-gold/40 border-none">
               <span className="text-magical-gold font-medium">Suivant</span>
             </CarouselNext>
-          </>
-        ) : (
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 transform mb-8">
+          ) : (
             <Button
               onClick={handleReset}
-              className="bg-magical-gold/20 hover:bg-magical-gold/40 text-magical-gold px-8 py-4 text-lg font-medium"
+              className="h-12 w-32 bg-magical-gold/20 hover:bg-magical-gold/40 text-magical-gold font-medium"
             >
-              Fin - Retour au début
+              Fin
             </Button>
-          </div>
-        )}
+          )}
+        </div>
       </Carousel>
 
       <div className="mt-4 text-center text-magical-gold/60">
