@@ -27,8 +27,11 @@ const TaleStory = ({ content, title }: TaleStoryProps) => {
     console.error(`Error loading image for ${title}, segment ${index + 1}`);
   };
 
-  const handleSlideChange = (index: number) => {
-    setCurrentSlide(index);
+  const handleSlideChange = (api: any) => {
+    const selectedIndex = api?.selectedScrollSnap();
+    if (typeof selectedIndex === 'number') {
+      setCurrentSlide(selectedIndex);
+    }
   };
 
   const handleReset = () => {
