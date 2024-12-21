@@ -1,7 +1,14 @@
-import { motion } from "framer-motion";
 import { TaleSegment } from "@/types/tale";
 import { useState } from "react";
 import { toast } from "sonner";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface TaleStoryProps {
   content: TaleSegment[];
@@ -18,29 +25,34 @@ const TaleStory = ({ content, title }: TaleStoryProps) => {
   };
 
   return (
-    <div className="space-y-12 text-white/90">
-      {content.map((segment, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: index * 0.1 }}
-          className="space-y-4"
-        >
-          {segment.image && !failedImages.has(index) && (
-            <div className="relative w-full h-64 rounded-xl overflow-hidden bg-magical-gold/10">
-              <img
-                src={segment.image}
-                alt={`Illustration ${index + 1} de ${title}`}
-                className="w-full h-full object-cover"
-                onError={() => handleImageError(index)}
-              />
+    <Carousel className="w-full max-w-4xl mx-auto">
+      <CarouselContent>
+        {content.map((segment, index) => (
+          <CarouselItem key={index}>
+            <div className="space-y-6 p-4">
+              {segment.image && !failedImages.has(index) && (
+                <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden">
+                  <img
+                    src={segment.image}
+                    alt={`Illustration ${index + 1} de ${title}`}
+                    className="w-full h-full object-contain"
+                    onError={() => handleImageError(index)}
+                  />
+                </div>
+              )}
+              <p className="leading-relaxed text-center text-lg py-4">{segment.text}</p>
             </div>
-          )}
-          <p className="leading-relaxed">{segment.text}</p>
-        </motion.div>
-      ))}
-    </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      
+      <CarouselPrevious className="left-2 bg-magical-gold/20 hover:bg-magical-gold/40 border-none">
+        <ChevronLeft className="w-8 h-8 text-magical-gold" />
+      </CarouselPrevious>
+      <CarouselNext className="right-2 bg-magical-gold/20 hover:bg-magical-gold/40 border-none">
+        <ChevronRight className="w-8 h-8 text-magical-gold" />
+      </CarouselNext>
+    </Carousel>
   );
 };
 
