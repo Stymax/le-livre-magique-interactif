@@ -1,5 +1,5 @@
 import { TaleSegment } from "@/types/tale";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import {
   Carousel,
@@ -17,10 +17,21 @@ interface TaleStoryProps {
 const TaleStory = ({ content, title }: TaleStoryProps) => {
   const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [emblaRef, emblaApi] = useEmblaCarousel();
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    skipSnaps: false,
+    dragFree: false
+  });
   
   const isFirstSlide = currentSlide === 0;
   const isLastSlide = currentSlide === content.length - 1;
+
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.on('select', () => {
+        setCurrentSlide(emblaApi.selectedScrollSnap());
+      });
+    }
+  }, [emblaApi]);
 
   const handleImageError = (index: number) => {
     setFailedImages(prev => new Set([...prev, index]));
@@ -31,92 +42,84 @@ const TaleStory = ({ content, title }: TaleStoryProps) => {
   const handleNext = () => {
     if (emblaApi) {
       emblaApi.scrollNext();
-      setCurrentSlide(prev => prev + 1);
     }
   };
 
   const handlePrevious = () => {
     if (emblaApi) {
       emblaApi.scrollPrev();
-      setCurrentSlide(prev => prev - 1);
     }
   };
 
   const handleReset = () => {
     if (emblaApi) {
       emblaApi.scrollTo(0);
-      setCurrentSlide(0);
     }
   };
 
   return (
     <div className="relative">
       <div ref={emblaRef} className="overflow-hidden">
-        <Carousel>
-          <CarouselContent>
-            {content.map((segment, index) => (
-              <CarouselItem key={index}>
-                <div className="space-y-6 p-4">
-                  {segment.image && !failedImages.has(index) && (
-                    <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden">
-                      <img
-                        src={segment.image}
-                        alt={`Illustration ${index + 1} de ${title}`}
-                        className="w-full h-full object-contain"
-                        onError={() => handleImageError(index)}
-                      />
-                    </div>
-                  )}
-                  <p className="leading-relaxed text-center text-lg py-4">{segment.text}</p>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+        <CarouselContent>
+          {content.map((segment, index) => (
+            <CarouselItem key={index} className="min-w-0">
+              <div className="space-y-6 p-4">
+                {segment.image && !failedImages.has(index) && (
+                  <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden">
+                    <img
+                      src={segment.image}
+                      alt={`Illustration ${index + 1} de ${title}`}
+                      className="w-full h-full object-contain"
+                      onError={() => handleImageError(index)}
+                    />
+                  </div>
+                )}
+                <p className="leading-relaxed text-center text-lg py-4">{segment.text}</p>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
       </div>
 
-      {isFirstSlide && (
-        <Button
-          onClick={handleNext}
-          className="absolute right-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
-        >
-          Suivant
-        </Button>
-      )}
-
-      {!isFirstSlide && !isLastSlide && (
-        <>
+      <div className="flex justify-between mt-4">
+        {isFirstSlide ? (
+          <div className="w-24" /> // Espace vide pour l'alignement
+        ) : (
           <Button
             onClick={handlePrevious}
-            className="absolute left-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+            className="h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
           >
             Retour
           </Button>
+        )}
+
+        {isFirstSlide && (
           <Button
             onClick={handleNext}
-            className="absolute right-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+            className="h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium ml-auto"
           >
             Suivant
           </Button>
-        </>
-      )}
+        )}
 
-      {isLastSlide && (
-        <>
+        {!isFirstSlide && !isLastSlide && (
           <Button
-            onClick={handlePrevious}
-            className="absolute left-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+            onClick={handleNext}
+            className="h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
           >
-            Retour
+            Suivant
           </Button>
+        )}
+
+        {isLastSlide && (
           <Button
             onClick={handleReset}
-            className="absolute right-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+            className="h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
           >
             Fin
           </Button>
-        </>
-      )}
+        )}
+      </div>
 
       <div className="mt-4 text-center text-magical-gold/60">
         Page {currentSlide + 1} sur {content.length}
