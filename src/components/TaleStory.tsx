@@ -65,21 +65,21 @@ const TaleStory = ({ content, title }: TaleStoryProps) => {
         </CarouselContent>
 
         {isFirstSlide ? (
-          <CarouselNext className="absolute right-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none">
+          <CarouselNext className="absolute right-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium">
             Début
           </CarouselNext>
         ) : !isLastSlide ? (
           <>
-            <CarouselPrevious className="absolute left-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none">
+            <CarouselPrevious className="absolute left-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium">
               Retour
             </CarouselPrevious>
-            <CarouselNext className="absolute right-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none">
+            <CarouselNext className="absolute right-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium">
               Suivant
             </CarouselNext>
           </>
         ) : (
           <>
-            <CarouselPrevious className="absolute left-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none">
+            <CarouselPrevious className="absolute left-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium">
               Retour
             </CarouselPrevious>
             <Button
