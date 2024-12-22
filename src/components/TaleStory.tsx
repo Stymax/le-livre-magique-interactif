@@ -64,27 +64,43 @@ const TaleStory = ({ content, title }: TaleStoryProps) => {
           ))}
         </CarouselContent>
 
-        {isFirstSlide ? (
-          <CarouselNext className="absolute right-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium">
-            Début
-          </CarouselNext>
-        ) : !isLastSlide ? (
+        {isFirstSlide && (
+          <Button
+            onClick={() => setCurrentSlide(currentSlide + 1)}
+            className="absolute right-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+          >
+            Suivant
+          </Button>
+        )}
+
+        {!isFirstSlide && !isLastSlide && (
           <>
-            <CarouselPrevious className="absolute left-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium">
+            <Button
+              onClick={() => setCurrentSlide(currentSlide - 1)}
+              className="absolute left-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+            >
               Retour
-            </CarouselPrevious>
-            <CarouselNext className="absolute right-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium">
+            </Button>
+            <Button
+              onClick={() => setCurrentSlide(currentSlide + 1)}
+              className="absolute right-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+            >
               Suivant
-            </CarouselNext>
+            </Button>
           </>
-        ) : (
+        )}
+
+        {isLastSlide && (
           <>
-            <CarouselPrevious className="absolute left-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium">
+            <Button
+              onClick={() => setCurrentSlide(currentSlide - 1)}
+              className="absolute left-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+            >
               Retour
-            </CarouselPrevious>
+            </Button>
             <Button
               onClick={handleReset}
-              className="absolute right-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 text-magical-gold font-medium"
+              className="absolute right-[-4rem] top-1/2 -translate-y-1/2 h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
             >
               Fin
             </Button>
