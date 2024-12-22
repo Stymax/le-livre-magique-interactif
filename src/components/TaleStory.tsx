@@ -21,7 +21,7 @@ const TaleStory = ({ content, title }: TaleStoryProps) => {
     skipSnaps: false,
     dragFree: false
   });
-  
+
   const isFirstSlide = currentSlide === 0;
   const isLastSlide = currentSlide === content.length - 1;
 
@@ -59,27 +59,29 @@ const TaleStory = ({ content, title }: TaleStoryProps) => {
 
   return (
     <div className="relative">
-      <div ref={emblaRef} className="overflow-hidden">
-        <CarouselContent>
-          {content.map((segment, index) => (
-            <CarouselItem key={index} className="min-w-0">
-              <div className="space-y-6 p-4">
-                {segment.image && !failedImages.has(index) && (
-                  <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden">
-                    <img
-                      src={segment.image}
-                      alt={`Illustration ${index + 1} de ${title}`}
-                      className="w-full h-full object-contain"
-                      onError={() => handleImageError(index)}
-                    />
-                  </div>
-                )}
-                <p className="leading-relaxed text-center text-lg py-4">{segment.text}</p>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </div>
+      <Carousel>
+        <div ref={emblaRef} className="overflow-hidden">
+          <CarouselContent>
+            {content.map((segment, index) => (
+              <CarouselItem key={index} className="min-w-0">
+                <div className="space-y-6 p-4">
+                  {segment.image && !failedImages.has(index) && (
+                    <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden">
+                      <img
+                        src={segment.image}
+                        alt={`Illustration ${index + 1} de ${title}`}
+                        className="w-full h-full object-contain"
+                        onError={() => handleImageError(index)}
+                      />
+                    </div>
+                  )}
+                  <p className="leading-relaxed text-center text-lg py-4">{segment.text}</p>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </div>
+      </Carousel>
 
       <div className="flex justify-between mt-4">
         {isFirstSlide ? (
