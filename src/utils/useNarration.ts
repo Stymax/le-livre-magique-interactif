@@ -53,11 +53,7 @@ export const useNarration = () => {
       setIsPlaying(true);
     } catch (error) {
       console.error('Erreur de narration:', error);
-      toast({
-        title: "Erreur de narration",
-        description: error instanceof Error ? error.message : "Erreur inconnue lors de la narration",
-        variant: "destructive"
-      });
+      toast.error("Erreur lors de la narration");
       setIsPlaying(false);
       throw error;
     }
