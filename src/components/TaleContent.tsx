@@ -4,6 +4,7 @@ import TaleStory from "./TaleStory";
 import { useState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 import { taleContents } from "@/data/tales";
+import { generateAndSaveImage } from "@/utils/imageGenerator";
 
 interface TaleContentProps {
   id: string;
