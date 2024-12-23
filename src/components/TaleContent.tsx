@@ -64,12 +64,12 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       }
 
       // Créer un nouvel audio pour la page courante
-      const audio = new Audio(`/audio/${id}-${currentPage + 1}.mp3`);
+      const audio = new Audio(`/audio/${id}/${id}-${currentPage + 1}.mp3`);
       
       audio.onended = () => {
         // Si c'est la dernière page, jouer l'audio de la morale
         if (currentPage === tale.content.length - 1) {
-          const moralAudio = new Audio(`/audio/${id}-moral.mp3`);
+          const moralAudio = new Audio(`/audio/${id}/${id}-moral.mp3`);
           moralAudio.play();
           setCurrentAudio(moralAudio);
         }
