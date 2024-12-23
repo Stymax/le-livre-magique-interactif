@@ -17,7 +17,8 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
   const [isGeneratingImages, setIsGeneratingImages] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const tale = taleContents[id as keyof typeof taleContents];
-  const narrationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const narrationTimeoutRef = useRef<NodeJS.Timeout[]>([]);
+  const [isNarrationStarting, setIsNarrationStarting] = useState(false);
 
   useEffect(() => {
     const generateMissingImages = async () => {
@@ -50,41 +51,52 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
     generateMissingImages();
   }, [id, tale]);
 
-  const handleNarration = () => {
+  const handleNarration = async () => {
     if (isPlaying) {
       // Stop current narration
-      if (narrationTimeoutRef.current) {
-        clearTimeout(narrationTimeoutRef.current);
-      }
+      narrationTimeoutRef.current.forEach(timeout => clearTimeout(timeout));
+      narrationTimeoutRef.current = [];
       generateNarration('');
+      setIsNarrationStarting(false);
       return;
     }
 
+    setIsNarrationStarting(true);
+    toast.info("Démarrage de la narration...");
+
     // Start narration from current page
     const remainingSegments = tale.content.slice(currentPage);
-    const averageWordsPerMinute = 150; // Adjust this value based on narration speed
+    const averageWordsPerMinute = 150;
+    let accumulatedDelay = 0;
     
+    // Prepare the full text for narration
+    const fullText = remainingSegments.map(segment => segment.text).join(" ");
+    
+    // Start the narration immediately
+    generateNarration(fullText);
+    
+    // Schedule page turns
     remainingSegments.forEach((segment, index) => {
+      if (index === 0) return; // Skip first segment as we're already on it
+      
       const words = segment.text.split(' ').length;
       const estimatedSeconds = (words / averageWordsPerMinute) * 60;
+      accumulatedDelay += estimatedSeconds * 1000;
       
-      narrationTimeoutRef.current = setTimeout(() => {
-        if (currentPage + index < tale.content.length - 1) {
-          setCurrentPage(currentPage + index + 1);
-        }
-      }, estimatedSeconds * 1000);
+      const timeout = setTimeout(() => {
+        setCurrentPage(currentPage + index);
+      }, accumulatedDelay);
+      
+      narrationTimeoutRef.current.push(timeout);
     });
 
-    const text = remainingSegments.map(segment => segment.text).join(" ");
-    generateNarration(text);
+    setIsNarrationStarting(false);
   };
 
   // Cleanup timeouts on unmount or when stopping narration
   useEffect(() => {
     return () => {
-      if (narrationTimeoutRef.current) {
-        clearTimeout(narrationTimeoutRef.current);
-      }
+      narrationTimeoutRef.current.forEach(timeout => clearTimeout(timeout));
     };
   }, []);
 
@@ -108,10 +120,13 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
 
         <button
           onClick={handleNarration}
-          className="flex items-center gap-2 px-4 py-2 rounded-full bg-magical-gold/20 text-magical-gold hover:bg-magical-gold/30 transition-colors"
+          disabled={isNarrationStarting}
+          className={`flex items-center gap-2 px-4 py-2 rounded-full bg-magical-gold/20 text-magical-gold hover:bg-magical-gold/30 transition-colors ${
+            isNarrationStarting ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
         >
           {isPlaying ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-          {isPlaying ? "Arrêter" : "Écouter"}
+          {isNarrationStarting ? "Démarrage..." : isPlaying ? "Arrêter" : "Écouter"}
         </button>
       </div>
 
