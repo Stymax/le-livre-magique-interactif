@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
 import { ChevronLeft, Volume2, VolumeX } from "lucide-react";
 import TaleStory from "./TaleStory";
-import { useNarration } from "@/utils/useNarration";
-import { taleContents } from "@/data/tales";
-import { generateAndSaveImage } from "@/utils/imageGenerator";
 import { useState, useEffect, useRef } from "react";
 import { toast } from "sonner";
+import { taleContents } from "@/data/tales";
 
 interface TaleContentProps {
   id: string;
@@ -13,12 +11,11 @@ interface TaleContentProps {
 }
 
 const TaleContent = ({ id, onBack }: TaleContentProps) => {
-  const { isPlaying, generateNarration } = useNarration();
   const [isGeneratingImages, setIsGeneratingImages] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null);
   const tale = taleContents[id as keyof typeof taleContents];
-  const narrationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const [isNarrationStarting, setIsNarrationStarting] = useState(false);
 
   useEffect(() => {
     const generateMissingImages = async () => {
@@ -39,7 +36,6 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
             });
           }
         }
-        toast.success(`Images vérifiées pour ${tale.title}`);
       } catch (error) {
         console.error('Error generating images:', error);
         toast.error(`Erreur lors de la génération des images pour ${tale.title}`);
@@ -52,62 +48,46 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
   }, [id, tale]);
 
   const handleNarration = async () => {
-    if (isPlaying) {
-      // Stop current narration
-      if (narrationTimeoutRef.current) {
-        clearTimeout(narrationTimeoutRef.current);
-        narrationTimeoutRef.current = null;
-      }
-      generateNarration('');
-      setIsNarrationStarting(false);
+    if (isPlaying && currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      setIsPlaying(false);
       return;
     }
 
-    setIsNarrationStarting(true);
-    
-    const narrateNextPage = async (pageIndex: number) => {
-      if (pageIndex >= tale.content.length || !isPlaying) {
-        setIsNarrationStarting(false);
-        return;
+    try {
+      // Arrêter l'audio précédent s'il existe
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
       }
 
-      try {
-        const currentSegment = tale.content[pageIndex];
-        setCurrentPage(pageIndex);
-        
-        await generateNarration(currentSegment.text);
-        
-        // Estimer le temps de lecture pour cette page
-        const words = currentSegment.text.split(' ').length;
-        const averageWordsPerMinute = 150;
-        const estimatedSeconds = (words / averageWordsPerMinute) * 60;
-        
-        // Programmer la narration de la page suivante
-        narrationTimeoutRef.current = setTimeout(() => {
-          narrateNextPage(pageIndex + 1);
-        }, estimatedSeconds * 1000);
-        
-      } catch (error) {
-        console.error('Error during narration:', error);
-        toast.error("Erreur lors de la narration");
-        setIsNarrationStarting(false);
-      }
-    };
+      // Créer un nouvel audio pour la page courante
+      const audio = new Audio(`/audio/${id}-${currentPage + 1}.mp3`);
+      
+      audio.onended = () => {
+        // Si c'est la dernière page, jouer l'audio de la morale
+        if (currentPage === tale.content.length - 1) {
+          const moralAudio = new Audio(`/audio/${id}-moral.mp3`);
+          moralAudio.play();
+          setCurrentAudio(moralAudio);
+        }
+        setIsPlaying(false);
+      };
 
-    // Démarrer la narration à partir de la page actuelle
-    await narrateNextPage(currentPage);
+      setCurrentAudio(audio);
+      await audio.play();
+      setIsPlaying(true);
+    } catch (error) {
+      console.error('Error playing audio:', error);
+      toast.error("Erreur lors de la lecture audio");
+      setIsPlaying(false);
+    }
   };
 
-  // Cleanup timeout on unmount or when stopping narration
-  useEffect(() => {
-    return () => {
-      if (narrationTimeoutRef.current) {
-        clearTimeout(narrationTimeoutRef.current);
-      }
-    };
-  }, []);
-
   if (!tale) return null;
+
+  const showMoral = currentPage === tale.content.length - 1;
 
   return (
     <motion.div
@@ -127,13 +107,10 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
 
         <button
           onClick={handleNarration}
-          disabled={isNarrationStarting}
-          className={`flex items-center gap-2 px-4 py-2 rounded-full bg-magical-gold/20 text-magical-gold hover:bg-magical-gold/30 transition-colors ${
-            isNarrationStarting ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
+          className="flex items-center gap-2 px-4 py-2 rounded-full bg-magical-gold/20 text-magical-gold hover:bg-magical-gold/30 transition-colors"
         >
           {isPlaying ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-          {isNarrationStarting ? "Préparation..." : isPlaying ? "Arrêter" : "Écouter"}
+          {isPlaying ? "Arrêter" : "Écouter"}
         </button>
       </div>
 
@@ -152,10 +129,17 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
         onPageChange={setCurrentPage}
       />
 
-      <div className="mt-12 p-6 bg-magical-gold/10 rounded-xl border border-magical-gold/20">
-        <h3 className="text-magical-turquoise font-semibold mb-2">Morale de l'histoire :</h3>
-        <p className="text-white/80 italic">{tale.moral}</p>
-      </div>
+      {showMoral && (
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="mt-12 p-6 bg-magical-gold/10 rounded-xl border border-magical-gold/20"
+        >
+          <h3 className="text-magical-turquoise font-semibold mb-2">Morale de l'histoire :</h3>
+          <p className="text-white/80 italic">{tale.moral}</p>
+        </motion.div>
+      )}
     </motion.div>
   );
 };
