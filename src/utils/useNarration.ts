@@ -36,7 +36,7 @@ export const useNarration = () => {
 
       if (!response.ok) {
         const errorData = await response.text();
-        console.error("ElevenLabs API Error:", errorData);
+        console.error('ElevenLabs API Error:', errorData);
         throw new Error("Erreur lors de la génération de la narration");
       }
 
@@ -44,10 +44,11 @@ export const useNarration = () => {
       const audioUrl = URL.createObjectURL(blob);
       const newAudio = new Audio(audioUrl);
       
-      newAudio.onended = () => {
-        URL.revokeObjectURL(audioUrl);
-      };
-
+      // Clean up previous audio URL if it exists
+      if (audio) {
+        URL.revokeObjectURL(audio.src);
+      }
+      
       setAudio(newAudio);
       await newAudio.play();
       setIsPlaying(true);
