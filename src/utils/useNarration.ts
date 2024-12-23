@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { useToast } from "@/components/ui/use-toast";
+import { toast } from "sonner";
 
 export const useNarration = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
-  const { toast } = useToast();
 
   const generateNarration = async (text: string): Promise<void> => {
     try {
@@ -46,7 +45,7 @@ export const useNarration = () => {
       const newAudio = new Audio(audioUrl);
       
       newAudio.onended = () => {
-        setIsPlaying(false);
+        URL.revokeObjectURL(audioUrl);
       };
 
       setAudio(newAudio);
@@ -60,7 +59,7 @@ export const useNarration = () => {
         variant: "destructive"
       });
       setIsPlaying(false);
-      throw error; // Propager l'erreur pour que le composant puisse la gérer
+      throw error;
     }
   };
 

@@ -17,9 +17,8 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
   const [isGeneratingImages, setIsGeneratingImages] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const tale = taleContents[id as keyof typeof taleContents];
-  const narrationTimeoutRef = useRef<NodeJS.Timeout[]>([]);
+  const narrationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [isNarrationStarting, setIsNarrationStarting] = useState(false);
-  const [isNarrationReady, setIsNarrationReady] = useState(false);
 
   useEffect(() => {
     const generateMissingImages = async () => {
@@ -55,55 +54,56 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
   const handleNarration = async () => {
     if (isPlaying) {
       // Stop current narration
-      narrationTimeoutRef.current.forEach(timeout => clearTimeout(timeout));
-      narrationTimeoutRef.current = [];
+      if (narrationTimeoutRef.current) {
+        clearTimeout(narrationTimeoutRef.current);
+        narrationTimeoutRef.current = null;
+      }
       generateNarration('');
       setIsNarrationStarting(false);
-      setIsNarrationReady(false);
       return;
     }
 
     setIsNarrationStarting(true);
-    toast.info("Préparation de la narration...");
-
-    // Prepare the full text for narration
-    const remainingSegments = tale.content.slice(currentPage);
-    const fullText = remainingSegments.map(segment => segment.text).join(" ");
     
-    try {
-      // Attendre que la narration soit prête avant de commencer
-      await generateNarration(fullText);
-      setIsNarrationReady(true);
-      
-      // Une fois que la narration est prête, programmer les changements de page
-      let accumulatedDelay = 2000; // Attendre 2 secondes avant le premier changement
-      const averageWordsPerMinute = 150;
-      
-      remainingSegments.forEach((segment, index) => {
-        if (index === 0) return; // Skip first segment as we're already on it
+    const narrateNextPage = async (pageIndex: number) => {
+      if (pageIndex >= tale.content.length || !isPlaying) {
+        setIsNarrationStarting(false);
+        return;
+      }
+
+      try {
+        const currentSegment = tale.content[pageIndex];
+        setCurrentPage(pageIndex);
         
-        const words = segment.text.split(' ').length;
+        await generateNarration(currentSegment.text);
+        
+        // Estimer le temps de lecture pour cette page
+        const words = currentSegment.text.split(' ').length;
+        const averageWordsPerMinute = 150;
         const estimatedSeconds = (words / averageWordsPerMinute) * 60;
-        accumulatedDelay += estimatedSeconds * 1000;
         
-        const timeout = setTimeout(() => {
-          setCurrentPage(currentPage + index);
-        }, accumulatedDelay);
+        // Programmer la narration de la page suivante
+        narrationTimeoutRef.current = setTimeout(() => {
+          narrateNextPage(pageIndex + 1);
+        }, estimatedSeconds * 1000);
         
-        narrationTimeoutRef.current.push(timeout);
-      });
-    } catch (error) {
-      console.error('Error starting narration:', error);
-      toast.error("Erreur lors du démarrage de la narration");
-    } finally {
-      setIsNarrationStarting(false);
-    }
+      } catch (error) {
+        console.error('Error during narration:', error);
+        toast.error("Erreur lors de la narration");
+        setIsNarrationStarting(false);
+      }
+    };
+
+    // Démarrer la narration à partir de la page actuelle
+    await narrateNextPage(currentPage);
   };
 
-  // Cleanup timeouts on unmount or when stopping narration
+  // Cleanup timeout on unmount or when stopping narration
   useEffect(() => {
     return () => {
-      narrationTimeoutRef.current.forEach(timeout => clearTimeout(timeout));
+      if (narrationTimeoutRef.current) {
+        clearTimeout(narrationTimeoutRef.current);
+      }
     };
   }, []);
 
