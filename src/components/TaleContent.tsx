@@ -19,6 +19,7 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
   const tale = taleContents[id as keyof typeof taleContents];
   const narrationTimeoutRef = useRef<NodeJS.Timeout[]>([]);
   const [isNarrationStarting, setIsNarrationStarting] = useState(false);
+  const [isNarrationReady, setIsNarrationReady] = useState(false);
 
   useEffect(() => {
     const generateMissingImages = async () => {
@@ -58,39 +59,45 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       narrationTimeoutRef.current = [];
       generateNarration('');
       setIsNarrationStarting(false);
+      setIsNarrationReady(false);
       return;
     }
 
     setIsNarrationStarting(true);
-    toast.info("Démarrage de la narration...");
+    toast.info("Préparation de la narration...");
 
-    // Start narration from current page
-    const remainingSegments = tale.content.slice(currentPage);
-    const averageWordsPerMinute = 150;
-    let accumulatedDelay = 0;
-    
     // Prepare the full text for narration
+    const remainingSegments = tale.content.slice(currentPage);
     const fullText = remainingSegments.map(segment => segment.text).join(" ");
     
-    // Start the narration immediately
-    generateNarration(fullText);
-    
-    // Schedule page turns
-    remainingSegments.forEach((segment, index) => {
-      if (index === 0) return; // Skip first segment as we're already on it
+    try {
+      // Attendre que la narration soit prête avant de commencer
+      await generateNarration(fullText);
+      setIsNarrationReady(true);
       
-      const words = segment.text.split(' ').length;
-      const estimatedSeconds = (words / averageWordsPerMinute) * 60;
-      accumulatedDelay += estimatedSeconds * 1000;
+      // Une fois que la narration est prête, programmer les changements de page
+      let accumulatedDelay = 2000; // Attendre 2 secondes avant le premier changement
+      const averageWordsPerMinute = 150;
       
-      const timeout = setTimeout(() => {
-        setCurrentPage(currentPage + index);
-      }, accumulatedDelay);
-      
-      narrationTimeoutRef.current.push(timeout);
-    });
-
-    setIsNarrationStarting(false);
+      remainingSegments.forEach((segment, index) => {
+        if (index === 0) return; // Skip first segment as we're already on it
+        
+        const words = segment.text.split(' ').length;
+        const estimatedSeconds = (words / averageWordsPerMinute) * 60;
+        accumulatedDelay += estimatedSeconds * 1000;
+        
+        const timeout = setTimeout(() => {
+          setCurrentPage(currentPage + index);
+        }, accumulatedDelay);
+        
+        narrationTimeoutRef.current.push(timeout);
+      });
+    } catch (error) {
+      console.error('Error starting narration:', error);
+      toast.error("Erreur lors du démarrage de la narration");
+    } finally {
+      setIsNarrationStarting(false);
+    }
   };
 
   // Cleanup timeouts on unmount or when stopping narration
@@ -126,7 +133,7 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
           }`}
         >
           {isPlaying ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-          {isNarrationStarting ? "Démarrage..." : isPlaying ? "Arrêter" : "Écouter"}
+          {isNarrationStarting ? "Préparation..." : isPlaying ? "Arrêter" : "Écouter"}
         </button>
       </div>
 

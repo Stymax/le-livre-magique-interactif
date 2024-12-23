@@ -6,10 +6,15 @@ export const useNarration = () => {
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const { toast } = useToast();
 
-  const generateNarration = async (text: string) => {
+  const generateNarration = async (text: string): Promise<void> => {
     try {
       if (isPlaying && audio) {
         audio.pause();
+        setIsPlaying(false);
+        return;
+      }
+
+      if (!text) {
         setIsPlaying(false);
         return;
       }
@@ -55,6 +60,7 @@ export const useNarration = () => {
         variant: "destructive"
       });
       setIsPlaying(false);
+      throw error; // Propager l'erreur pour que le composant puisse la gérer
     }
   };
 
