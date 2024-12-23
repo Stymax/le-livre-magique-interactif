@@ -4,7 +4,7 @@ import TaleStory from "./TaleStory";
 import { useNarration } from "@/utils/useNarration";
 import { taleContents } from "@/data/tales";
 import { generateAndSaveImage } from "@/utils/imageGenerator";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 
 interface TaleContentProps {
@@ -15,7 +15,9 @@ interface TaleContentProps {
 const TaleContent = ({ id, onBack }: TaleContentProps) => {
   const { isPlaying, generateNarration } = useNarration();
   const [isGeneratingImages, setIsGeneratingImages] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
   const tale = taleContents[id as keyof typeof taleContents];
+  const narrationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const generateMissingImages = async () => {
@@ -48,12 +50,45 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
     generateMissingImages();
   }, [id, tale]);
 
-  if (!tale) return null;
-
   const handleNarration = () => {
-    const text = tale.content.map(segment => segment.text).join(" ");
+    if (isPlaying) {
+      // Stop current narration
+      if (narrationTimeoutRef.current) {
+        clearTimeout(narrationTimeoutRef.current);
+      }
+      generateNarration('');
+      return;
+    }
+
+    // Start narration from current page
+    const remainingSegments = tale.content.slice(currentPage);
+    const averageWordsPerMinute = 150; // Adjust this value based on narration speed
+    
+    remainingSegments.forEach((segment, index) => {
+      const words = segment.text.split(' ').length;
+      const estimatedSeconds = (words / averageWordsPerMinute) * 60;
+      
+      narrationTimeoutRef.current = setTimeout(() => {
+        if (currentPage + index < tale.content.length - 1) {
+          setCurrentPage(currentPage + index + 1);
+        }
+      }, estimatedSeconds * 1000);
+    });
+
+    const text = remainingSegments.map(segment => segment.text).join(" ");
     generateNarration(text);
   };
+
+  // Cleanup timeouts on unmount or when stopping narration
+  useEffect(() => {
+    return () => {
+      if (narrationTimeoutRef.current) {
+        clearTimeout(narrationTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  if (!tale) return null;
 
   return (
     <motion.div
@@ -88,7 +123,12 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
         </div>
       )}
 
-      <TaleStory content={tale.content} title={tale.title} />
+      <TaleStory 
+        content={tale.content} 
+        title={tale.title} 
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+      />
 
       <div className="mt-12 p-6 bg-magical-gold/10 rounded-xl border border-magical-gold/20">
         <h3 className="text-magical-turquoise font-semibold mb-2">Morale de l'histoire :</h3>

@@ -8,18 +8,32 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "./ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import useEmblaCarousel from 'embla-carousel-react';
 
 interface TaleStoryProps {
   content: TaleSegment[];
   title: string;
+  currentPage: number;
+  onPageChange: (page: number) => void;
 }
 
-const TaleStory = ({ content, title }: TaleStoryProps) => {
+const TaleStory = ({ content, title, currentPage, onPageChange }: TaleStoryProps) => {
   const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ startIndex: currentPage });
 
-  const isFirstSlide = currentSlide === 0;
-  const isLastSlide = currentSlide === content.length - 1;
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.scrollTo(currentPage);
+    }
+  }, [currentPage, emblaApi]);
+
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.on('select', () => {
+        onPageChange(emblaApi.selectedScrollSnap());
+      });
+    }
+  }, [emblaApi, onPageChange]);
 
   const handleImageError = (index: number) => {
     setFailedImages(prev => new Set([...prev, index]));
@@ -28,28 +42,33 @@ const TaleStory = ({ content, title }: TaleStoryProps) => {
   };
 
   const handleNext = () => {
-    if (!isLastSlide) {
-      setCurrentSlide(prev => prev + 1);
+    if (emblaApi && emblaApi.canScrollNext()) {
+      emblaApi.scrollNext();
     }
   };
 
   const handlePrevious = () => {
-    if (!isFirstSlide) {
-      setCurrentSlide(prev => prev - 1);
+    if (emblaApi && emblaApi.canScrollPrev()) {
+      emblaApi.scrollPrev();
     }
   };
 
   const handleReset = () => {
-    setCurrentSlide(0);
+    if (emblaApi) {
+      emblaApi.scrollTo(0);
+    }
   };
+
+  const isFirstSlide = currentPage === 0;
+  const isLastSlide = currentPage === content.length - 1;
 
   return (
     <div className="relative">
-      <Carousel className="w-full">
-        <CarouselContent>
+      <div className="overflow-hidden" ref={emblaRef}>
+        <div className="flex">
           {content.map((segment, index) => (
-            <CarouselItem key={index} className={`${index === currentSlide ? 'block' : 'hidden'}`}>
-              <div className="flex flex-col md:flex-row gap-8 items-center">
+            <div key={index} className="flex-[0_0_100%] min-w-0">
+              <div className="flex flex-col md:flex-row gap-8 items-center p-4">
                 {segment.image && !failedImages.has(index) && (
                   <div className="relative w-full md:w-2/3 aspect-[16/9] rounded-xl overflow-hidden">
                     <img
@@ -92,13 +111,13 @@ const TaleStory = ({ content, title }: TaleStoryProps) => {
                   </div>
                 </div>
               </div>
-            </CarouselItem>
+            </div>
           ))}
-        </CarouselContent>
-      </Carousel>
+        </div>
+      </div>
 
       <div className="mt-4 text-center text-magical-gold/60">
-        Page {currentSlide + 1} sur {content.length}
+        Page {currentPage + 1} sur {content.length}
       </div>
     </div>
   );
