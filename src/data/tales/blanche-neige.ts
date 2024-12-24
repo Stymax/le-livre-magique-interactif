@@ -4,7 +4,7 @@ export const blancheNeige: Tale = {
   title: "Blanche-Neige",
   content: [
     {
-      text: `Cela se passait en plein hiver et les flocons de neige tombaient du ciel comme un duvet léger. Une reine était assise à sa fenêtre encadrée de bois d'ébène et cousait. Tout en tirant l'aiguille, elle regardait voler les blancs flocons. 
+      text: `Cela se passait en plein hiver et les flocons de neige tombaient du ciel comme un duvet léger. Une reine était assise à sa fenêtre encadrée de bois d'ébène et cousait. Tout en tirant l'aiguille, elle regardait voler les blancs flocons.\n 
       
 Elle se piqua au doigt et trois gouttes de sang tombèrent sur la neige. Ce rouge sur ce blanc faisait si bel effet qu'elle se dit : 
       
@@ -14,35 +14,35 @@ Peu de temps après, une fille lui naquit ; elle était blanche comme neige, ros
 
 Au bout d'une année, le roi épousa une autre femme. Elle était très belle ; mais elle était fière et vaniteuse et ne pouvait souffrir que quelqu'un la surpassât en beauté. Elle possédait un miroir magique. Quand elle s'y regardait en disant : 
       
-"Miroir, miroir joli, Qui est la plus belle au pays ?"
+"Miroir, miroir joli, Qui est la plus belle au pays ?"\n
 
-Le miroir répondait : 
+Le miroir répondait : \n
       
-"Madame la reine, vous êtes la plus belle au pays."
+"Madame la reine, vous êtes la plus belle au pays."\n
 
 Et elle était contente. Elle savait que le miroir disait la vérité. Blanche-Neige, cependant, grandissait et devenait de plus en plus belle. Quand elle eut atteint ses dix-sept ans, elle était déjà plus jolie que le jour et plus belle que la reine elle-même. 
 
 Un jour que celle-ci demandait au miroir : 
       
-"Miroir, miroir joli, Qui est la plus belle au pays ?"
+"Miroir, miroir joli, Qui est la plus belle au pays ?"\n
 
-Celui-ci répondit : 
+Celui-ci répondit : \n
       
-"Madame la reine, vous êtes la plus belle ici, Mais Blanche-Neige est encore mille fois plus belle."
+"Madame la reine, vous êtes la plus belle ici, Mais Blanche-Neige est encore mille fois plus belle."\n
 
-La reine en fut épouvantée. Elle devint jaune et verte de jalousie. À partir de là, chaque fois qu'elle apercevait Blanche-Neige, son coeur se retournait dans sa poitrine tant elle éprouvait de haine à son égard. La jalousie et l'orgueil croissaient en elle comme mauvaise herbe. Elle en avait perdu le repos, le jour et la nuit. 
+La reine en fut épouvantée. Elle devint jaune et verte de jalousie. À partir de là, chaque fois qu'elle apercevait Blanche-Neige, son coeur se retournait dans sa poitrine tant elle éprouvait de haine à son égard. La jalousie et l'orgueil croissaient en elle comme mauvaise herbe. Elle en avait perdu le repos, le jour et la nuit. \n
 
-Elle fit venir un chasseur et lui dit : 
+Elle fit venir un chasseur et lui dit : \n
       
-"- Emmène l'enfant dans la forêt ! Je ne veux plus la voir. Tue-la et rapporte-moi pour preuve de sa mort ses poumons et son foie."
+"- Emmène l'enfant dans la forêt ! Je ne veux plus la voir. Tue-la et rapporte-moi pour preuve de sa mort ses poumons et son foie."\n
 
-Le chasseur obéit et conduisit Blanche-Neige dans le bois. Mais quand il eut dégainé son poignard pour en percer son coeur innocent, elle se mit à pleurer et dit : 
+Le chasseur obéit et conduisit Blanche-Neige dans le bois. Mais quand il eut dégainé son poignard pour en percer son coeur innocent, elle se mit à pleurer et dit : \n
 
-"- Ô, cher chasseur, laisse-moi la vie ! Je m'enfoncerai au plus profond de la forêt et ne rentrerai jamais à la maison."
+"- Ô, cher chasseur, laisse-moi la vie ! Je m'enfoncerai au plus profond de la forêt et ne rentrerai jamais à la maison."\n
 
-Et parce qu'elle était belle, le chasseur eut pitié d'elle et dit : 
+Et parce qu'elle était belle, le chasseur eut pitié d'elle et dit : \n
 
-"- Sauve-toi, pauvre enfant ! Les bêtes de la forêt auront tôt fait de te dévorer !" songeait-il.
+"- Sauve-toi, pauvre enfant ! Les bêtes de la forêt auront tôt fait de te dévorer !" songeait-il.\n
 
 Et malgré tout, il se sentait soulagé de ne pas avoir dû la tuer. Un marcassin passait justement. Il le tua de son poignard, prit ses poumons et son foie et les apporta à la reine comme preuves de la mort de Blanche-Neige. Le cuisinier reçut ordre de les apprêter et la méchante femme les mangea, s'imaginant qu'ils avaient appartenu à Blanche-Neige.`,
       image: "/lovable-uploads/blanche-neige-1.png",

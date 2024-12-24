@@ -80,7 +80,10 @@ const TaleStory = ({ content, title, currentPage, onPageChange }: TaleStoryProps
                   </div>
                 )}
                 <div className="w-full md:w-1/3 space-y-6">
-                  <p className="leading-relaxed text-lg">{segment.text}</p>
+                <p className="leading-relaxed text-lg"
+                    dangerouslySetInnerHTML={{ __html: segment.text.replace(/\n/g, "<br>") }}
+                ></p>
+
                   <div className="flex justify-center gap-4">
                     {!isFirstSlide && (
                       <Button
