@@ -6,7 +6,7 @@ export const hanselGretel: Tale = {
     {
       text: "À l'orée d'une grande forêt vivaient un pauvre bûcheron, sa femme et ses deux enfants. Le garçon s'appelait Hansel et la fille Grethel. La famille ne mangeait guère. Une année que la famine régnait dans le pays et que le pain lui-même vint à manquer, le bûcheron ruminait des idées noires, une nuit, dans son lit et remâchait ses soucis.",
       image: "/lovable-uploads/hansel-gretel-1.png",
-      imagePrompt: "A poor woodcutter's family in their humble home at night, the father looking worried while the children sleep nearby. Dark, moody atmosphere."
+      imagePrompt: "A poor woodcutter's family in their humble home at night, the father looking worried while the children sleep nearby."
     },
     {
       text: "La belle-mère convainquit le père d'abandonner les enfants dans la forêt. Hansel, qui avait entendu le plan, ramassa des cailloux blancs au clair de lune pour retrouver leur chemin.",
