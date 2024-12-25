@@ -4,30 +4,30 @@ export const hanselGretel: Tale = {
   title: "Hansel et Gretel",
   content: [
     {
-      text: "À l'orée d'une grande forêt vivaient un pauvre bûcheron, sa femme et ses deux enfants. Le garçon s'appelait Hansel et la fille Grethel. La famille ne mangeait guère. Une année que la famine régnait dans le pays et que le pain lui-même vint à manquer, le bûcheron ruminait des idées noires, une nuit, dans son lit et remâchait ses soucis.",
+      text: "A l'orée d'une grande forêt vivaient un pauvre bûcheron, sa femme et ses deux enfants. Le garçon s'appelait Hansel et la fille Grethel. La famille ne mangeait guère. Une année que la famine régnait dans le pays et que le pain lui-même vint à manquer, le bûcheron ruminait des idées noires, une nuit, dans son lit et remâchait ses soucis.",
       image: "/lovable-uploads/hansel-gretel-1.png",
-      imagePrompt: "A poor woodcutter's family in their humble home at night, the father looking worried while the children sleep nearby."
+      imagePrompt: "A poor woodcutter's family in their humble home at night, looking worried and hungry"
     },
     {
-      text: "La belle-mère convainquit le père d'abandonner les enfants dans la forêt. Hansel, qui avait entendu le plan, ramassa des cailloux blancs au clair de lune pour retrouver leur chemin.",
+      text: "La belle-mère convainquit le père d'abandonner les enfants dans la forêt. Mais Hansel, qui avait entendu la conversation, ramassa des petits cailloux blancs qu'il sema sur le chemin pour retrouver la maison.",
       image: "/lovable-uploads/hansel-gretel-2.png",
-      imagePrompt: "Hansel collecting white pebbles in the moonlight while his sister watches nervously from the doorway. Ethereal, moonlit scene."
+      imagePrompt: "Hansel dropping white pebbles on a forest path in the moonlight"
     },
     {
-      text: "Perdus dans la forêt après une deuxième tentative avec des miettes de pain, ils découvrirent une maison en pain d'épices. Une vieille femme les invita à entrer, mais c'était une sorcière qui emprisonna Hansel.",
+      text: "La deuxième fois, ils utilisèrent des miettes de pain, mais les oiseaux les mangèrent. Perdus dans la forêt, ils découvrirent une maison faite de pain d'épices et de sucreries.",
       image: "/lovable-uploads/hansel-gretel-3.png",
-      imagePrompt: "A magical gingerbread house in the dark forest, decorated with candies and sweets. Hansel and Gretel approaching while a witch watches from the shadows."
+      imagePrompt: "A magical gingerbread house in the forest, decorated with candies and sweets"
     },
     {
-      text: "La sorcière engraissait Hansel pour le manger, tandis que Gretel devait faire les tâches ménagères. Mais Gretel, rusée, poussa la sorcière dans son propre four.",
+      text: "Une vieille femme les invita à entrer, mais c'était une méchante sorcière qui emprisonna Hansel et força Gretel à travailler. Elle voulait manger Hansel quand il serait assez gras.",
       image: "/lovable-uploads/hansel-gretel-4.png",
-      imagePrompt: "Gretel pushing the witch into a large blazing oven while Hansel watches from his cage. Dramatic lighting and tense atmosphere."
+      imagePrompt: "A witch checking if Hansel is fat enough by looking at his finger through the cage"
     },
     {
-      text: "Libérés de la sorcière, les enfants prirent ses trésors et retrouvèrent leur chemin jusqu'à la maison, où leur père, maintenant veuf, les attendait. Ils vécurent heureux et ne connurent plus jamais la faim.",
+      text: "Gretel fut plus maligne que la sorcière. Quand celle-ci voulut vérifier si le four était assez chaud, Gretel la poussa dedans et ferma la porte. Elle libéra son frère et ils rentrèrent chez eux avec les trésors de la sorcière.",
       image: "/lovable-uploads/hansel-gretel-5.png",
-      imagePrompt: "Hansel and Gretel reuniting with their father at their home, carrying jewels and treasures. Joyful, warm scene with sunset colors."
+      imagePrompt: "Gretel pushing the witch into the oven while Hansel watches from his cage"
     }
   ],
-  moral: "Le courage, l'intelligence et l'amour fraternel permettent de surmonter les plus grandes épreuves."
+  moral: "La ruse et la solidarité fraternelle permettent de surmonter les plus grandes épreuves."
 };

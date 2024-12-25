@@ -4,9 +4,9 @@ export const musiciensBreme: Tale = {
   title: "Les Musiciens de Brême",
   content: [
     {
-      text: "Un âne qui devenait vieux et ne pouvait plus travailler au moulin décida de partir pour Brême afin d'y devenir musicien. En chemin, il rencontra un chien de chasse épuisé qui ne pouvait plus chasser.",
+      text: "Un meunier possédait un âne qui, durant de longues années, avait inlassablement porté des sacs au moulin, mais dont les forces commençaient à décliner. Il devenait de plus en plus inapte au travail. Son maître songea à s'en débarrasser. L'âne se rendit compte qu'un vent défavorable commençait à souffler pour lui et il s'enfuit. Il prit la route de Brême. Il pensait qu'il pourrait y devenir musicien au service de la municipalité.",
       image: "/lovable-uploads/musiciens-breme-1.png",
-      imagePrompt: "An old donkey meeting a tired hunting dog on a country road."
+      imagePrompt: "An old donkey leaving the mill to become a musician"
     },
     {
       text: "Ils rencontrèrent ensuite un chat qui ne pouvait plus chasser les souris et un coq qui devait être mangé le lendemain. Tous décidèrent de partir ensemble pour Brême pour devenir musiciens.",
