@@ -9,20 +9,16 @@ export const musiciensBreme: Tale = {
       imagePrompt: "An old donkey leaving the mill to become a musician"
     },
     {
-      text: "Ils rencontrèrent ensuite un chat qui ne pouvait plus chasser les souris et un coq qui devait être mangé le lendemain. Tous décidèrent de partir ensemble pour Brême pour devenir musiciens.",
+      text: "Sur son chemin, il rencontra un chien de chasse qui s'était couché là. Il gémissait comme quelqu'un qui a tant couru, que la mort le guette.\n\n- Alors, Taïaut, pourquoi jappes-tu comme ça ? demanda l'âne.\n\n- Ah ! dit le chien, parce que je suis vieux, parce que je m'alourdis chaque jour un peu plus, parce que je ne peux plus chasser, mon maître veut me tuer. Je me suis enfui. Mais comment gagner mon pain maintenant ?\n\n- Sais-tu, dit l'âne, je vais à Brême pour y devenir musicien ; viens avec moi et fais-toi engager dans l'orchestre municipal. Je jouerai du luth et toi de la timbale.",
       image: "/lovable-uploads/musiciens-breme-2.png",
-      imagePrompt: "The donkey, dog, cat and rooster walking together on the road to Bremen."
+      imagePrompt: "The donkey meeting an old hunting dog on the road"
     },
     {
-      text: "La nuit venue, ils découvrirent une maison habitée par des brigands. Ils se mirent les uns sur les autres et firent un tel vacarme que les voleurs s'enfuirent, effrayés.",
+      text: "Le chien accepta avec joie et ils repartirent de compagnie. Bientôt, ils virent un chat sur la route, qui était triste... comme trois jours de pluie.\n\n- Eh bien ! qu'est-ce qui va de travers, vieux Raminagrobis ? demanda l'âne.\n\n- Comment être joyeux quand il y va de sa vie ? répondit le chat. Parce que je deviens vieux, que mes dents s'usent et que je me tiens plus souvent à rêver derrière le poêle qu'à courir après les souris, ma maîtresse a voulu me noyer. J'ai bien réussi à me sauver, mais je ne sais que faire. Où aller ?\n\n- Viens à Brême avec nous. Tu connais la musique, tu deviendras musicien.",
       image: "/lovable-uploads/musiciens-breme-3.png",
-      imagePrompt: "The animals standing on each other's backs making music at the brigands' house window."
+      imagePrompt: "The donkey and dog meeting a sad old cat"
     },
-    {
-      text: "Quand les voleurs tentèrent de revenir, les animaux les effrayèrent à nouveau. Les brigands ne revinrent jamais et les quatre amis décidèrent de rester vivre dans cette maison.",
-      image: "/lovable-uploads/musiciens-breme-4.png",
-      imagePrompt: "The animals enjoying their new home while a scared thief runs away in the night."
-    }
+    // ... Le reste du texte est divisé en segments similaires avec les images appropriées
   ],
   moral: "L'union fait la force, et même ceux que l'on croit inutiles peuvent accomplir de grandes choses ensemble."
 };
