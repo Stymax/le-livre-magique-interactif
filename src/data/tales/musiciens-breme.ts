@@ -32,6 +32,46 @@ export const musiciensBreme: Tale = {
       text: "Mais il ne leur était pas possible d'atteindre la ville de Brême en une seule journée. Le soir, ils arrivèrent près d'une forêt où ils se décidèrent à passer la nuit. l'âne et le chien se couchèrent au pied d'un gros arbre, le chat et le coq s'installèrent dans les branches. Le coq monta jusqu'à la cime. Il pensait s'y trouver en sécurité. Avant de s'endormir, il jeta un coup d'oeil aux quatre coins de l'horizon. Il vit briller une petite lumière dans le lointain. Il appela ses compagnons et leur dit qu'il devait se trouver quelque maison par là, on y voyait de la lumière.",
       image: "/lovable-uploads/musiciens-breme-6.png",
       imagePrompt: "Animals resting by a tree at night, with a light visible in the distance"
+    },
+    {
+      text: "L'âne dit :\n- Levons-nous et allons-y ; ici, le gite et le couvert ne sont pas bons.\nLe chien songea que quelques os avec de la viande autour lui feraient du bien. Ils se mirent donc en route en direction de la lumière et la virent grandir au fur et à mesure qu'ils avançaient. Finalement, ils arrivèrent devant une maison brillamment éclairée, qui était le repaire d'une bande de voleurs.",
+      image: "/lovable-uploads/musiciens-breme-8.png",
+      imagePrompt: "Animals walking towards a brightly lit house at night"
+    },
+    {
+      text: "L'âne, qui était le plus grand, s'approcha de la fenêtre et regarda à l'intérieur.\n- Que vois-tu, Grison ? demanda le coq.\n- Ce que je vois ? répondit l'âne : une table servie avec mets et boissons de bonne allure. Des voleurs y sont assis et sont en train de se régaler.\n- Voilà ce qu'il nous faudrait, repartit le coq.\n- Eh ! oui, dit l'âne, si seulement nous y étions !",
+      image: "/lovable-uploads/musiciens-breme-9.png",
+      imagePrompt: "Donkey looking through a window at a feast inside, other animals watching"
+    },
+    {
+      text: "Les quatre compagnons délibérèrent pour savoir comment ils s'y prendraient pour chasser les voleurs. Finalement, ils découvrirent le moyen : l'âne appuyerait ses pattes de devant sur le bord de la fenêtre, le chien sauterait sur son dos et le chat par-dessus. Le coq se percherait sur la tête du chat. Quand ils se furent ainsi installés, à un signal donné, ils commencèrent leur musique. L'âne brayait, le chien aboyait, le chat miaulait et le coq chantait. Sur quoi, ils bondirent par la fenêtre en faisant trembler les vitres. À ce concert inhabituel, les voleurs avaient sursauté. Ils crurent qu'un fantôme entrait dans la pièce et, pris de panique, ils s'enfuirent dans la forêt.",
+      image: "/lovable-uploads/musiciens-breme-10.png",
+      imagePrompt: "Four animals stacked in front of a window making noise to scare thieves"
+    },
+    {
+      text: "Nos quatre compagnons se mirent à table, se servirent de ce qui restait et mangèrent comme s'ils allaient connaître un mois de famine. Quand les quatre musiciens eurent terminé, ils éteignirent la lumière et chacun se choisit un endroit à sa convenance et du meilleur confort pour dormir. L'âne se coucha sur le fumier, le chien derrière la porte, le chat près du poêle et le coq se percha au poulailler. Et comme ils étaient fatigués de leur long trajet, ils s'endormirent aussitôt.",
+      image: "/lovable-uploads/musiciens-breme-11.png",
+      imagePrompt: "Animals sleeping in different cozy spots of a house"
+    },
+    {
+      text: "Quand minuit fut passé, les voleurs virent de loin que la lumière avait été éteinte dans la maison et que tout y paraissait tranquille. Leur capitaine dit :\n- Nous n'aurions pas dû nous laisser mettre à la porte comme ça.\nIl ordonna à l'un de ses hommes d'aller inspecter la maison.",
+      image: "/lovable-uploads/musiciens-breme-12.png",
+      imagePrompt: "A thief cautiously approaching a quiet house at night"
+    },
+    {
+      text: "L'éclaireur vit que tout était silencieux ; il entra à la cuisine pour allumer une lumière. Voyant les yeux du chat brillants comme des braises, il en approcha une allumette et voulut l'enflammer. Le chat ne comprit pas la plaisanterie et, crachant et griffant, lui sauta au visage. L'homme fut saisi de terreur. Il se sauva et voulut sortir par la porte de derrière. Le chien, qui était allongé là, bondit et lui mordit les jambes. Et quand le voleur se mit à courir à travers la cour, passant par-dessus le tas de fumier, l'âne lui expédia un magistral coup de sabot.",
+      image: "/lovable-uploads/musiciens-breme-13.png",
+      imagePrompt: "A chaotic scene with a thief being attacked by a cat, dog, and donkey"
+    },
+    {
+      text: "Le coq, que ce vacarme avait réveillé et mis en alerte, cria du haut de son perchoir :\n- Cocorico !\nLe voleur s'enfuit aussi vite qu'il le pouvait vers ses camarades, et dit au capitaine :\n- Il y a dans la maison une affreuse sorcière qui a soufflé sur moi et m'a griffé le visage de ses longs doigts. Devant la porte, il y avait un homme avec un couteau : il m'a blessé aux jambes. Dans la cour, il y a un monstre noir : il m'a frappé avec une massue de bois. Et sur le toit, il y avait un juge de paix qui criait : « Qu'on m'amène le coquin ! » J'ai fait ce que j'ai pu pour m'enfuir.",
+      image: "/lovable-uploads/musiciens-breme-14.png",
+      imagePrompt: "A frightened thief telling his gang a wild story in the forest"
+    },
+    {
+      text: "À partir de ce moment-là, les voleurs n'osèrent plus retourner à la maison. Quant aux quatre musiciens de Brême, ils s'y plurent tant qu'ils y restèrent. Le dernier qui me l'a raconté en fait encore des gorges chaudes.",
+      image: "/lovable-uploads/musiciens-breme-15.png",
+      imagePrompt: "Four happy animals relaxing in a house they claimed as their own"
     }
   ],
   moral: "L'union fait la force, et même ceux que l'on croit inutiles peuvent accomplir de grandes choses ensemble."
