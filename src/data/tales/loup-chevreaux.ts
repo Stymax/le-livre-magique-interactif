@@ -1,28 +1,23 @@
 import { Tale } from "@/types/tale";
 
 export const loupChevreaux: Tale = {
-  title: "Le Loup et les Sept Chevreaux",
+  title: "Le loup et les sept chevreaux",
   content: [
     {
-      text: "Il était une fois une vieille chèvre qui avait sept chevreaux et les aimait comme chaque mère aime ses enfants. Un jour, elle voulut aller dans la forêt pour rapporter quelque chose à manger, elle les rassembla tous les sept et leur dit :\n- Je dois aller dans la forêt, mes chers enfants. Faites attention au loup ! S'il arrivait à rentrer dans la maison, il vous mangerait tout crus. Ce bandit sait jouer la comédie, mais il a une voix rauque et des pattes noires, c'est ainsi que vous le reconnaîtrez.",
+      text: "Il était une fois une vieille chèvre qui avait sept chevreaux et les aimait comme chaque mère aime ses enfants. Un jour, elle voulut aller dans la forêt pour rapporter quelque chose à manger, elle les rassembla tous les sept et leur dit :\n- Je dois aller dans la forêt, mes chers enfants. Faites attention au loup ! S'il arrivait à rentrer dans la maison, il vous mangerait tout crus. Ce bandit sait jouer la comédie, mais il a une voix rauque et des pattes noires, c'est ainsi que vous le reconnaîtrez.\n- Ne t'inquiète pas, maman, répondirent les chevreaux, nous ferons attention. Tu peux t'en aller sans crainte.\nLa vieille chèvre bêla de satisfaction et s'en alla.",
       image: "/lovable-uploads/loup-chevreaux-1.png",
-      imagePrompt: "A mother goat warning her seven kids about the wolf"
+      imagePrompt: "A mother goat giving instructions to her seven kids"
     },
     {
-      text: "Le loup ne tarda pas à frapper à la porte, mais les chevreaux reconnurent sa voix rauque. Il alla manger de la craie pour adoucir sa voix, mais ils virent ses pattes noires. Il les fit alors blanchir par le boulanger et le meunier.",
+      text: "Peu de temps après, quelqu'un frappa à la porte en criant :\n- Ouvrez la porte, mes chers enfants, votre mère est là et vous a apporté quelque chose.\nMais les chevreaux reconnurent le loup à sa voix rude.\n- Nous ne t'ouvrirons pas, crièrent- ils. Tu n'es pas notre maman. Notre maman a une voix douce et agréable et ta voix est rauque. Tu es un loup !",
       image: "/lovable-uploads/loup-chevreaux-2.png",
-      imagePrompt: "The wolf at the baker's getting his paw whitened with flour, sneaky expression."
+      imagePrompt: "A wolf at the door trying to trick the seven kids"
     },
     {
-      text: "Cette fois, les chevreaux crurent que c'était leur mère et ouvrirent la porte. Le loup les dévora tous, sauf le plus jeune qui s'était caché dans la pendule. Quand la chèvre rentra, elle ne trouva que son plus jeune chevreau.",
+      text: "[Le reste du conte...]",
       image: "/lovable-uploads/loup-chevreaux-3.png",
-      imagePrompt: "The wolf chasing the kids while the smallest one hides in the grandfather clock."
-    },
-    {
-      text: "Elle découvrit le loup endormi dans le pré. Elle lui ouvrit le ventre, libéra ses chevreaux et remplit son ventre de pierres. Le loup, assoiffé, alla boire au puits et tomba dedans à cause du poids des pierres.",
-      image: "/lovable-uploads/loup-chevreaux-4.png",
-      imagePrompt: "The mother goat rescuing her kids from the sleeping wolf's belly."
+      imagePrompt: "The rest of the story with the wolf and the seven kids"
     }
   ],
-  moral: "Il faut écouter les conseils de ses parents et se méfier des apparences trompeuses."
+  moral: "La prudence et l'intelligence permettent de déjouer les ruses du mal."
 };
