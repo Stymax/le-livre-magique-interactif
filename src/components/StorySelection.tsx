@@ -44,10 +44,10 @@ const StorySelection = ({ onBack }: StorySelectionProps) => {
   return (
     <div className="space-y-8">
       <div className="relative">
-        <div className="relative mb-6">
+        <div className="relative mb-6 flex items-center space-x-2">
           <button
             onClick={onBack}
-            className="absolute left-0 top-1/2 -translate-y-1/2 text-magical-gold hover:text-magical-gold/80 transition-colors"
+            className="flex items-center text-magical-gold hover:text-magical-gold/80 transition-colors"
           >
             <ChevronLeft className="w-8 h-8" />
             <span className="text-lg font-medium">Retour</span>
