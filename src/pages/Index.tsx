@@ -2,16 +2,18 @@ import { useState } from "react";
 import MagicBook from "@/components/MagicBook";
 import MagicParticles from "@/components/MagicParticles";
 import StorySelection from "@/components/StorySelection";
-
+import LibraryBackground from "@/components/LibraryBackground";
 const Index = () => {
   const [currentStep, setCurrentStep] = useState<'intro' | 'bookClosed' | 'bookOpen'>('intro');
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-magical-blue to-black relative overflow-hidden">
+    <div className="min-h-screen bg-blue-950">
+      <LibraryBackground />
+      
       <MagicParticles />
       
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+      <div className="fixed inset-y-0 left-1/2 -translate-x-1/2 w-[70%] z-10 mb-[20vh]">
+        <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-lg p-6">
           <h1 className="text-5xl font-bold text-magical-gold animate-glow">
             Le Livre Magique des Contes
           </h1>
