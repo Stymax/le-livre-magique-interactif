@@ -52,12 +52,14 @@ const Index = () => {
                 <p className="text-magical-turquoise text-lg">
                   "Bonjour, jeune aventurier. Oseras-tu découvrir les plus grands contes du monde ?"
                 </p>
-                <button
-                  onClick={() => setCurrentStep('bookOpen')}
-                  className="mt-4 px-6 py-2 bg-magical-turquoise/20 rounded-full text-magical-turquoise hover:bg-magical-turquoise/30 transition-colors duration-300"
-                >
-                  Ouvrir le livre
-                </button>
+                <div className="flex justify-center mt-4">
+                  <button
+                    onClick={() => setCurrentStep('bookOpen')}
+                    className="px-6 py-2 bg-magical-turquoise/20 rounded-full text-magical-turquoise hover:bg-magical-turquoise/30 transition-colors duration-300"
+                  >
+                    Ouvrir le livre
+                  </button>
+                </div>
               </div>
             </div>
           )}
