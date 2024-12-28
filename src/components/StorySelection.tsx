@@ -50,6 +50,7 @@ const StorySelection = ({ onBack }: StorySelectionProps) => {
             className="absolute left-0 top-1/2 -translate-y-1/2 text-magical-gold hover:text-magical-gold/80 transition-colors"
           >
             <ChevronLeft className="w-8 h-8" />
+            <span className="text-lg font-medium">Retour</span>
           </button>
         </div>
         <p className="text-2xl text-magical-turquoise mb-8 text-center">
