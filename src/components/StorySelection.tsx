@@ -44,12 +44,14 @@ const StorySelection = ({ onBack }: StorySelectionProps) => {
   return (
     <div className="space-y-8">
       <div className="relative">
-        <button
-          onClick={onBack}
-          className="absolute left-0 top-1/2 -translate-y-1/2 text-magical-gold hover:text-magical-gold/80 transition-colors mb-6"
-        >
-          <ChevronLeft className="w-8 h-8" />
-        </button>
+        <div className="relative mb-6">
+          <button
+            onClick={onBack}
+            className="absolute left-0 top-1/2 -translate-y-1/2 text-magical-gold hover:text-magical-gold/80 transition-colors"
+          >
+            <ChevronLeft className="w-8 h-8" />
+          </button>
+        </div>
         <p className="text-2xl text-magical-turquoise mb-8">
           "Chaque histoire te réserve une surprise. Où veux-tu commencer ?"
         </p>
