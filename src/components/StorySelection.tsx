@@ -52,7 +52,7 @@ const StorySelection = ({ onBack }: StorySelectionProps) => {
             <ChevronLeft className="w-8 h-8" />
           </button>
         </div>
-        <p className="text-2xl text-magical-turquoise mb-8">
+        <p className="text-2xl text-magical-turquoise mb-8 text-center">
           "Chaque histoire te réserve une surprise. Où veux-tu commencer ?"
         </p>
       </div>
