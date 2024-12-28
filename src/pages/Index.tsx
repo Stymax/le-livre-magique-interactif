@@ -14,12 +14,12 @@ const Index = () => {
       
       <div className="fixed inset-y-0 left-1/2 -translate-x-1/2 w-[70%] z-10 mb-[10vh]">
         <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-lg p-6">
-          <h1 className="text-5xl font-bold text-magical-gold animate-glow center mb-6">
+          <h1 className="text-5xl font-bold text-magical-gold animate-glow text-center mb-6">
             Le Livre Magique des Contes
           </h1>
           
           {currentStep === 'intro' && (
-            <div className="space-y-6">
+            <div className="space-y-6 flex flex-col items-center">
               <div className="relative w-full h-[400px] mx-auto">
                 <img 
                   src="/lovable-uploads/761141cc-ceb1-430d-91d1-9cf151edff86.png"
@@ -27,7 +27,7 @@ const Index = () => {
                   className="w-full h-full object-contain animate-float"
                 />
               </div>
-              <p className="text-xl text-white/90">
+              <p className="text-xl text-white/90 text-center">
                 "Dans une vieille bibliothèque, un livre mystérieux attend d'être découvert..."
               </p>
               <button
