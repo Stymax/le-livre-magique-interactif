@@ -51,25 +51,23 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
 
   const playAudioForPage = async (pageIndex: number) => {
     try {
-      // Arrêter l'audio précédent s'il existe
       if (currentAudio) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
       }
 
-      // Construire l'URL correcte pour l'audio
-      const audioUrl = new URL(`/audio/${id}/${id}-${pageIndex + 1}.mp3`, window.location.origin).href;
-      const audio = new Audio(audioUrl);
+      // Simplified URL construction
+      const audioPath = `/audio/${id}/${id}-${pageIndex + 1}.mp3`;
+      const audio = new Audio(audioPath);
       
       audio.onended = () => {
         if (isPlaying) {
           if (pageIndex === tale.content.length - 1) {
-            // Construire l'URL correcte pour l'audio de la morale
-            const moralUrl = new URL(`/audio/${id}/${id}-moral.mp3`, window.location.origin).href;
-            const moralAudio = new Audio(moralUrl);
+            const moralPath = `/audio/${id}/${id}-moral.mp3`;
+            const moralAudio = new Audio(moralPath);
             moralAudio.onended = () => {
               setIsPlaying(false);
-              setCurrentPage(0); // Retour à la première page
+              setCurrentPage(0);
             };
             setCurrentAudio(moralAudio);
             moralAudio.play().catch(error => {
@@ -78,7 +76,6 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
               setIsPlaying(false);
             });
           } else {
-            // Passer à la page suivante
             setCurrentPage(pageIndex + 1);
             playAudioForPage(pageIndex + 1);
           }
@@ -96,7 +93,6 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
 
   const handleNarration = async () => {
     if (isPlaying) {
-      // Arrêter la lecture
       if (currentAudio) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
@@ -104,7 +100,6 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       setIsPlaying(false);
       lastPlayedPageRef.current = currentPage;
     } else {
-      // Démarrer ou reprendre la lecture
       setIsPlaying(true);
       playAudioForPage(currentPage);
     }
