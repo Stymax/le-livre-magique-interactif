@@ -17,6 +17,7 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null);
   const tale = taleContents[id as keyof typeof taleContents];
+  const lastPlayedPageRef = useRef(0);
 
   useEffect(() => {
     const generateMissingImages = async () => {
@@ -48,14 +49,7 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
     generateMissingImages();
   }, [id, tale]);
 
-  const handleNarration = async () => {
-    if (isPlaying && currentAudio) {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
-      setIsPlaying(false);
-      return;
-    }
-
+  const playAudioForPage = async (pageIndex: number) => {
     try {
       // Arrêter l'audio précédent s'il existe
       if (currentAudio) {
@@ -64,25 +58,49 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       }
 
       // Créer un nouvel audio pour la page courante
-      const audio = new Audio(`/audio/${id}/${id}-${currentPage + 1}.mp3`);
+      const audio = new Audio(`/audio/${id}/${id}-${pageIndex + 1}.mp3`);
       
       audio.onended = () => {
-        // Si c'est la dernière page, jouer l'audio de la morale
-        if (currentPage === tale.content.length - 1) {
-          const moralAudio = new Audio(`/audio/${id}/${id}-moral.mp3`);
-          moralAudio.play();
-          setCurrentAudio(moralAudio);
+        if (isPlaying) {
+          if (pageIndex === tale.content.length - 1) {
+            // Si c'est la dernière page, jouer l'audio de la morale
+            const moralAudio = new Audio(`/audio/${id}/${id}-moral.mp3`);
+            moralAudio.onended = () => {
+              setIsPlaying(false);
+              setCurrentPage(0); // Retour à la première page
+            };
+            setCurrentAudio(moralAudio);
+            moralAudio.play();
+          } else {
+            // Passer à la page suivante
+            setCurrentPage(pageIndex + 1);
+            playAudioForPage(pageIndex + 1);
+          }
         }
-        setIsPlaying(false);
       };
 
       setCurrentAudio(audio);
       await audio.play();
-      setIsPlaying(true);
     } catch (error) {
       console.error('Error playing audio:', error);
       toast.error("Erreur lors de la lecture audio");
       setIsPlaying(false);
+    }
+  };
+
+  const handleNarration = async () => {
+    if (isPlaying) {
+      // Arrêter la lecture
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+      setIsPlaying(false);
+      lastPlayedPageRef.current = currentPage;
+    } else {
+      // Démarrer ou reprendre la lecture
+      setIsPlaying(true);
+      playAudioForPage(currentPage);
     }
   };
 
@@ -127,7 +145,12 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
         content={tale.content} 
         title={tale.title} 
         currentPage={currentPage}
-        onPageChange={setCurrentPage}
+        onPageChange={(page) => {
+          setCurrentPage(page);
+          if (isPlaying) {
+            playAudioForPage(page);
+          }
+        }}
       />
 
       {showMoral && (
