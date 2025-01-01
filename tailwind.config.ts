@@ -59,6 +59,22 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            color: 'white',
+            maxWidth: 'none',
+            img: {
+              marginTop: '0',
+              marginBottom: '0',
+            },
+            p: {
+              marginTop: '0',
+              marginBottom: '1.5em',
+            },
+          },
+        },
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -90,5 +106,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;
