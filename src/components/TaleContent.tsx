@@ -57,20 +57,26 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
         currentAudio.currentTime = 0;
       }
 
-      // Créer un nouvel audio pour la page courante
-      const audio = new Audio(`/audio/${id}/${id}-${pageIndex + 1}.mp3`);
+      // Construire l'URL correcte pour l'audio
+      const audioUrl = new URL(`/audio/${id}/${id}-${pageIndex + 1}.mp3`, window.location.origin).href;
+      const audio = new Audio(audioUrl);
       
       audio.onended = () => {
         if (isPlaying) {
           if (pageIndex === tale.content.length - 1) {
-            // Si c'est la dernière page, jouer l'audio de la morale
-            const moralAudio = new Audio(`/audio/${id}/${id}-moral.mp3`);
+            // Construire l'URL correcte pour l'audio de la morale
+            const moralUrl = new URL(`/audio/${id}/${id}-moral.mp3`, window.location.origin).href;
+            const moralAudio = new Audio(moralUrl);
             moralAudio.onended = () => {
               setIsPlaying(false);
               setCurrentPage(0); // Retour à la première page
             };
             setCurrentAudio(moralAudio);
-            moralAudio.play();
+            moralAudio.play().catch(error => {
+              console.error('Error playing moral audio:', error);
+              toast.error("Erreur lors de la lecture de la morale");
+              setIsPlaying(false);
+            });
           } else {
             // Passer à la page suivante
             setCurrentPage(pageIndex + 1);
