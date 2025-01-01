@@ -1,14 +1,10 @@
 import { TaleSegment } from "@/types/tale";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
+import { ScrollArea } from "./ui/scroll-area";
+import useEmblaCarousel from 'embla-carousel-react';
 import { Button } from "./ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import useEmblaCarousel from 'embla-carousel-react';
 
 interface TaleStoryProps {
   content: TaleSegment[];
@@ -68,7 +64,7 @@ const TaleStory = ({ content, title, currentPage, onPageChange }: TaleStoryProps
         <div className="flex">
           {content.map((segment, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0">
-              <div className="flex flex-col md:flex-row gap-8 items-center p-4">
+              <div className="flex flex-col md:flex-row gap-8 items-start p-4">
                 {segment.image && !failedImages.has(index) && (
                   <div className="relative w-full md:w-2/3 aspect-[16/9] rounded-xl overflow-hidden">
                     <img
@@ -80,11 +76,13 @@ const TaleStory = ({ content, title, currentPage, onPageChange }: TaleStoryProps
                   </div>
                 )}
                 <div className="w-full md:w-1/3 space-y-6">
-                <p className="leading-relaxed text-lg"
-                    dangerouslySetInnerHTML={{ __html: segment.text.replace(/\n/g, "<br>") }}
-                ></p>
+                  <ScrollArea className="h-[60vh] rounded-md border p-4">
+                    <p className="leading-relaxed text-lg"
+                      dangerouslySetInnerHTML={{ __html: segment.text.replace(/\n/g, "<br>") }}
+                    ></p>
+                  </ScrollArea>
 
-                  <div className="flex justify-center gap-4">
+                  <div className="flex justify-center gap-4 mt-4">
                     {!isFirstSlide && (
                       <Button
                         onClick={handlePrevious}
