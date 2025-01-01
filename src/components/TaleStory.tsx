@@ -64,7 +64,7 @@ const TaleStory = ({ content, title, currentPage, onPageChange }: TaleStoryProps
         <div className="flex">
           {content.map((segment, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0">
-              <ScrollArea className="h-[70vh] rounded-md border p-6">
+              <ScrollArea className="h-[calc(100vh-300px)] rounded-md border p-6">
                 <div className="prose prose-invert max-w-none">
                   {segment.image && !failedImages.has(index) && (
                     <div className="float-left mr-6 mb-4 w-1/2">
