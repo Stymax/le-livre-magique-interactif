@@ -62,8 +62,9 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
         currentAudio.currentTime = 0;
       }
 
-      // Fix the audio path construction by removing the colon
-      const audioPath = `audio/${id}/${id}-${pageIndex + 1}.mp3`;
+      // Construct the audio path using window.location.origin to get the base URL
+      const baseUrl = window.location.origin;
+      const audioPath = `${baseUrl}/audio/${id}/${id}-${pageIndex + 1}.mp3`;
       const audio = new Audio(audioPath);
       
       audio.onended = () => {
@@ -72,7 +73,7 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
             setCurrentPage(pageIndex + 1);
           } else {
             // Play moral audio when reaching the last page
-            const moralPath = `audio/${id}/${id}-moral.mp3`;
+            const moralPath = `${baseUrl}/audio/${id}/${id}-moral.mp3`;
             const moralAudio = new Audio(moralPath);
             moralAudio.onended = () => {
               setIsPlaying(false);
@@ -108,14 +109,12 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       lastPlayedPageRef.current = currentPage;
     } else {
       setIsPlaying(true);
-      lastPlayedPageRef.current = -1; // Reset to ensure first page plays
+      lastPlayedPageRef.current = -1;
       await playAudioForPage(currentPage);
     }
   };
 
   if (!tale) return null;
-
-  const showMoral = currentPage === tale.content.length - 1;
 
   return (
     <motion.div
@@ -160,7 +159,7 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
           }}
         />
 
-        {showMoral && (
+        {currentPage === tale.content.length - 1 && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
