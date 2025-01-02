@@ -49,6 +49,12 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
     generateMissingImages();
   }, [id, tale]);
 
+  useEffect(() => {
+    if (isPlaying && currentPage !== lastPlayedPageRef.current) {
+      playAudioForPage(currentPage);
+    }
+  }, [currentPage, isPlaying]);
+
   const playAudioForPage = async (pageIndex: number) => {
     try {
       if (currentAudio) {
@@ -56,7 +62,6 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
         currentAudio.currentTime = 0;
       }
 
-      // Simplified URL construction
       const audioPath = `/audio/${id}/${id}-${pageIndex + 1}.mp3`;
       const audio = new Audio(audioPath);
       
@@ -77,12 +82,12 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
             });
           } else {
             setCurrentPage(pageIndex + 1);
-            playAudioForPage(pageIndex + 1);
           }
         }
       };
 
       setCurrentAudio(audio);
+      lastPlayedPageRef.current = pageIndex;
       await audio.play();
     } catch (error) {
       console.error('Error playing audio:', error);
@@ -148,9 +153,6 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
         currentPage={currentPage}
         onPageChange={(page) => {
           setCurrentPage(page);
-          if (isPlaying) {
-            playAudioForPage(page);
-          }
         }}
       />
 
