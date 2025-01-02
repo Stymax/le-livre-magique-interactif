@@ -62,27 +62,7 @@ const TaleStory = ({ content, title, currentPage, onPageChange }: TaleStoryProps
     <div className="relative">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
-          {content.map((segment, index) => (
-            <div key={index} className="flex-[0_0_100%] min-w-0">
-              <ScrollArea className="h-[calc(100vh-300px)] rounded-md border p-6">
-                <div className="prose prose-invert max-w-none">
-                  {segment.image && !failedImages.has(index) && (
-                    <div className="float-left mr-6 mb-4 w-1/2">
-                      <img
-                        src={segment.image}
-                        alt={`Illustration ${index + 1} de ${title}`}
-                        className="rounded-xl"
-                        onError={() => handleImageError(index)}
-                      />
-                    </div>
-                  )}
-                  <p className="text-lg leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: segment.text.replace(/\n/g, "<br>") }}
-                  ></p>
-                </div>
-              </ScrollArea>
-
-              <div className="flex justify-center gap-4 mt-4">
+          <div className="flex justify-center gap-4 mt-4">
                 {!isFirstSlide && (
                   <Button
                     onClick={handlePrevious}
@@ -109,7 +89,28 @@ const TaleStory = ({ content, title, currentPage, onPageChange }: TaleStoryProps
                     Début
                   </Button>
                 )}
-              </div>
+          </div>
+          {content.map((segment, index) => (
+            <div key={index} className="flex-[0_0_100%] min-w-0">
+              <ScrollArea className="h-[calc(100vh-300px)] rounded-md border p-6">
+                <div className="prose prose-invert max-w-none">
+                  {segment.image && !failedImages.has(index) && (
+                    <div className="float-left mr-6 mb-4 w-1/2">
+                      <img
+                        src={segment.image}
+                        alt={`Illustration ${index + 1} de ${title}`}
+                        className="rounded-xl"
+                        onError={() => handleImageError(index)}
+                      />
+                    </div>
+                  )}
+                  <p className="text-lg leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: segment.text.replace(/\n/g, "<br>") }}
+                  ></p>
+                </div>
+              </ScrollArea>
+
+              
             </div>
           ))}
         </div>
