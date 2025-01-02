@@ -17,7 +17,7 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null);
   const tale = taleContents[id as keyof typeof taleContents];
-  const lastPlayedPageRef = useRef(0);
+  const lastPlayedPageRef = useRef(-1); // Changed to -1 to ensure first page plays
 
   useEffect(() => {
     const generateMissingImages = async () => {
@@ -106,6 +106,7 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       lastPlayedPageRef.current = currentPage;
     } else {
       setIsPlaying(true);
+      lastPlayedPageRef.current = -1; // Reset to ensure first page plays
       playAudioForPage(currentPage);
     }
   };
