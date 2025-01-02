@@ -59,10 +59,10 @@ const TaleStory = ({ content, title, currentPage, onPageChange }: TaleStoryProps
   const isLastSlide = currentPage === content.length - 1;
 
   return (
+    
     <div className="relative">
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex">
-          <div className="flex justify-center gap-4 mt-4">
+      <div className="flex justify-center gap-4 mt-4">
                 {!isFirstSlide && (
                   <Button
                     onClick={handlePrevious}
@@ -90,6 +90,8 @@ const TaleStory = ({ content, title, currentPage, onPageChange }: TaleStoryProps
                   </Button>
                 )}
           </div>
+        <div className="flex">
+          
           {content.map((segment, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0">
               <ScrollArea className="h-[calc(100vh-300px)] rounded-md border p-6">
