@@ -107,8 +107,8 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       lastPlayedPageRef.current = currentPage;
     } else {
       setIsPlaying(true);
-      lastPlayedPageRef.current = -1;
-      playAudioForPage(currentPage);
+      lastPlayedPageRef.current = -1; // Reset to ensure first page plays
+      await playAudioForPage(currentPage);
     }
   };
 
@@ -149,26 +149,28 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
         </div>
       )}
 
-      <TaleStory 
-        content={tale.content} 
-        title={tale.title} 
-        currentPage={currentPage}
-        onPageChange={(page) => {
-          setCurrentPage(page);
-        }}
-      />
+      <div className="space-y-8">
+        <TaleStory 
+          content={tale.content} 
+          title={tale.title} 
+          currentPage={currentPage}
+          onPageChange={(page) => {
+            setCurrentPage(page);
+          }}
+        />
 
-      {showMoral && (
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="mt-12 p-6 bg-magical-gold/10 rounded-xl border border-magical-gold/20"
-        >
-          <h3 className="text-magical-turquoise text-xl font-semibold mb-4">Morale de l'histoire :</h3>
-          <p className="text-white/90 italic text-lg">{tale.moral}</p>
-        </motion.div>
-      )}
+        {showMoral && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="mt-12 p-6 bg-magical-gold/10 rounded-xl border border-magical-gold/20"
+          >
+            <h3 className="text-magical-turquoise text-xl font-semibold mb-4">Morale de l'histoire :</h3>
+            <p className="text-white/90 italic text-lg">{tale.moral}</p>
+          </motion.div>
+        )}
+      </div>
     </motion.div>
   );
 };
