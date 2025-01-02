@@ -59,12 +59,8 @@ const TaleStory = ({ content, title, currentPage, onPageChange }: TaleStoryProps
   const isLastSlide = currentPage === content.length - 1;
 
   return (
-    
     <div className="relative">
       <div className="overflow-hidden" ref={emblaRef}>
-      <div className="mt-4 text-center text-magical-gold/60">
-        Page {currentPage + 1} sur {content.length}
-      </div>
         <div className="flex">
           {content.map((segment, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0">
@@ -119,7 +115,9 @@ const TaleStory = ({ content, title, currentPage, onPageChange }: TaleStoryProps
         </div>
       </div>
 
-      
+      <div className="mt-4 text-center text-magical-gold/60">
+        Page {currentPage + 1} sur {content.length}
+      </div>
     </div>
   );
 };
