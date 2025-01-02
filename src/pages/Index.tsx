@@ -12,7 +12,7 @@ const Index = () => {
       
       <MagicParticles />
       
-      <div className="fixed inset-y-0 left-1/2 -translate-x-1/2 w-[70%] z-10 mb-[10vh]">
+      <div className="fixed inset-x-0 top-0 left-1/2 -translate-x-1/2 w-[70%] z-10 max-h-[90vh] overflow-y-auto mb-[10vh]">
         <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-lg p-6">
           <h1 className="text-5xl font-bold text-magical-gold animate-glow text-center mb-6">
             Le Livre Magique des Contes
