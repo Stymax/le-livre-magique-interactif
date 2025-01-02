@@ -25,7 +25,7 @@ export const bouclesOr: Tale = {
     },
     {
       text: "Quand les trois ours rentrèrent, ils découvrirent le désordre. Boucles d'or, réveillée par leurs voix, s'enfuit effrayée, promettant de ne plus jamais entrer chez des inconnus sans permission."
-    }
+    },
   ],
   moral: "Il faut respecter la propriété d'autrui et ne pas entrer chez les gens sans y être invité."
 };
