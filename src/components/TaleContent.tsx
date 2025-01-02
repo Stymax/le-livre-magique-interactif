@@ -62,7 +62,8 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
         currentAudio.currentTime = 0;
       }
 
-      const audioPath = `/audio/${id}/${id}-${pageIndex + 1}.mp3`;
+      // Fix the audio path construction by removing the colon
+      const audioPath = `audio/${id}/${id}-${pageIndex + 1}.mp3`;
       const audio = new Audio(audioPath);
       
       audio.onended = () => {
@@ -71,7 +72,7 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
             setCurrentPage(pageIndex + 1);
           } else {
             // Play moral audio when reaching the last page
-            const moralPath = `/audio/${id}/${id}-moral.mp3`;
+            const moralPath = `audio/${id}/${id}-moral.mp3`;
             const moralAudio = new Audio(moralPath);
             moralAudio.onended = () => {
               setIsPlaying(false);
