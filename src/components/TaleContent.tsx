@@ -17,7 +17,7 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null);
   const tale = taleContents[id as keyof typeof taleContents];
-  const lastPlayedPageRef = useRef(-1); // Changed to -1 to ensure first page plays
+  const lastPlayedPageRef = useRef(-1);
 
   useEffect(() => {
     const generateMissingImages = async () => {
@@ -67,7 +67,10 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       
       audio.onended = () => {
         if (isPlaying) {
-          if (pageIndex === tale.content.length - 1) {
+          if (pageIndex < tale.content.length - 1) {
+            setCurrentPage(pageIndex + 1);
+          } else {
+            // Play moral audio when reaching the last page
             const moralPath = `/audio/${id}/${id}-moral.mp3`;
             const moralAudio = new Audio(moralPath);
             moralAudio.onended = () => {
@@ -80,8 +83,6 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
               toast.error("Erreur lors de la lecture de la morale");
               setIsPlaying(false);
             });
-          } else {
-            setCurrentPage(pageIndex + 1);
           }
         }
       };
@@ -106,7 +107,7 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       lastPlayedPageRef.current = currentPage;
     } else {
       setIsPlaying(true);
-      lastPlayedPageRef.current = -1; // Reset to ensure first page plays
+      lastPlayedPageRef.current = -1;
       playAudioForPage(currentPage);
     }
   };
