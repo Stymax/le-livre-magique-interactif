@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { ScrollArea } from "./ui/scroll-area";
 import useEmblaCarousel from 'embla-carousel-react';
-import { Button } from "./ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface TaleStoryProps {
   content: TaleSegment[];
@@ -37,27 +35,6 @@ const TaleStory = ({ content, title, currentPage, onPageChange }: TaleStoryProps
     console.error(`Error loading image for ${title}, segment ${index + 1}`);
   };
 
-  const handleNext = () => {
-    if (emblaApi && emblaApi.canScrollNext()) {
-      emblaApi.scrollNext();
-    }
-  };
-
-  const handlePrevious = () => {
-    if (emblaApi && emblaApi.canScrollPrev()) {
-      emblaApi.scrollPrev();
-    }
-  };
-
-  const handleReset = () => {
-    if (emblaApi) {
-      emblaApi.scrollTo(0);
-    }
-  };
-
-  const isFirstSlide = currentPage === 0;
-  const isLastSlide = currentPage === content.length - 1;
-
   return (
     <div className="relative">
       <div className="overflow-hidden" ref={emblaRef}>
@@ -81,42 +58,9 @@ const TaleStory = ({ content, title, currentPage, onPageChange }: TaleStoryProps
                   ></p>
                 </div>
               </ScrollArea>
-
-              <div className="flex justify-center gap-4 mt-4">
-                {!isFirstSlide && (
-                  <Button
-                    onClick={handlePrevious}
-                    className="h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
-                  >
-                    <ChevronLeft className="mr-2" />
-                    Retour
-                  </Button>
-                )}
-                {!isLastSlide && (
-                  <Button
-                    onClick={handleNext}
-                    className="h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
-                  >
-                    Suivant
-                    <ChevronRight className="ml-2" />
-                  </Button>
-                )}
-                {isLastSlide && (
-                  <Button
-                    onClick={handleReset}
-                    className="h-12 w-24 bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
-                  >
-                    Début
-                  </Button>
-                )}
-              </div>
             </div>
           ))}
         </div>
-      </div>
-
-      <div className="mt-4 text-center text-magical-gold/60">
-        Page {currentPage + 1} sur {content.length}
       </div>
     </div>
   );
