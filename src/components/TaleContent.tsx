@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react";
-import TaleStory from "./TaleStory";
 import { useState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 import { taleContents } from "@/data/tales";
 import { generateAndSaveImage } from "@/utils/imageGenerator";
 import { Progress } from "./ui/progress";
-import { Button } from "./ui/button";
+import TaleStory from "./TaleStory";
+import TaleHeader from "./tale/TaleHeader";
+import TaleNavigation from "./tale/TaleNavigation";
+import TaleMoral from "./tale/TaleMoral";
 
 interface TaleContentProps {
   id: string;
@@ -20,6 +21,8 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
   const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null);
   const tale = taleContents[id as keyof typeof taleContents];
   const lastPlayedPageRef = useRef(-1);
+  const showMoralPage = currentPage === tale.content.length;
+  const progress = showMoralPage ? 100 : ((currentPage + 1) / tale.content.length) * 100;
 
   useEffect(() => {
     const generateMissingImages = async () => {
@@ -64,29 +67,23 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
         currentAudio.currentTime = 0;
       }
 
-      // Construct the audio path using window.location.origin to get the base URL
       const baseUrl = window.location.origin;
-      const audioPath = `${baseUrl}/audio/${id}/${id}-${pageIndex + 1}.mp3`;
+      const isOnMoralPage = pageIndex === tale.content.length;
+      const audioPath = isOnMoralPage 
+        ? `${baseUrl}/audio/${id}/${id}-moral.mp3`
+        : `${baseUrl}/audio/${id}/${id}-${pageIndex + 1}.mp3`;
+      
       const audio = new Audio(audioPath);
       
       audio.onended = () => {
         if (isPlaying) {
-          if (pageIndex < tale.content.length - 1) {
+          if (!isOnMoralPage && pageIndex < tale.content.length - 1) {
             setCurrentPage(pageIndex + 1);
+          } else if (!isOnMoralPage) {
+            setCurrentPage(tale.content.length);
           } else {
-            // Play moral audio when reaching the last page
-            const moralPath = `${baseUrl}/audio/${id}/${id}-moral.mp3`;
-            const moralAudio = new Audio(moralPath);
-            moralAudio.onended = () => {
-              setIsPlaying(false);
-              setCurrentPage(0);
-            };
-            setCurrentAudio(moralAudio);
-            moralAudio.play().catch(error => {
-              console.error('Error playing moral audio:', error);
-              toast.error("Erreur lors de la lecture de la morale");
-              setIsPlaying(false);
-            });
+            setIsPlaying(false);
+            setCurrentPage(0);
           }
         }
       };
@@ -118,8 +115,6 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
 
   if (!tale) return null;
 
-  const progress = ((currentPage + 1) / tale.content.length) * 100;
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -127,55 +122,21 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       exit={{ opacity: 0, y: -20 }}
       className="space-y-6"
     >
-      <div className="flex items-center justify-between mb-4">
-        <button
-          onClick={onBack}
-          className="text-magical-gold hover:text-magical-gold/80 transition-colors flex items-center gap-2"
-        >
-          <ChevronLeft className="w-5 h-5" />
-          Retour aux contes
-        </button>
-
-        <button
-          onClick={handleNarration}
-          className="flex items-center gap-2 px-4 py-2 rounded-full bg-magical-gold/20 text-magical-gold hover:bg-magical-gold/30 transition-colors"
-        >
-          {isPlaying ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-          {isPlaying ? "Arrêter" : "Écouter"}
-        </button>
-      </div>
+      <TaleHeader 
+        onBack={onBack}
+        isPlaying={isPlaying}
+        onNarrationToggle={handleNarration}
+      />
 
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-3xl font-bold text-magical-gold">{tale.title}</h2>
-          <div className="flex gap-2">
-            {currentPage > 0 && (
-              <Button
-                onClick={() => setCurrentPage(currentPage - 1)}
-                className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
-              >
-                <ChevronLeft className="w-4 h-4 mr-1" />
-                Retour
-              </Button>
-            )}
-            {currentPage < tale.content.length - 1 && (
-              <Button
-                onClick={() => setCurrentPage(currentPage + 1)}
-                className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
-              >
-                Suivant
-                <ChevronRight className="w-4 h-4 ml-1" />
-              </Button>
-            )}
-            {currentPage === tale.content.length - 1 && (
-              <Button
-                onClick={() => setCurrentPage(0)}
-                className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
-              >
-                Début
-              </Button>
-            )}
-          </div>
+          <TaleNavigation
+            currentPage={currentPage}
+            totalPages={tale.content.length}
+            showMoralPage={showMoralPage}
+            onPageChange={setCurrentPage}
+          />
         </div>
 
         <Progress 
@@ -191,25 +152,15 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
         )}
 
         <div className="space-y-8">
-          <TaleStory 
-            content={tale.content} 
-            title={tale.title} 
-            currentPage={currentPage}
-            onPageChange={(page) => {
-              setCurrentPage(page);
-            }}
-          />
-
-          {currentPage === tale.content.length - 1 && (
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="mt-12 p-6 bg-magical-gold/10 rounded-xl border border-magical-gold/20"
-            >
-              <h3 className="text-magical-turquoise text-xl font-semibold mb-4">Morale de l'histoire :</h3>
-              <p className="text-white/90 italic text-lg">{tale.moral}</p>
-            </motion.div>
+          {!showMoralPage ? (
+            <TaleStory 
+              content={tale.content} 
+              title={tale.title} 
+              currentPage={currentPage}
+              onPageChange={setCurrentPage}
+            />
+          ) : (
+            <TaleMoral moral={tale.moral} />
           )}
         </div>
       </div>
