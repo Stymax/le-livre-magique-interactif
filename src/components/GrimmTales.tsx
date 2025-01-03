@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { ChevronLeft, Sparkles } from "lucide-react";
 import { useState } from "react";
 import TaleContent from "./TaleContent";
 
@@ -61,9 +61,10 @@ const GrimmTales = ({ onBack }: GrimmTalesProps) => {
     <div className="space-y-6">
       <button
         onClick={onBack}
-        className="text-magical-gold hover:text-magical-gold/80 transition-colors"
+        className="text-magical-gold hover:text-magical-gold/80 transition-colors flex items-center gap-2"
       >
-        ← Retour aux collections
+        <ChevronLeft className="w-5 h-5" />
+         Retour aux collections
       </button>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
