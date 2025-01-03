@@ -45,8 +45,8 @@ const TaleStory = ({
       const text = content[currentPage].text;
       setFullText(text);
       
-      // Ajustement de la vitesse de lecture à 8 caractères par seconde
-      const charsPerSecond = 8;
+      // Ajustement de la vitesse de lecture à 18 caractères par seconde
+      const charsPerSecond = 18;
       const highlightLength = Math.floor(currentAudioTime * charsPerSecond);
       setHighlightedText(text.substring(0, highlightLength));
     } else {
