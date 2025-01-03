@@ -45,9 +45,8 @@ const TaleStory = ({
       const text = content[currentPage].text;
       setFullText(text);
       
-      // Simuler la progression du texte basée sur le temps audio
-      // En moyenne, on lit environ 15 caractères par seconde
-      const charsPerSecond = 15;
+      // Ajustement de la vitesse de lecture à 8 caractères par seconde
+      const charsPerSecond = 8;
       const highlightLength = Math.floor(currentAudioTime * charsPerSecond);
       setHighlightedText(text.substring(0, highlightLength));
     } else {

@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 import { taleContents } from "@/data/tales";
-import { generateAndSaveImage } from "@/utils/imageGenerator";
 import { Progress } from "./ui/progress";
 import TaleStory from "./TaleStory";
 import TaleHeader from "./tale/TaleHeader";
 import TaleNavigation from "./tale/TaleNavigation";
 import TaleMoral from "./tale/TaleMoral";
+import TaleAudioManager from "./tale/TaleAudioManager";
 
 interface TaleContentProps {
   id: string;
@@ -15,114 +15,18 @@ interface TaleContentProps {
 }
 
 const TaleContent = ({ id, onBack }: TaleContentProps) => {
-  const [isGeneratingImages, setIsGeneratingImages] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null);
   const [currentAudioTime, setCurrentAudioTime] = useState(0);
   const tale = taleContents[id as keyof typeof taleContents];
-  const lastPlayedPageRef = useRef(-1);
   const showMoralPage = currentPage === tale.content.length;
   const progress = showMoralPage ? 100 : ((currentPage + 1) / tale.content.length) * 100;
 
-  useEffect(() => {
-    const generateMissingImages = async () => {
-      if (!tale) return;
-      
-      setIsGeneratingImages(true);
-      toast.info(`Vérification des images pour ${tale.title}...`);
-      
-      try {
-        for (let i = 0; i < tale.content.length; i++) {
-          const segment = tale.content[i];
-          if (segment.image && segment.imagePrompt) {
-            const fileName = `${id}-${i + 1}.png`;
-            await generateAndSaveImage({
-              prompt: segment.imagePrompt,
-              fileName,
-              title: tale.title
-            });
-          }
-        }
-      } catch (error) {
-        console.error('Error generating images:', error);
-        toast.error(`Erreur lors de la génération des images pour ${tale.title}`);
-      } finally {
-        setIsGeneratingImages(false);
-      }
-    };
-
-    generateMissingImages();
-  }, [id, tale]);
-
-  useEffect(() => {
-    if (isPlaying && currentPage !== lastPlayedPageRef.current) {
-      playAudioForPage(currentPage);
-    }
-  }, [currentPage, isPlaying]);
-
-  useEffect(() => {
-    if (currentAudio) {
-      const updateTime = () => {
-        setCurrentAudioTime(currentAudio.currentTime);
-      };
-      currentAudio.addEventListener('timeupdate', updateTime);
-      return () => {
-        currentAudio.removeEventListener('timeupdate', updateTime);
-      };
-    }
-  }, [currentAudio]);
-
-  const playAudioForPage = async (pageIndex: number) => {
-    try {
-      if (currentAudio) {
-        currentAudio.pause();
-        currentAudio.currentTime = 0;
-      }
-
-      const baseUrl = window.location.origin;
-      const isOnMoralPage = pageIndex === tale.content.length;
-      const audioPath = isOnMoralPage 
-        ? `${baseUrl}/audio/${id}/${id}-moral.mp3`
-        : `${baseUrl}/audio/${id}/${id}-${pageIndex + 1}.mp3`;
-      
-      const audio = new Audio(audioPath);
-      
-      audio.onended = () => {
-        if (isPlaying) {
-          if (!isOnMoralPage && pageIndex < tale.content.length - 1) {
-            setCurrentPage(pageIndex + 1);
-          } else if (!isOnMoralPage) {
-            setCurrentPage(tale.content.length);
-          } else {
-            setIsPlaying(false);
-            setCurrentPage(0);
-          }
-        }
-      };
-
-      setCurrentAudio(audio);
-      lastPlayedPageRef.current = pageIndex;
-      await audio.play();
-    } catch (error) {
-      console.error('Error playing audio:', error);
-      toast.error("Erreur lors de la lecture audio");
-      setIsPlaying(false);
-    }
-  };
-
   const handleNarration = async () => {
     if (isPlaying) {
-      if (currentAudio) {
-        currentAudio.pause();
-        currentAudio.currentTime = 0;
-      }
       setIsPlaying(false);
-      lastPlayedPageRef.current = currentPage;
     } else {
       setIsPlaying(true);
-      lastPlayedPageRef.current = -1;
-      await playAudioForPage(currentPage);
     }
   };
 
@@ -137,6 +41,16 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
         onBack={onBack}
         isPlaying={isPlaying}
         onNarrationToggle={handleNarration}
+      />
+
+      <TaleAudioManager
+        id={id}
+        currentPage={currentPage}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
+        contentLength={tale.content.length}
+        onPageChange={setCurrentPage}
+        onAudioTimeUpdate={setCurrentAudioTime}
       />
 
       <div className="space-y-4">
@@ -154,12 +68,6 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
           value={progress} 
           className="h-2 bg-magical-gold/20" 
         />
-
-        {isGeneratingImages && (
-          <div className="text-center text-magical-turquoise animate-pulse">
-            Génération des images en cours...
-          </div>
-        )}
 
         <div className="space-y-8">
           {!showMoralPage ? (
