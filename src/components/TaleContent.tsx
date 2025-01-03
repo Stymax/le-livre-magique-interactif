@@ -178,7 +178,11 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
           </div>
         </div>
 
-        <Progress value={progress} className="h-2 bg-magical-gold/20" indicatorClassName="bg-magical-gold" />
+        <Progress 
+          value={progress} 
+          className="h-2 bg-magical-gold/20" 
+          indicatorClassName="bg-magical-gold" 
+        />
 
         {isGeneratingImages && (
           <div className="text-center text-magical-turquoise animate-pulse">
