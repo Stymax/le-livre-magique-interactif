@@ -9,11 +9,22 @@ interface TaleStoryProps {
   title: string;
   currentPage: number;
   onPageChange: (page: number) => void;
+  isPlaying?: boolean;
+  currentAudioTime?: number;
 }
 
-const TaleStory = ({ content, title, currentPage, onPageChange }: TaleStoryProps) => {
+const TaleStory = ({ 
+  content, 
+  title, 
+  currentPage, 
+  onPageChange,
+  isPlaying = false,
+  currentAudioTime = 0
+}: TaleStoryProps) => {
   const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
   const [emblaRef, emblaApi] = useEmblaCarousel({ startIndex: currentPage });
+  const [highlightedText, setHighlightedText] = useState("");
+  const [fullText, setFullText] = useState("");
 
   useEffect(() => {
     if (emblaApi) {
@@ -29,10 +40,41 @@ const TaleStory = ({ content, title, currentPage, onPageChange }: TaleStoryProps
     }
   }, [emblaApi, onPageChange]);
 
+  useEffect(() => {
+    if (isPlaying && content[currentPage]) {
+      const text = content[currentPage].text;
+      setFullText(text);
+      
+      // Simuler la progression du texte basée sur le temps audio
+      // En moyenne, on lit environ 15 caractères par seconde
+      const charsPerSecond = 15;
+      const highlightLength = Math.floor(currentAudioTime * charsPerSecond);
+      setHighlightedText(text.substring(0, highlightLength));
+    } else {
+      setHighlightedText("");
+      setFullText(content[currentPage]?.text || "");
+    }
+  }, [isPlaying, currentPage, content, currentAudioTime]);
+
   const handleImageError = (index: number) => {
     setFailedImages(prev => new Set([...prev, index]));
     toast.error(`Impossible de charger l'image ${index + 1} pour ${title}`);
     console.error(`Error loading image for ${title}, segment ${index + 1}`);
+  };
+
+  const renderText = (text: string, highlighted: string) => {
+    if (!isPlaying) return text;
+
+    return (
+      <>
+        <span className="text-[#8B5CF6] transition-colors duration-300 animate-glow">
+          {highlighted}
+        </span>
+        <span>
+          {text.substring(highlighted.length)}
+        </span>
+      </>
+    );
   };
 
   return (
@@ -53,9 +95,9 @@ const TaleStory = ({ content, title, currentPage, onPageChange }: TaleStoryProps
                       />
                     </div>
                   )}
-                  <p className="text-lg leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: segment.text.replace(/\n/g, "<br>") }}
-                  ></p>
+                  <p className="text-lg leading-relaxed">
+                    {renderText(fullText, highlightedText)}
+                  </p>
                 </div>
               </ScrollArea>
             </div>

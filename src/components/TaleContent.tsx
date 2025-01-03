@@ -19,6 +19,7 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null);
+  const [currentAudioTime, setCurrentAudioTime] = useState(0);
   const tale = taleContents[id as keyof typeof taleContents];
   const lastPlayedPageRef = useRef(-1);
   const showMoralPage = currentPage === tale.content.length;
@@ -59,6 +60,18 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       playAudioForPage(currentPage);
     }
   }, [currentPage, isPlaying]);
+
+  useEffect(() => {
+    if (currentAudio) {
+      const updateTime = () => {
+        setCurrentAudioTime(currentAudio.currentTime);
+      };
+      currentAudio.addEventListener('timeupdate', updateTime);
+      return () => {
+        currentAudio.removeEventListener('timeupdate', updateTime);
+      };
+    }
+  }, [currentAudio]);
 
   const playAudioForPage = async (pageIndex: number) => {
     try {
@@ -113,8 +126,6 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
     }
   };
 
-  if (!tale) return null;
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -142,7 +153,6 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
         <Progress 
           value={progress} 
           className="h-2 bg-magical-gold/20" 
-          indicatorClassName="bg-magical-gold" 
         />
 
         {isGeneratingImages && (
@@ -158,6 +168,8 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
               title={tale.title} 
               currentPage={currentPage}
               onPageChange={setCurrentPage}
+              isPlaying={isPlaying}
+              currentAudioTime={currentAudioTime}
             />
           ) : (
             <TaleMoral moral={tale.moral} />
