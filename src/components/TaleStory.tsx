@@ -91,7 +91,7 @@ const TaleStory = ({
                       <img
                         src={segment.image}
                         alt={`Illustration ${index + 1} de ${title}`}
-                        className="rounded-xl"
+                        className="rounded-xl w-3/4 h-auto mx-auto"
                         onError={() => handleImageError(index)}
                       />
                     </div>
