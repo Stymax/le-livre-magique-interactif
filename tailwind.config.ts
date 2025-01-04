@@ -62,7 +62,7 @@ export default {
       typography: {
         DEFAULT: {
           css: {
-            color: 'white',
+            color: '#000000',
             maxWidth: 'none',
             img: {
               marginTop: '0',
@@ -71,6 +71,7 @@ export default {
             p: {
               marginTop: '0',
               marginBottom: '1.5em',
+              color: '#000000',
             },
           },
         },

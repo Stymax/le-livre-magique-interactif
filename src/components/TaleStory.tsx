@@ -81,10 +81,10 @@ const TaleStory = ({
 
     return (
       <>
-        <span className="text-[#8B5CF6] transition-colors duration-300 animate-glow">
+        <span className="text-purple-600 transition-colors duration-300 animate-glow">
           {highlighted}
         </span>
-        <span>
+        <span className="text-black">
           {text.substring(highlighted.length)}
         </span>
       </>
@@ -103,16 +103,16 @@ const TaleStory = ({
                 isAnimating && index === currentPage ? 'animate-page-flip-in' : ''
               }`}
             >
-              <ScrollArea className="h-[calc(100vh-300px)] rounded-md border p-6">
-                <div className="flex">
+              <ScrollArea className="h-[calc(100vh-300px)] rounded-md border-none">
+                <div className="flex bg-[url('/lovable-uploads/38a518e4-8bc7-4c36-b4b1-6389a4ff72be.png')] bg-contain bg-center bg-no-repeat min-h-[600px]">
                   {/* Page de gauche avec l'image */}
-                  <div className="w-1/2 pr-4 bg-[url('/lovable-uploads/2f625a67-665e-47d2-8045-482237b03ea0.png')] bg-contain bg-center bg-no-repeat">
+                  <div className="w-1/2 pr-4 flex items-center justify-center">
                     {segment.image && !failedImages.has(index) && (
-                      <div className="flex items-center justify-center h-full">
+                      <div className="w-[90%] h-[90%] flex items-center justify-center">
                         <img
                           src={segment.image}
                           alt={`Illustration ${index + 1} de ${title}`}
-                          className="max-w-[80%] rounded-xl shadow-lg"
+                          className="max-w-full max-h-full object-contain rounded-xl shadow-lg"
                           onError={() => handleImageError(index)}
                         />
                       </div>
@@ -120,9 +120,9 @@ const TaleStory = ({
                   </div>
                   
                   {/* Page de droite avec le texte */}
-                  <div className="w-1/2 pl-4 bg-[url('/lovable-uploads/2f625a67-665e-47d2-8045-482237b03ea0.png')] bg-contain bg-center bg-no-repeat">
-                    <div className="prose prose-invert max-w-none px-8 py-4">
-                      <p className="text-lg leading-relaxed">
+                  <div className="w-1/2 pl-4 flex items-center">
+                    <div className="prose max-w-none px-8 py-4">
+                      <p className="text-lg leading-relaxed text-black">
                         {renderText(fullText, highlightedText)}
                       </p>
                     </div>
