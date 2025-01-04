@@ -79,9 +79,9 @@ const TaleStory = ({
   };
 
   return (
-    <div className="relative">
+    <div className="relative bg-[url('/lovable-uploads/bg-book.png')] bg-cover bg-center bg-no-repeat ">
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex bg-[url('/lovable-uploads/bg-book.png')] bg-cover bg-center bg-no-repeat w-full ">
+        <div className="flex ">
           {content.map((segment, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0">
               <ScrollArea className="h-[calc(100vh-300px)] rounded-md border p-6">
