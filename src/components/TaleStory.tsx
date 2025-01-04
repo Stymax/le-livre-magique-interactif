@@ -64,7 +64,7 @@ const TaleStory = ({
       setIsAnimating(true);
       const timer = setTimeout(() => {
         setIsAnimating(false);
-      }, 600); // Durée de l'animation
+      }, 600);
       setPreviousPage(currentPage);
       return () => clearTimeout(timer);
     }
@@ -103,21 +103,30 @@ const TaleStory = ({
                 isAnimating && index === currentPage ? 'animate-page-flip-in' : ''
               }`}
             >
-              <ScrollArea className="h-[calc(100vh-300px)] rounded-md border p-6 bg-[url('/lovable-uploads/22a0305c-5c98-41e4-8c63-f4d0ea8c7b05.png')] bg-contain bg-center bg-no-repeat">
-                <div className="prose prose-invert max-w-none px-8 py-4">
-                  {segment.image && !failedImages.has(index) && (
-                    <div className="float-left mr-6 mb-4 w-1/2">
-                      <img
-                        src={segment.image}
-                        alt={`Illustration ${index + 1} de ${title}`}
-                        className="rounded-xl"
-                        onError={() => handleImageError(index)}
-                      />
+              <ScrollArea className="h-[calc(100vh-300px)] rounded-md border p-6">
+                <div className="flex">
+                  {/* Page de gauche avec l'image */}
+                  <div className="w-1/2 pr-4 bg-[url('/lovable-uploads/2f625a67-665e-47d2-8045-482237b03ea0.png')] bg-contain bg-center bg-no-repeat">
+                    {segment.image && !failedImages.has(index) && (
+                      <div className="flex items-center justify-center h-full">
+                        <img
+                          src={segment.image}
+                          alt={`Illustration ${index + 1} de ${title}`}
+                          className="max-w-[80%] rounded-xl shadow-lg"
+                          onError={() => handleImageError(index)}
+                        />
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Page de droite avec le texte */}
+                  <div className="w-1/2 pl-4 bg-[url('/lovable-uploads/2f625a67-665e-47d2-8045-482237b03ea0.png')] bg-contain bg-center bg-no-repeat">
+                    <div className="prose prose-invert max-w-none px-8 py-4">
+                      <p className="text-lg leading-relaxed">
+                        {renderText(fullText, highlightedText)}
+                      </p>
                     </div>
-                  )}
-                  <p className="text-lg leading-relaxed">
-                    {renderText(fullText, highlightedText)}
-                  </p>
+                  </div>
                 </div>
               </ScrollArea>
             </div>
