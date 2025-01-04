@@ -25,6 +25,8 @@ const TaleStory = ({
   const [emblaRef, emblaApi] = useEmblaCarousel({ startIndex: currentPage });
   const [highlightedText, setHighlightedText] = useState("");
   const [fullText, setFullText] = useState("");
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [previousPage, setPreviousPage] = useState(currentPage);
 
   useEffect(() => {
     if (emblaApi) {
@@ -57,6 +59,17 @@ const TaleStory = ({
     }
   }, [isPlaying, currentPage, content, currentAudioTime]);
 
+  useEffect(() => {
+    if (previousPage !== currentPage) {
+      setIsAnimating(true);
+      const timer = setTimeout(() => {
+        setIsAnimating(false);
+      }, 600); // Durée de l'animation
+      setPreviousPage(currentPage);
+      return () => clearTimeout(timer);
+    }
+  }, [currentPage, previousPage]);
+
   const handleImageError = (index: number) => {
     setFailedImages(prev => new Set([...prev, index]));
     toast.error(`Impossible de charger l'image ${index + 1} pour ${title}`);
@@ -83,9 +96,15 @@ const TaleStory = ({
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {content.map((segment, index) => (
-            <div key={index} className="flex-[0_0_100%] min-w-0">
-              <ScrollArea className="h-[calc(100vh-300px)] rounded-md border p-6">
-                <div className="prose prose-invert max-w-none">
+            <div 
+              key={index} 
+              className={`flex-[0_0_100%] min-w-0 ${
+                isAnimating && index === previousPage ? 'animate-page-flip-out' : 
+                isAnimating && index === currentPage ? 'animate-page-flip-in' : ''
+              }`}
+            >
+              <ScrollArea className="h-[calc(100vh-300px)] rounded-md border p-6 bg-[url('/lovable-uploads/22a0305c-5c98-41e4-8c63-f4d0ea8c7b05.png')] bg-contain bg-center bg-no-repeat">
+                <div className="prose prose-invert max-w-none px-8 py-4">
                   {segment.image && !failedImages.has(index) && (
                     <div className="float-left mr-6 mb-4 w-1/2">
                       <img
