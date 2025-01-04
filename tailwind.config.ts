@@ -62,7 +62,7 @@ export default {
       typography: {
         DEFAULT: {
           css: {
-            color: '#000000',
+            color: 'white',
             maxWidth: 'none',
             img: {
               marginTop: '0',
@@ -71,7 +71,6 @@ export default {
             p: {
               marginTop: '0',
               marginBottom: '1.5em',
-              color: '#000000',
             },
           },
         },
@@ -97,26 +96,6 @@ export default {
           "0%, 100%": { filter: "brightness(100%)" },
           "50%": { filter: "brightness(150%)" },
         },
-        "page-flip": {
-          "0%": { 
-            transform: "rotateY(0deg)",
-            opacity: "1"
-          },
-          "100%": { 
-            transform: "rotateY(-180deg)",
-            opacity: "0"
-          }
-        },
-        "page-flip-in": {
-          "0%": { 
-            transform: "rotateY(180deg)",
-            opacity: "0"
-          },
-          "100%": { 
-            transform: "rotateY(0deg)",
-            opacity: "1"
-          }
-        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -124,8 +103,6 @@ export default {
         "sparkle": "sparkle 2s ease-in-out infinite",
         "float": "float 3s ease-in-out infinite",
         "glow": "glow 2s ease-in-out infinite",
-        "page-flip-out": "page-flip 0.6s ease-in-out forwards",
-        "page-flip-in": "page-flip-in 0.6s ease-in-out forwards"
       },
     },
   },
