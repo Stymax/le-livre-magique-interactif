@@ -47,9 +47,7 @@ const TaleStory = ({
       const text = content[currentPage].text;
       setFullText(text);
       
-      // Détection des dialogues (présence de tirets)
       const hasDialogue = text.includes("-");
-      // Ajustement de la vitesse en fonction du type de texte
       const charsPerSecond = hasDialogue ? 12 : 18;
       const highlightLength = Math.floor(currentAudioTime * charsPerSecond);
       setHighlightedText(text.substring(0, highlightLength));
@@ -104,27 +102,29 @@ const TaleStory = ({
               }`}
             >
               <ScrollArea className="h-[calc(100vh-300px)] rounded-md border-none">
-                <div className="flex bg-[url('/lovable-uploads/38a518e4-8bc7-4c36-b4b1-6389a4ff72be.png')] bg-contain bg-center bg-no-repeat min-h-[600px]">
-                  {/* Page de gauche avec l'image */}
-                  <div className="w-1/2 pr-4 flex items-center justify-center">
-                    {segment.image && !failedImages.has(index) && (
-                      <div className="w-[90%] h-[90%] flex items-center justify-center">
-                        <img
-                          src={segment.image}
-                          alt={`Illustration ${index + 1} de ${title}`}
-                          className="max-w-full max-h-full object-contain rounded-xl shadow-lg"
-                          onError={() => handleImageError(index)}
-                        />
+                <div className="bg-[url('/lovable-uploads/38a518e4-8bc7-4c36-b4b1-6389a4ff72be.png')] bg-contain bg-center bg-no-repeat min-h-[600px]">
+                  <div className="flex">
+                    {/* Page de gauche avec l'image */}
+                    <div className="w-1/2 pr-4 flex items-center justify-center">
+                      {segment.image && !failedImages.has(index) && (
+                        <div className="w-[90%] h-[90%] flex items-center justify-center">
+                          <img
+                            src={segment.image}
+                            alt={`Illustration ${index + 1} de ${title}`}
+                            className="max-w-full max-h-full object-contain rounded-xl shadow-lg"
+                            onError={() => handleImageError(index)}
+                          />
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Page de droite avec le texte */}
+                    <div className="w-1/2 pl-4 flex items-center">
+                      <div className="prose max-w-none px-8 py-4">
+                        <p className="text-lg leading-relaxed text-black">
+                          {renderText(fullText, highlightedText)}
+                        </p>
                       </div>
-                    )}
-                  </div>
-                  
-                  {/* Page de droite avec le texte */}
-                  <div className="w-1/2 pl-4 flex items-center">
-                    <div className="prose max-w-none px-8 py-4">
-                      <p className="text-lg leading-relaxed text-black">
-                        {renderText(fullText, highlightedText)}
-                      </p>
                     </div>
                   </div>
                 </div>
