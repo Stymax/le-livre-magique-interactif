@@ -49,13 +49,14 @@ const TaleAudioManager = ({
       }
 
       const isOnMoralPage = pageIndex === contentLength;
-      const audioPath = isOnMoralPage 
-        ? `/audio/${id}/${id}-moral.mp3`
-        : `/audio/${id}/${id}-${pageIndex + 1}.mp3`;
+      const audioFileName = isOnMoralPage ? 'moral' : (pageIndex + 1).toString();
+      const audioPath = `/audio/${id}/${id}-${audioFileName}.mp3`;
       
+      console.log('Loading audio from:', audioPath);
       const audio = new Audio(audioPath);
       
-      audio.onerror = () => {
+      audio.onerror = (e) => {
+        console.error('Audio loading error:', e);
         console.error(`Failed to load audio: ${audioPath}`);
         toast.error("Le fichier audio n'a pas pu être chargé");
         setIsPlaying(false);
