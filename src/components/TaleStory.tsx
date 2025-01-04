@@ -96,7 +96,7 @@ const TaleStory = ({
                       />
                     </div>
                   )}
-                  <p className="text-lg leading-relaxed">
+                  <p className="text-lg text-[#000000] leading-relaxed">
                     {renderText(fullText, highlightedText)}
                   </p>
                 </div>
