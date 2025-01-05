@@ -12,15 +12,15 @@ export const bouclesOr: Tale = {
       image: "/lovable-uploads/45bf91a3-7f5c-4572-9623-7a83450b7556.png"
     },
     {
-      text: "Curieuse, elle entra et vit trois bols de soupe. Elle goûta celui de Papa Ours - trop chaud ! Celui de Maman Ours - trop froid ! Celui de Bébé Ours - parfait !",
+      text: "Curieuse, elle entra et vit trois bols de soupe. Elle goûta \ncelui de Papa Ours - trop chaud ! \nCelui de Maman Ours - trop froid ! \nCelui de Bébé Ours - parfait !",
       image: "/lovable-uploads/45bf91a3-7f5c-4572-9623-7a83450b7556.png"
     },
     {
-      text: "Fatiguée, elle essaya les fauteuils. Celui de Papa Ours - trop dur ! Celui de Maman Ours - trop mou ! Celui de Bébé Ours - parfait ! Mais il se cassa sous son poids.",
+      text: "Fatiguée, elle essaya les fauteuils. \nCelui de Papa Ours - trop dur ! \nCelui de Maman Ours - trop mou ! \nCelui de Bébé Ours - parfait ! \nMais il se cassa sous son poids.",
       image: "/lovable-uploads/de4628c8-6f0b-4640-bd04-21459f00a9d7.png"
     },
     {
-      text: "Elle monta à l'étage et vit trois lits. Celui de Papa Ours - trop haut ! Celui de Maman Ours - trop bas ! Celui de Bébé Ours - parfait ! Elle s'y endormit.",
+      text: "Elle monta à l'étage et vit trois lits. \nCelui de Papa Ours - trop haut ! \nCelui de Maman Ours - trop bas ! \nCelui de Bébé Ours - parfait ! \nElle s'y endormit.",
       image: "/lovable-uploads/91045606-b24c-4a13-82fc-4e5f2dc79283.png"
     },
     {
