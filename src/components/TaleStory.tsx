@@ -98,13 +98,15 @@ const TaleStory = ({
                 </div>
 
                 {/* Page de droite - Texte */}
-                <ScrollArea className="p-4 mr-8">
-                  <div className="prose prose-invert max-w-none">
-                    <p className="text-lg text-[#000000] leading-relaxed">
-                      {renderText(fullText, highlightedText)}
-                    </p>
-                  </div>
-                </ScrollArea>
+                <div className="flex items-center">
+                  <ScrollArea className="p-4 mr-8 h-[80%]">
+                    <div className="prose prose-invert max-w-none">
+                      <p className="text-lg text-[#000000] leading-relaxed">
+                        {renderText(fullText, highlightedText)}
+                      </p>
+                    </div>
+                  </ScrollArea>
+                </div>
               </div>
             </div>
           ))}
