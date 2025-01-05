@@ -82,21 +82,23 @@ const TaleStory = ({
         <div className="flex">
           {content.map((segment, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0">
-              <div className="grid grid-cols-2 gap-4 h-[calc(100vh-300px)]">
+              <div className="grid grid-cols-2 gap-4 h-[calc(100vh-300px)] px-12">
                 {/* Page de gauche - Image */}
-                <div className="flex items-center justify-center p-8">
+                <div className="flex items-center justify-center p-4">
                   {segment.image && !failedImages.has(index) && (
-                    <img
-                      src={segment.image}
-                      alt={`Illustration ${index + 1} de ${title}`}
-                      className="rounded-xl max-h-full w-auto object-contain"
-                      onError={() => handleImageError(index)}
-                    />
+                    <div className="max-w-[80%] h-full flex items-center">
+                      <img
+                        src={segment.image}
+                        alt={`Illustration ${index + 1} de ${title}`}
+                        className="rounded-xl max-h-[90%] w-auto object-contain mx-auto"
+                        onError={() => handleImageError(index)}
+                      />
+                    </div>
                   )}
                 </div>
 
                 {/* Page de droite - Texte */}
-                <ScrollArea className="p-8">
+                <ScrollArea className="p-4 mr-8">
                   <div className="prose prose-invert max-w-none">
                     <p className="text-lg text-[#000000] leading-relaxed">
                       {renderText(fullText, highlightedText)}
