@@ -62,18 +62,34 @@ const TaleStory = ({
   };
 
   const renderText = (text: string, highlighted: string) => {
-    if (!isPlaying) return text;
+    if (!isPlaying) {
+      // Diviser le texte en lignes et gérer les retours à la ligne
+      const lines = text.split('\\n').map((line, index) => (
+        <p key={index} className="mb-2">
+          {line.trim()}
+        </p>
+      ));
+      return lines;
+    }
 
-    return (
-      <>
-        <span className="text-[#8B5CF6] transition-colors duration-300 animate-glow">
-          {highlighted}
-        </span>
-        <span>
-          {text.substring(highlighted.length)}
-        </span>
-      </>
-    );
+    const highlightedLines = highlighted.split('\\n');
+    const fullLines = text.split('\\n');
+    
+    return fullLines.map((line, index) => {
+      const highlightedPart = highlightedLines[index] || '';
+      const remainingPart = line.substring(highlightedPart.length);
+      
+      return (
+        <p key={index} className="mb-2">
+          <span className="text-[#8B5CF6] transition-colors duration-300 animate-glow">
+            {highlightedPart}
+          </span>
+          <span>
+            {remainingPart}
+          </span>
+        </p>
+      );
+    });
   };
 
   return (
@@ -101,9 +117,9 @@ const TaleStory = ({
                 <div className="flex items-center">
                   <ScrollArea className="p-4 mr-8 h-[80%]">
                     <div className="prose prose-invert max-w-none">
-                      <p className="text-lg text-[#000000] leading-relaxed">
+                      <div className="text-lg text-[#000000] leading-relaxed">
                         {renderText(fullText, highlightedText)}
-                      </p>
+                      </div>
                     </div>
                   </ScrollArea>
                 </div>
