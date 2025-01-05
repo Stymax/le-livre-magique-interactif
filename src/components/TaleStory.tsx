@@ -64,12 +64,11 @@ const TaleStory = ({
   const renderText = (text: string, highlighted: string) => {
     if (!isPlaying) {
       // Diviser le texte en lignes et gérer les retours à la ligne
-      const lines = text.split('\\n').map((line, index) => (
-        <p key={index} className="mb-2">
+      return text.split('\\n').map((line, index) => (
+        <div key={index} className="mb-4 whitespace-pre-line">
           {line.trim()}
-        </p>
+        </div>
       ));
-      return lines;
     }
 
     const highlightedLines = highlighted.split('\\n');
@@ -80,14 +79,14 @@ const TaleStory = ({
       const remainingPart = line.substring(highlightedPart.length);
       
       return (
-        <p key={index} className="mb-2">
+        <div key={index} className="mb-4 whitespace-pre-line">
           <span className="text-[#8B5CF6] transition-colors duration-300 animate-glow">
             {highlightedPart}
           </span>
           <span>
             {remainingPart}
           </span>
-        </p>
+        </div>
       );
     });
   };
