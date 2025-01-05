@@ -45,9 +45,7 @@ const TaleStory = ({
       const text = content[currentPage].text;
       setFullText(text);
       
-      // Détection des dialogues (présence de tirets)
       const hasDialogue = text.includes("-");
-      // Ajustement de la vitesse en fonction du type de texte
       const charsPerSecond = hasDialogue ? 12 : 18;
       const highlightLength = Math.floor(currentAudioTime * charsPerSecond);
       setHighlightedText(text.substring(0, highlightLength));
@@ -79,28 +77,33 @@ const TaleStory = ({
   };
 
   return (
-    <div className="relative bg-[url('/lovable-uploads/bg-book.png')] bg-cover bg-center bg-no-repeat ">
+    <div className="relative bg-[url('/lovable-uploads/bg-book.png')] bg-cover bg-center bg-no-repeat">
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex ">
+        <div className="flex">
           {content.map((segment, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0">
-              <ScrollArea className="h-[calc(100vh-300px)] rounded-md border p-6">
-                <div className="prose prose-invert max-w-none">
+              <div className="grid grid-cols-2 gap-4 h-[calc(100vh-300px)]">
+                {/* Page de gauche - Image */}
+                <div className="flex items-center justify-center p-8">
                   {segment.image && !failedImages.has(index) && (
-                    <div className="float-left mr-6 mb-4 w-1/2">
-                      <img
-                        src={segment.image}
-                        alt={`Illustration ${index + 1} de ${title}`}
-                        className="rounded-xl w-3/4 h-auto mx-auto"
-                        onError={() => handleImageError(index)}
-                      />
-                    </div>
+                    <img
+                      src={segment.image}
+                      alt={`Illustration ${index + 1} de ${title}`}
+                      className="rounded-xl max-h-full w-auto object-contain"
+                      onError={() => handleImageError(index)}
+                    />
                   )}
-                  <p className="text-lg text-[#000000] leading-relaxed">
-                    {renderText(fullText, highlightedText)}
-                  </p>
                 </div>
-              </ScrollArea>
+
+                {/* Page de droite - Texte */}
+                <ScrollArea className="p-8">
+                  <div className="prose prose-invert max-w-none">
+                    <p className="text-lg text-[#000000] leading-relaxed">
+                      {renderText(fullText, highlightedText)}
+                    </p>
+                  </div>
+                </ScrollArea>
+              </div>
             </div>
           ))}
         </div>
