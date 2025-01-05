@@ -63,7 +63,6 @@ const TaleStory = ({
 
   const renderText = (text: string, highlighted: string) => {
     if (!isPlaying) {
-      // Diviser le texte en lignes et gérer les retours à la ligne
       return text.split('\\n').map((line, index) => (
         <div key={index} className="mb-4 whitespace-pre-line">
           {line.trim()}
@@ -103,7 +102,7 @@ const TaleStory = ({
                   {segment.image && !failedImages.has(index) && (
                     <div className="max-w-[80%] h-full flex items-center">
                       <img
-                        src={segment.image}
+                        src={segment.image.startsWith('/') ? segment.image : `/${segment.image}`}
                         alt={`Illustration ${index + 1} de ${title}`}
                         className="rounded-xl max-h-[90%] w-auto object-contain mx-auto"
                         onError={() => handleImageError(index)}
