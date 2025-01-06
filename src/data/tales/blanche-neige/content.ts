@@ -2,12 +2,17 @@ import { TaleSegment } from "@/types/tale";
 
 export const blancheNeigeContent: TaleSegment[] = [
   {
-    text: "Cela se passait en plein hiver et les flocons de neige tombaient du ciel comme un duvet léger. Une reine était assise à sa fenêtre encadrée de bois d'ébène et cousait.\n\nTout en tirant l'aiguille, elle regardait voler les blancs flocons. Elle se piqua au doigt et trois gouttes de sang tombèrent sur la neige.\n\nCe rouge sur ce blanc faisait si bel effet qu'elle se dit : \"Si seulement j'avais un enfant aussi blanc que la neige, aussi rose que le sang, aussi noir que le bois de ma fenêtre !\"",
+    text: "Cela se passait en plein hiver et les flocons de neige tombaient du ciel comme un duvet léger. Une reine était assise à sa fenêtre encadrée de bois d'ébène et cousait.\n\nTout en tirant l'aiguille, elle regardait voler les blancs flocons.\n\nElle se piqua au doigt et trois gouttes de sang tombèrent sur la neige. Ce rouge sur ce blanc faisait si bel effet qu'elle se dit :",
     image: "/lovable-uploads/blanche-neige-1.png",
     imagePrompt: "A queen by a dark ebony window, three drops of blood on white snow, ethereal winter scene."
   },
   {
-    text: "Peu de temps après, une fille lui naquit ; elle était blanche comme neige, rose comme sang et ses cheveux étaient noirs comme de l'ébène. On l'appela Blanche-Neige.\n\nMais la reine mourut en lui donnant le jour. Au bout d'une année, le roi épousa une autre femme.\n\nElle était très belle ; mais elle était fière et vaniteuse et ne pouvait souffrir que quelqu'un la surpassât en beauté.",
+    text: "\"Si seulement j'avais un enfant aussi blanc que la neige, aussi rose que le sang, aussi noir que le bois de ma fenêtre !\"\n\nPeu de temps après, une fille lui naquit ; elle était blanche comme neige, rose comme sang et ses cheveux étaient noirs comme de l'ébène. On l'appela Blanche-Neige.",
+    image: "/lovable-uploads/blanche-neige-1.png",
+    imagePrompt: "A queen by a dark ebony window, three drops of blood on white snow, ethereal winter scene."
+  },
+  {
+    text: "Mais la reine mourut en lui donnant le jour. Au bout d'une année, le roi épousa une autre femme.\n\nElle était très belle ; mais elle était fière et vaniteuse et ne pouvait souffrir que quelqu'un la surpassât en beauté.",
     image: "/lovable-uploads/blanche-neige-1.png",
     imagePrompt: "A queen by a dark ebony window, three drops of blood on white snow, ethereal winter scene."
   },
