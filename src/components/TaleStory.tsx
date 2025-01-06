@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { ScrollArea } from "./ui/scroll-area";
 import useEmblaCarousel from 'embla-carousel-react';
+import TaleImage from "./tale/TaleImage";
+import TaleText from "./tale/TaleText";
 
 interface TaleStoryProps {
   content: TaleSegment[];
@@ -61,35 +63,6 @@ const TaleStory = ({
     console.error(`Error loading image for ${title}, segment ${index + 1}`);
   };
 
-  const renderText = (text: string, highlighted: string) => {
-    if (!isPlaying) {
-      return text.split('\\n').map((line, index) => (
-        <div key={index} className="mb-4 whitespace-pre-line">
-          {line.trim()}
-        </div>
-      ));
-    }
-
-    const highlightedLines = highlighted.split('\\n');
-    const fullLines = text.split('\\n');
-    
-    return fullLines.map((line, index) => {
-      const highlightedPart = highlightedLines[index] || '';
-      const remainingPart = line.substring(highlightedPart.length);
-      
-      return (
-        <div key={index} className="mb-4 whitespace-pre-line">
-          <span className="text-[#8B5CF6] transition-colors duration-300 animate-glow">
-            {highlightedPart}
-          </span>
-          <span>
-            {remainingPart}
-          </span>
-        </div>
-      );
-    });
-  };
-
   return (
     <div className="relative bg-[url('/lovable-uploads/bg-book.png')] bg-cover bg-center bg-no-repeat">
       <div className="overflow-hidden" ref={emblaRef}>
@@ -97,26 +70,26 @@ const TaleStory = ({
           {content.map((segment, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0">
               <div className="grid grid-cols-2 gap-4 h-[calc(100vh-300px)] px-12">
-                {/* Page de gauche - Image */}
                 <div className="flex items-center justify-center p-4">
-                  {segment.image && !failedImages.has(index) && (
-                    <div className="max-w-[80%] h-full flex items-center">
-                      <img
-                        src={segment.image.startsWith('/') ? segment.image : `/${segment.image}`}
-                        alt={`Illustration ${index + 1} de ${title}`}
-                        className="rounded-xl max-h-[90%] w-auto object-contain mx-auto"
-                        onError={() => handleImageError(index)}
-                      />
-                    </div>
+                  {!failedImages.has(index) && (
+                    <TaleImage
+                      image={segment.image}
+                      title={title}
+                      index={index}
+                      onError={handleImageError}
+                    />
                   )}
                 </div>
 
-                {/* Page de droite - Texte */}
                 <div className="flex items-center">
                   <ScrollArea className="p-4 mr-8 h-[80%]">
                     <div className="prose prose-invert max-w-none">
                       <div className="text-lg text-[#000000] leading-relaxed">
-                        {renderText(fullText, highlightedText)}
+                        <TaleText
+                          text={fullText}
+                          highlighted={highlightedText}
+                          isPlaying={isPlaying}
+                        />
                       </div>
                     </div>
                   </ScrollArea>
