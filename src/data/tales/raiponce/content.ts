@@ -2,7 +2,12 @@ import { TaleSegment } from "@/types/tale";
 
 export const raiponcecontent: TaleSegment[] = [
   {
-    text: "Il était une fois un mari et son épouse, qui souhaitaient depuis longtemps avoir un enfant. Un jour enfin, la femme caressa l'espoir que le Bon Dieu exaucerait ses voeux.\n\nCes gens avaient à l'arrière de leur maison, une petite fenêtre depuis laquelle ils pouvaient apercevoir un splendide jardin.",
+    text: "Il était une fois un homme et une femme qui désiraient avoir un enfant depuis fort longtemps.\n\nEnfin, la femme eut l'espoir d'être exaucée par le Bon Dieu. À l'arrière de leur maison, ils avaient une petite fenêtre qui donnait sur un magnifique jardin rempli des fleurs et des plantes les plus belles.",
+    image: "/lovable-uploads/raiponce-1.png",
+    imagePrompt: "A couple looking longingly at a beautiful garden through their window"
+  },
+  {
+    text: "Mais il était entouré d'un haut mur et personne n'osait pénétrer dans le jardin car il appartenait à une magicienne qui possédait de grands pouvoirs et que tout le monde craignait.\n\nUn jour, la femme se tenait à sa fenêtre et regardait le jardin.",
     image: "/lovable-uploads/raiponce-1.png",
     imagePrompt: "A couple looking longingly at a beautiful garden through their window"
   },
