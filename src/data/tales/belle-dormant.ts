@@ -8,7 +8,7 @@ export const belleDormant: Tale = {
       image: "/lovable-uploads/belle-dormant-1.png"
     },
     {
-      text: "Ce que la grenouille avait prédit arriva. La reine donna le jour à une fille si belle que le roi ne se tenait plus de joie.\n\nIl organisa une grande fête. Il invita ses parents, ses amis et connaissances, mais aussi les fées afin qu'elles fussent favorables à l'enfant.\n\nIl y en avait treize dans son royaume. Mais, comme il ne possédait que douze assiettes d'or pour leur servir un repas, l'une d'elles ne fut pas invitée.",
+      text: "Ce que la grenouille avait prédit arriva. La reine donna le jour à une fille si belle que le roi ne se tenait plus de joie.\nIl organisa une grande fête. Il invita ses parents, ses amis et connaissances, mais aussi les fées afin qu'elles fussent favorables à l'enfant.\nIl y en avait treize dans son royaume. Mais, comme il ne possédait que douze assiettes d'or pour leur servir un repas, l'une d'elles ne fut pas invitée.",
       image: "/lovable-uploads/belle-dormant-2.png"
     },
     {
@@ -28,7 +28,7 @@ export const belleDormant: Tale = {
       image: "/lovable-uploads/belle-dormant-4.png"
     },
     {
-      text: "Il advint que le jour de sa quinzième année, le roi et la reine quittèrent leur demeure. La jeune fille resta seule au château.\n\nElle s'y promena partout, visitant les salles et les chambres à sa fantaisie. Finalement, elle entra dans une vieille tour.\n\nElle escalada l'étroit escalier en colimaçon et parvint à une petite porte. Dans la serrure, il y avait une clé rouillée.",
+      text: "Il advint que le jour de sa quinzième année, le roi et la reine quittèrent leur demeure. La jeune fille resta seule au château.\nElle s'y promena partout, visitant les salles et les chambres à sa fantaisie. Finalement, elle entra dans une vieille tour.\nElle escalada l'étroit escalier en colimaçon et parvint à une petite porte. Dans la serrure, il y avait une clé rouillée.",
       image: "/lovable-uploads/belle-dormant-4.png"
     },
     {
@@ -48,7 +48,7 @@ export const belleDormant: Tale = {
       image: "/lovable-uploads/belle-dormant-6.png"
     },
     {
-      text: "Dans le pays, la légende de la Belle au Bois Dormant - c'est ainsi que fut nommée la fille du roi - se répandait.\n\nDe temps en temps, des fils de roi s'approchaient du château et tentaient d'y pénétrer à travers l'épaisse muraille d'épines. Mais ils n'y parvenaient pas.\n\nLes épines se tenaient entre elles, comme par des mains. Les jeunes princes y restaient accrochés, sans pouvoir se détacher et mouraient là, d'une mort cruelle.",
+      text: "Dans le pays, la légende de la Belle au Bois Dormant - c'est ainsi que fut nommée la fille du roi - se répandait.\nDe temps en temps, des fils de roi s'approchaient du château et tentaient d'y pénétrer à travers l'épaisse muraille d'épines. Mais ils n'y parvenaient pas.\nLes épines se tenaient entre elles, comme par des mains. Les jeunes princes y restaient accrochés, sans pouvoir se détacher et mouraient là, d'une mort cruelle.",
       image: "/lovable-uploads/belle-dormant-7.png"
     },
     {
@@ -60,7 +60,7 @@ export const belleDormant: Tale = {
       image: "/lovable-uploads/belle-dormant-8.png"
     },
     {
-      text: "Le bon vieillard voulut l'en empêcher, mais il eut beau faire, le prince ne l'écouta pas.\n\nOr, les cent années étaient justement écoulées et le jour était venu où la Belle au Bois Dormant devait se réveiller.\n\nLorsque le fils du roi s'approcha de la haie d'épines, il vit de magnifiques fleurs qui s'écartaient d'elles-mêmes sur son passage et lui laissaient le chemin. Derrière lui, elles reformaient une haie.",
+      text: "Le bon vieillard voulut l'en empêcher, mais il eut beau faire, le prince ne l'écouta pas.\nOr, les cent années étaient justement écoulées et le jour était venu où la Belle au Bois Dormant devait se réveiller.\nLorsque le fils du roi s'approcha de la haie d'épines, il vit de magnifiques fleurs qui s'écartaient d'elles-mêmes sur son passage et lui laissaient le chemin. Derrière lui, elles reformaient une haie.",
       image: "/lovable-uploads/belle-dormant-8.png"
     },
     {
@@ -76,7 +76,7 @@ export const belleDormant: Tale = {
       image: "/lovable-uploads/belle-dormant-10.png"
     },
     {
-      text: "Dans les écuries, les chevaux se dressaient sur leurs pattes et s'ébrouaient ; les chiens de chasse bondirent en remuant la queue. Sur le toit, les pigeons sortirent la tête de sous leurs ailes, regardèrent autour d'eux et s'envolèrent vers la campagne.\n\nLes mouches, sur les murs, reprirent leur mouvement ; dans la cuisine, le feu s'alluma, flamba et cuisit le repas. Le rôti se remit à rissoler ; le cuisinier donna une gifle au marmiton, si fort que celui-ci en cria, et la bonne acheva de plumer la poule.",
+      text: "Dans les écuries, les chevaux se dressaient sur leurs pattes et s'ébrouaient ; les chiens de chasse bondirent en remuant la queue. Sur le toit, les pigeons sortirent la tête de sous leurs ailes, regardèrent autour d'eux et s'envolèrent vers la campagne.\nLes mouches, sur les murs, reprirent leur mouvement ; dans la cuisine, le feu s'alluma, flamba et cuisit le repas. Le rôti se remit à rissoler ; le cuisinier donna une gifle au marmiton, si fort que celui-ci en cria, et la bonne acheva de plumer la poule.",
       image: "/lovable-uploads/belle-dormant-10.png"
     },
     {
