@@ -2,18 +2,23 @@ import { TaleSegment } from "@/types/tale";
 
 export const blancheNeigeContent5: TaleSegment[] = [
   {
-    text: "Le premier, en se retournant, vit que son lit avait été dérangé. \"Qui a touché à mon lit ?\" dit-il. Les autres s'approchèrent en courant et chacun s'écria : \"Dans le mien aussi quelqu'un s'est couché !\"",
-    image: "/lovable-uploads/blanche-neige-7.png",
-    imagePrompt: "The dwarfs discovering Snow White asleep in the seventh bed."
+    text: "Bientôt après, elle ouvrit les yeux, souleva le couvercle du cercueil et se leva. Elle était de nouveau vivante !\n\n\"Seigneur, où suis-je ?\" demanda-t-elle.\n\n\"Auprès de moi\", répondit le prince, plein d'allégresse.",
+    image: "/lovable-uploads/blanche-neige-27.png",
+    imagePrompt: "Snow White awakening from her death-like sleep."
   },
   {
-    text: "Mais le septième, quand il regarda son lit, y vit Blanche-Neige endormie. Il appela les autres, qui vinrent bien vite et poussèrent des cris étonnés. Ils prirent leurs sept petites lampes et éclairèrent le visage de Blanche-Neige.",
-    image: "/lovable-uploads/blanche-neige-7.png",
-    imagePrompt: "The dwarfs discovering Snow White asleep in the seventh bed."
+    text: "Il lui raconta ce qui s'était passé, ajoutant : \"Je t'aime plus que tout au monde ; viens avec moi, tu deviendras ma femme.\"\n\nBlanche-Neige accepta. Elle l'accompagna et leurs noces furent célébrées avec magnificence et splendeur.",
+    image: "/lovable-uploads/blanche-neige-28.png",
+    imagePrompt: "The prince and Snow White's joyful reunion and wedding."
   },
   {
-    text: "\"Seigneur Dieu ! Seigneur Dieu !\" s'écrièrent-ils ; \"que cette enfant est jolie !\"\n\nIls en eurent tant de joie qu'ils ne l'éveillèrent pas et la laissèrent dormir dans le petit lit. Le septième des nains coucha avec ses compagnons, une heure avec chacun, et la nuit passa ainsi.",
-    image: "/lovable-uploads/blanche-neige-7.png",
-    imagePrompt: "The dwarfs discovering Snow White asleep in the seventh bed."
+    text: "La méchante reine, belle-mère de Blanche-Neige, avait également été invitée au mariage. Après avoir revêtu ses plus beaux atours, elle prit place devant le miroir et demanda :\n\n\"Miroir, miroir joli, Qui est la plus belle au pays ?\"",
+    image: "/lovable-uploads/blanche-neige-29.png",
+    imagePrompt: "The evil queen's final defeat at Snow White's wedding."
+  },
+  {
+    text: "Le miroir répondit :\n\n\"Madame la reine, vous êtes la plus belle ici,\nMais la jeune souveraine est mille fois plus belle.\"\n\nLa méchante femme proféra un affreux juron et elle eut si peur, si peur qu'elle en perdit la tête.",
+    image: "/lovable-uploads/blanche-neige-29.png",
+    imagePrompt: "The evil queen's final defeat at Snow White's wedding."
   }
 ];
