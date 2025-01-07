@@ -82,7 +82,7 @@ const TaleStory = ({
                 </div>
 
                 <div className="flex items-center">
-                  <ScrollArea className="p-4 mr-8 h-[80%]">
+                  <div className="p-4 mr-8 h-[80%] flex items-center">
                     <div className="prose prose-invert max-w-none">
                       <div className="text-lg text-[#000000] leading-relaxed">
                         <TaleText
@@ -92,7 +92,7 @@ const TaleStory = ({
                         />
                       </div>
                     </div>
-                  </ScrollArea>
+                  </div>
                 </div>
               </div>
             </div>
