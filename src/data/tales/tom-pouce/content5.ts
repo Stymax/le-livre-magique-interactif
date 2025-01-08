@@ -2,8 +2,8 @@ import { TaleSegment } from "@/types/tale";
 
 export const tomPouceContent5: TaleSegment[] = [
   {
-    text: "Elle continua sa route et s'arrêta dans la forêt, juste à la place où il y avait du bois abattu. Quand Tom Pouce aperçut son père, il lui cria : « Vois-tu, père, que j'ai bien mené la charrette ? Maintenant, fais-moi descendre. »\n\nLe père, saisissant la bride d'une main, prit de l'autre son fils dans l'oreille du cheval et le déposa par terre ; le petit s'assit joyeusement sur un fétu.",
-    image: "/lovable-uploads/tom-pouce-8.png",
-    imagePrompt: "Le père récupérant Tom Pouce de l'oreille du cheval"
+    text: "Ils firent comme il voulait, et quand Tom Pouce eut dit adieu à son père, ils s'en allèrent avec lui et marchèrent ainsi jusqu'au soir ; alors le petit homme leur cria : « Arrêtez, j'ai besoin de descendre.\n— Reste sur mon chapeau, dit l'homme qui le portait; peu m'importe ce que tu feras, les oiseaux m'en font plus d'une fois autant.\n— Non pas, non pas, dit Tom Pouce ; mettez-moi en bas bien vite. »",
+    image: "/lovable-uploads/tom-pouce-12.png",
+    imagePrompt: "Tom Pouce demandant à descendre du chapeau"
   }
 ];

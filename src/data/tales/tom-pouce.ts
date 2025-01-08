@@ -5,6 +5,7 @@ import { tomPouceContent3 } from "./tom-pouce/content3";
 import { tomPouceContent4 } from "./tom-pouce/content4";
 import { tomPouceContent5 } from "./tom-pouce/content5";
 import { tomPouceContent6 } from "./tom-pouce/content6";
+import { tomPouceContent7 } from "./tom-pouce/content7";
 
 export const tomPouce: Tale = {
   title: "Tom Pouce",
@@ -14,7 +15,8 @@ export const tomPouce: Tale = {
     ...tomPouceContent3,
     ...tomPouceContent4,
     ...tomPouceContent5,
-    ...tomPouceContent6
+    ...tomPouceContent6,
+    ...tomPouceContent7
   ],
   moral: "La taille ne fait pas la valeur d'une personne, et l'intelligence peut compenser la force physique."
 };
