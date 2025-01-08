@@ -1,19 +1,19 @@
+import { tompouce } from "./tom-pouce";
+import { raiponce } from "./raiponce";
 import { bouclesOr } from "./boucles-or";
 import { hanselGretel } from "./hansel-gretel";
-import { blancheNeige } from "./blanche-neige";
 import { belleDormant } from "./belle-dormant";
-import { raiponce } from "./raiponce";
+import { blancheNeige } from "./blanche-neige";
 import { loupChevreaux } from "./loup-chevreaux";
 import { musiciensBreme } from "./musiciens-breme";
-import { tomPouce } from "./tom-pouce";
 
 export const taleContents = {
+  "tom-pouce": tompouce,
+  "raiponce": raiponce,
   "boucles-or": bouclesOr,
   "hansel-gretel": hanselGretel,
-  "blanche-neige": blancheNeige,
   "belle-dormant": belleDormant,
-  "raiponce": raiponce,
+  "blanche-neige": blancheNeige,
   "loup-chevreaux": loupChevreaux,
-  "musiciens-breme": musiciensBreme,
-  "tom-pouce": tomPouce
+  "musiciens-breme": musiciensBreme
 };
