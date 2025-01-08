@@ -1,4 +1,4 @@
-import { tompouce } from "./tom-pouce";
+import { tomPouce } from "./tom-pouce";
 import { raiponce } from "./raiponce";
 import { bouclesOr } from "./boucles-or";
 import { hanselGretel } from "./hansel-gretel";
@@ -8,7 +8,7 @@ import { loupChevreaux } from "./loup-chevreaux";
 import { musiciensBreme } from "./musiciens-breme";
 
 export const taleContents = {
-  "tom-pouce": tompouce,
+  "tom-pouce": tomPouce,
   "raiponce": raiponce,
   "boucles-or": bouclesOr,
   "hansel-gretel": hanselGretel,
