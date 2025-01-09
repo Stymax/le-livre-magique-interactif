@@ -3,6 +3,7 @@ import MagicBook from "@/components/MagicBook";
 import MagicParticles from "@/components/MagicParticles";
 import StorySelection from "@/components/StorySelection";
 import LibraryBackground from "@/components/LibraryBackground";
+
 const Index = () => {
   const [currentStep, setCurrentStep] = useState<'intro' | 'bookClosed' | 'bookOpen'>('intro');
 
