@@ -2,7 +2,7 @@ import { TaleSegment } from "@/types/tale";
 
 export const tomPouceContent4: TaleSegment[] = [
   {
-    text: "Comme il allait s'endormir, il entendit deux hommes qui passaient, et l'un disait à l'autre : « Comment nous y prendrions-nous pour voler à ce riche curé tout son or et son argent ?\n— Je vous le dirai bien, leur cria Tom Pouce.\n— Qu'y a-t-il ? s'écria un des voleurs effrayés ; j'ai entendu quelqu'un parler. »",
+    text: "— Où as-tu donc été ?\n— Ah! père, j'ai été dans un trou de souris, dans la panse d'une vache et dans le ventre d'un loup. Maintenant je reste avec vous.\n— Et nous ne te revendrions pas pour tout l'or du monde ! » dirent ses parents en l'embrassant et en le serrant contre leur cœur.\nIls lui donnèrent à manger et lui firent faire d'autres habits parce que les siens avaient été gâtés pendant son voyage.",
     image: "/lovable-uploads/tom-pouce/tom-pouce-11.png"
   }
 ];

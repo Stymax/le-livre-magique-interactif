@@ -38,7 +38,7 @@ export const tomPouceContent3: TaleSegment[] = [
     image: "/lovable-uploads/tom-pouce/tom-pouce-29.png"
   },
   {
-    text: "Et il ordonna à sa femme de mettre la faux de côté pour ne pas blesser leur fils. Puis, levant sa hache, d'un coup sur la tête il étendit mort le loup, et ensuite, avec un couteau et des ciseaux, il lui ouvrit le ventre et en tira le petit Tom. « Ah! dit-il, que nous avons été inquiets de ton sort !\n— Oui, père, j'ai beaucoup couru le monde ; heureusement me voici rendu à la lumière.\n— Où as-tu donc été ?\n— Ah! père, j'ai été dans un trou de souris, dans la panse d'une vache et dans le ventre d'un loup. Maintenant je reste avec vous.\n— Et nous ne te revendrions pas pour tout l'or du monde ! » dirent ses parents en l'embrassant et en le serrant contre leur cœur.\nIls lui donnèrent à manger et lui firent faire d'autres habits parce que les siens avaient été gâtés pendant son voyage.",
+    text: "Et il ordonna à sa femme de mettre la faux de côté pour ne pas blesser leur fils. Puis, levant sa hache, d'un coup sur la tête il étendit mort le loup, et ensuite, avec un couteau et des ciseaux, il lui ouvrit le ventre et en tira le petit Tom. « Ah! dit-il, que nous avons été inquiets de ton sort !\n— Oui, père, j'ai beaucoup couru le monde ; heureusement me voici rendu à la lumière.",
     image: "/lovable-uploads/tom-pouce/tom-pouce-30.png"
   }
 ];
