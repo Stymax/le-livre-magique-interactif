@@ -1,4 +1,6 @@
-export const content = [
+import { TaleSegment } from "@/types/tale";
+
+export const tomPouceContent: TaleSegment[] = [
   {
     text: "Un pauvre laboureur était assis un soir au coin de son feu, pendant que sa femme filait à côté de lui. Il disait : « C'est un grand chagrin pour nous de ne pas avoir d'enfants. Quel silence chez nous, tandis que chez les autres tout est si gai et si bruyant!",
     image: "/lovable-uploads/tom-pouce/page1.png"

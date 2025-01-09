@@ -1,4 +1,6 @@
-export const content2 = [
+import { TaleSegment } from "@/types/tale";
+
+export const tomPouceContent2: TaleSegment[] = [
   {
     text: "Le paysan s'apprêtait on jour à aller abattre du bois dans la forêt, et il se disait à lui-même : « Je voudrais bien avoir quelqu'un pour conduire ma charrette.",
     image: "/lovable-uploads/tom-pouce/page4.png"

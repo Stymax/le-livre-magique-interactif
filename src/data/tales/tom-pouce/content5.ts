@@ -1,4 +1,6 @@
-export const content5 = [
+import { TaleSegment } from "@/types/tale";
+
+export const tomPouceContent5: TaleSegment[] = [
   {
     text: "Le père, saisissant la bride d'une main, prit de l'autre son fils dans l'oreille du cheval et le déposa par terre ; le petit s'assit joyeusement sur un fétu.",
     image: "/lovable-uploads/tom-pouce/page13.png"

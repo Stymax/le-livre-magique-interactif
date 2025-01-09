@@ -1,4 +1,6 @@
-export const content3 = [
+import { TaleSegment } from "@/types/tale";
+
+export const tomPouceContent3: TaleSegment[] = [
   {
     text: "— Ça ne fait rien, père; si maman veut atteler, je me mettrai dans l'oreille du cheval, et je lui crierai où il faudra qu'il aille.",
     image: "/lovable-uploads/tom-pouce/page7.png"
