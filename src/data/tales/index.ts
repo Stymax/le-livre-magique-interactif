@@ -5,7 +5,7 @@ import { hanselGretel } from "./hansel-gretel";
 import { belleDormant } from "./belle-dormant";
 import { loupChevreaux } from "./loup-chevreaux";
 import { musiciensBreme } from "./musiciens-breme";
-
+import { blancheNeige } from "./blanche-neige";
 export const taleContents = {
   "tom-pouce": tomPouce,
   "raiponce": raiponce,
@@ -13,5 +13,6 @@ export const taleContents = {
   "hansel-gretel": hanselGretel,
   "belle-dormant": belleDormant,
   "loup-chevreaux": loupChevreaux,
-  "musiciens-breme": musiciensBreme
+  "musiciens-breme": musiciensBreme,
+  "blanche-neige": blancheNeige
 };
