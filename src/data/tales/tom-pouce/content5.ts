@@ -14,23 +14,12 @@ export const tomPouceContent5: TaleSegment[] = [
     image: "/lovable-uploads/tom-pouce/tom-pouce-43.png"
   },
   {
-    text: "— Oui, père, j'ai beaucoup couru le monde ; heureusement me voici rendu à la lumière.",
+    text: "— Oui, père, j'ai beaucoup couru le monde ; heureusement me voici rendu à la lumière.\n— Où as-tu donc été ?\n— Ah! père, j'ai été dans un trou de souris, dans la panse d'une vache et dans le ventre d'un loup. Maintenant je reste avec vous.",
     image: "/lovable-uploads/tom-pouce/tom-pouce-44.png"
   },
   {
-    text: "— Où as-tu donc été ?\n— Ah! père, j'ai été dans un trou de souris, dans la panse d'une vache et dans le ventre d'un loup. Maintenant je reste avec vous.",
+    text: "— Et nous ne te revendrions pas pour tout l'or du monde ! » dirent ses parents en l'embrassant et en le serrant contre leur cœur.\Ils lui donnèrent à manger et lui firent faire d'autres habits parce que les siens avaient été gâtés pendant son voyage.",
     image: "/lovable-uploads/tom-pouce/tom-pouce-45.png"
-  },
-  {
-    text: "— Et nous ne te revendrions pas pour tout l'or du monde ! » dirent ses parents en l'embrassant et en le serrant contre leur cœur.",
-    image: "/lovable-uploads/tom-pouce/tom-pouce-46.png"
-  },
-  {
-    text: "Ils lui donnèrent à manger et lui firent faire d'autres habits parce que les siens avaient été gâtés pendant son voyage.",
-    image: "/lovable-uploads/tom-pouce/tom-pouce-47.png"
-  },
-  {
-    text: "Le séjour lui en déplaisait fort, et ce qui compliquait encore sa situation, c'est qu'il descendait toujours de nouveau foin et que l'espace devenait de plus en plus étroit. Enfin, dans sa terreur, Tom s'écria le plus haut qu'il put : « Plus de fourrage ! plus de fourrage ! je n'en veux plus ! »",
-    image: "/lovable-uploads/tom-pouce/tom-pouce-48.png"
   }
+    
 ];
