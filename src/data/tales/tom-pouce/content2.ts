@@ -2,43 +2,43 @@ import { TaleSegment } from "@/types/tale";
 
 export const tomPouceContent2: TaleSegment[] = [
   {
-    text: "Comme il allait s'endormir, il entendit deux hommes qui passaient, et l'un disait à l'autre : « Comment nous y prendrions-nous pour voler à ce riche curé tout son or et son argent ?\n— Je vous le dirai bien, leur cria Tom Pouce.\n— Qu'y a-t-il ? s'écria un des voleurs effrayés ; j'ai entendu quelqu'un parler. »",
+    text: "Ils allèrent trouver le paysan et lui dirent : « Vendez-nous ce petit nain ; nous en aurons bien soin.\n— Non, répondit le père; c'est mon enfant, il n'est pas à vendre pour tout l'or du monde. »",
     image: "/lovable-uploads/tom-pouce/tom-pouce-11.png"
   },
   {
-    text: "Ils restaient à écouter, quand Tom leur cria de nouveau : « Prenez-moi avec vous, je vous aiderai.\n— Où es-tu donc?\n—Cherchez par terre, du côté d'où vient la voix.» Les voleurs finirent par le trouver. « Petit extrait d'homme, lui dirent-ils, comment veux-tu nous être utile?",
+    text: "Mais Tom Pouce, en entendant la conversation avait grimpé dans les plis des vêtements de son père ; il lui monta jusque sur l'épaule, et de là lui souffla dans l'oreille : « Père, livrez-moi à ces gens-là, je serai bientôt de retour. »",
     image: "/lovable-uploads/tom-pouce/tom-pouce-12.png"
   },
   {
-    text: "— Voyez, répondit-il ; je me glisserai entre les barreaux de la fenêtre dans la chambre du curé, et je vous passerai tout ce que vous voudrez.\n— Eh bien, soit, dirent-ils, nous allons te mettre à l'épreuve ! »",
+    text: "Son père le donna donc aux deux hommes pour une belle pièce d'or.\n« Où veux-tu te mettre? lui dirent-ils.\n— Ah ! mettez-moi sur le bord de votre chapeau, je pourrai me promener et voir le paysage, et j'aurai bien soin de ne pas tomber. »",
     image: "/lovable-uploads/tom-pouce/tom-pouce-13.png"
   },
   {
-    text: "Quand ils furent arrivés au presbytère, Tom Pouce se glissa dans la chambre, puis il se mit à crier de toutes ses forces : « Voulez-vous tout ce qui est ici? » Les voleurs effrayés lui dirent : « Parle plus bas, tu vas réveiller la maison. »",
+    text: "Ils firent comme il voulait, et quand Tom Pouce eut dit adieu à son père, ils s'en allèrent avec lui et marchèrent ainsi jusqu'au soir ; alors le petit homme leur cria : « Arrêtez, j'ai besoin de descendre.",
     image: "/lovable-uploads/tom-pouce/tom-pouce-14.png"
   },
   {
-    text: "Mais, faisant comme s'il ne les avait pas entendus, il cria de nouveau : « Qu'est-ce que vous voulez ? voulez-vous tout ce qui est ici? » La servante, qui couchait dans la chambre à côté, entendit ce bruit, elle se leva sur son séant et prêta l'oreille.",
+    text: "— Reste sur mon chapeau, dit l'homme qui le portait; peu m'importe ce que tu feras, les oiseaux m'en font plus d'une fois autant.\n— Non pas, non pas, dit Tom Pouce ; mettez-moi en bas bien vite. »",
     image: "/lovable-uploads/tom-pouce/tom-pouce-15.png"
   },
   {
-    text: "Les voleurs avaient battu en retraite ; enfin ils reprirent courage, et croyant seulement que le petit drôle voulait s'amuser à leurs dépens, ils revinrent sur leurs pas et lui dirent tout bas : « Plus de plaisanterie, passe-nous quelque chose. » Alors Tom se mit à crier encore du haut de sa tête : « Je vais vous donner tout; tendez les mains. »",
+    text: "L'homme le prit et le posa par terre, dans un champ près de la route; il courut un instant parmi les mottes de terre, et tout d'un coup il se plongea dans un trou de souris qu'il avait cherché exprès.",
     image: "/lovable-uploads/tom-pouce/tom-pouce-16.png"
   },
   {
-    text: "Cette fois la servante entendit bien clairement; elle sauta du lit et courut à la porte. Les voleurs voyant cela s'enfuirent comme si le diable eut été à leurs trousses; la servante, n'entendant plus rien, alla allumer une chandelle.",
+    text: "« Bonsoir, messieurs, partez sans moi, » leur cria-t-il en riant. Ils voulurent le rattraper en fourrageant le trou de souris avec des baguettes, mais ce fut peine perdue : Tom s'enfonçait toujours plus avant.",
     image: "/lovable-uploads/tom-pouce/tom-pouce-17.png"
   },
   {
-    text: "Quand elle revint, Tom Pouce, sans être vu, fut se cacher dans le grenier au foin. La servante, après avoir fureté dans tous les coins sans rien découvrir, alla se remettre au lit et crut qu'elle avait rêvé.",
+    text: "La nuit étant tout à fait venue, ils furent obligés de rentrer chez eux en colère et les mains vides.\nQuand ils furent loin, Tom Pouce sortit de son souterrain. Il craignit de se risquer de nuit en plein champ, car une jambe est bientôt cassée.",
     image: "/lovable-uploads/tom-pouce/tom-pouce-18.png"
   },
   {
-    text: "Tom Pouce était monté dans le foin et s'y était arrangé un joli petit lit : il comptait s'y reposer jusqu'au jour et ensuite retourner chez ses parents. Mais il devait subir bien d'autres épreuves encore : tant on a de mal dans ce monde!",
+    text: "Heureusement il rencontra une coque vide de limaçon. « Dieu soit loué ? dit-il, je passerai ma nuit en sûreté là dedans ; » et il s'y établit.\nComme il allait s'endormir, il entendit deux hommes qui passaient.",
     image: "/lovable-uploads/tom-pouce/tom-pouce-19.png"
   },
   {
-    text: "La servante se leva dès l'aurore pour donner à manger au bétail. Sa première visite fut pour le grenier au fourrage, où elle prit une brassée de foin, avec le pauvre Tom endormi dedans. Il dormait si fort qu'il ne s'aperçut de rien et ne s'éveilla que dans la bouche d'une vache, qui l'avait pris avec une poignée de foin.",
+    text: "L'un disait à l'autre : « Comment nous y prendrions-nous pour voler à ce riche curé tout son or et son argent ?\n— Je vous le dirai bien, leur cria Tom Pouce.\n— Qu'y a-t-il ? s'écria un des voleurs effrayés ; j'ai entendu quelqu'un parler. »",
     image: "/lovable-uploads/tom-pouce/tom-pouce-20.png"
   }
 ];
