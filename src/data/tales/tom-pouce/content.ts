@@ -14,7 +14,7 @@ export const tomPouceContent: TaleSegment[] = [
     image: "/lovable-uploads/tom-pouce/tom-pouce-3.png"
   },
   {
-    text: "Le paysan s'apprêtait on jour à aller abattre du bois dans la forêt, et il se disait à lui-même : « Je voudrais bien avoir quelqu'un pour conduire ma charrette.\n— Père, s'écria Tom Pouce, je vais la conduire, moi; soyez tranquille, elle arrivera à temps. »",
+    text: "Le paysan s'apprêtait un jour à aller abattre du bois dans la forêt, et il se disait à lui-même : « Je voudrais bien avoir quelqu'un pour conduire ma charrette.\n— Père, s'écria Tom Pouce, je vais la conduire, moi; soyez tranquille, elle arrivera à temps. »",
     image: "/lovable-uploads/tom-pouce/tom-pouce-4.png"
   },
   {
