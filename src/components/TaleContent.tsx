@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { taleContents } from "@/data/tales";
 import { Progress } from "./ui/progress";
@@ -18,7 +18,20 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentAudioTime, setCurrentAudioTime] = useState(0);
+  
   const tale = taleContents[id as keyof typeof taleContents];
+  
+  useEffect(() => {
+    if (!tale) {
+      toast.error("Histoire non trouvée");
+      onBack();
+    }
+  }, [tale, onBack]);
+
+  if (!tale) {
+    return null;
+  }
+
   const showMoralPage = currentPage === tale.content.length;
   const progress = showMoralPage ? 100 : ((currentPage + 1) / tale.content.length) * 100;
 
