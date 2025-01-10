@@ -1,6 +1,6 @@
 import { TaleSegment } from "@/types/tale";
 
-export const tomPouceContent5: TaleSegment[] = [
+export const tomPouceContent4: TaleSegment[] = [
   {
     text: "La servante était justement occupée à ce moment à traire la vache ; cette voix, qu'elle entendait sans voir personne et qu'elle reconnaissait pour celle qui l'avait déjà éveillée pendant la nuit, l'effraya tellement, qu'elle se jeta en bas de son tabouret en répandant son lait.",
     image: "/lovable-uploads/tom-pouce/tom-pouce-31.png"
