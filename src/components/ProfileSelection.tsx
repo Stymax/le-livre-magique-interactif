@@ -38,7 +38,8 @@ export default function ProfileSelection() {
 
   const selectProfile = (profile: Profile) => {
     localStorage.setItem("currentProfile", JSON.stringify(profile));
-    navigate("/");
+    // Forcer la navigation vers la page d'accueil
+    window.location.href = "/";
   };
 
   return (
