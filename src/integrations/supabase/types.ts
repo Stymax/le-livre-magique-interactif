@@ -9,7 +9,125 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          color: string
+          created_at: string
+          id: string
+          name: string
+          tokens: number | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          color: string
+          created_at?: string
+          id?: string
+          name: string
+          tokens?: number | null
+        }
+        Update: {
+          avatar_url?: string | null
+          color?: string
+          created_at?: string
+          id?: string
+          name?: string
+          tokens?: number | null
+        }
+        Relationships: []
+      }
+      rewards_history: {
+        Row: {
+          earned_at: string
+          id: string
+          profile_id: string | null
+          tale_id: string
+          tokens_earned: number
+        }
+        Insert: {
+          earned_at?: string
+          id?: string
+          profile_id?: string | null
+          tale_id: string
+          tokens_earned: number
+        }
+        Update: {
+          earned_at?: string
+          id?: string
+          profile_id?: string | null
+          tale_id?: string
+          tokens_earned?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rewards_history_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      shop_avatars: {
+        Row: {
+          created_at: string
+          id: string
+          image_url: string
+          name: string
+          price: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          image_url: string
+          name: string
+          price: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          image_url?: string
+          name?: string
+          price?: number
+        }
+        Relationships: []
+      }
+      user_avatars: {
+        Row: {
+          avatar_id: string | null
+          id: string
+          profile_id: string | null
+          purchased_at: string
+        }
+        Insert: {
+          avatar_id?: string | null
+          id?: string
+          profile_id?: string | null
+          purchased_at?: string
+        }
+        Update: {
+          avatar_id?: string | null
+          id?: string
+          profile_id?: string | null
+          purchased_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_avatars_avatar_id_fkey"
+            columns: ["avatar_id"]
+            isOneToOne: false
+            referencedRelation: "shop_avatars"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_avatars_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

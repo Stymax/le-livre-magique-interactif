@@ -1,46 +1,90 @@
-import { useState } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { useState, useEffect } from "react";
+import { Avatar, AvatarFallback } from "./ui/avatar";
 import VirtualKeyboard from "./VirtualKeyboard";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
+import { Coins } from "lucide-react";
 
 interface Profile {
-  id: number;
+  id: string;
   name: string;
   color: string;
+  tokens: number;
+  avatar_url: string | null;
 }
 
 export default function ProfileSelection() {
-  const [profiles, setProfiles] = useState<Profile[]>(() => {
-    const saved = localStorage.getItem("profiles");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [profiles, setProfiles] = useState<Profile[]>([]);
   const [isCreating, setIsCreating] = useState(false);
   const [newProfileName, setNewProfileName] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   const colors = ["bg-blue-500", "bg-yellow-500", "bg-red-500", "bg-purple-500"];
 
-  const handleAddProfile = () => {
-    if (profiles.length >= 4) return;
-    if (newProfileName.trim()) {
-      const newProfile = {
-        id: Date.now(),
-        name: newProfileName,
-        color: colors[profiles.length],
-      };
-      const updatedProfiles = [...profiles, newProfile];
-      setProfiles(updatedProfiles);
-      localStorage.setItem("profiles", JSON.stringify(updatedProfiles));
-      setNewProfileName("");
-      setIsCreating(false);
+  useEffect(() => {
+    fetchProfiles();
+  }, []);
+
+  const fetchProfiles = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .order('created_at', { ascending: true });
+
+      if (error) throw error;
+      setProfiles(data || []);
+    } catch (error) {
+      console.error('Error fetching profiles:', error);
+      toast.error("Erreur lors du chargement des profils");
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const selectProfile = (profile: Profile) => {
-    localStorage.setItem("currentProfile", JSON.stringify(profile));
-    // Forcer la navigation vers la page d'accueil
-    window.location.href = "/";
+  const handleAddProfile = async () => {
+    if (profiles.length >= 4) return;
+    if (newProfileName.trim()) {
+      try {
+        const newProfile = {
+          name: newProfileName,
+          color: colors[profiles.length],
+          tokens: 0
+        };
+
+        const { data, error } = await supabase
+          .from('profiles')
+          .insert([newProfile])
+          .select()
+          .single();
+
+        if (error) throw error;
+
+        setProfiles([...profiles, data]);
+        setNewProfileName("");
+        setIsCreating(false);
+        toast.success("Profil créé avec succès !");
+      } catch (error) {
+        console.error('Error creating profile:', error);
+        toast.error("Erreur lors de la création du profil");
+      }
+    }
   };
+
+  const selectProfile = async (profile: Profile) => {
+    localStorage.setItem("currentProfile", JSON.stringify(profile));
+    navigate("/");
+  };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-4">
@@ -53,11 +97,21 @@ export default function ProfileSelection() {
             onClick={() => selectProfile(profile)}
             className="flex flex-col items-center group"
           >
-            <Avatar className={`w-24 h-24 ${profile.color} group-hover:ring-2 ring-white transition-all`}>
-              <AvatarFallback className="text-2xl">
-                {profile.name.charAt(0).toUpperCase()}
-              </AvatarFallback>
-            </Avatar>
+            <div className="relative">
+              <Avatar className={`w-24 h-24 ${profile.color} group-hover:ring-2 ring-white transition-all`}>
+                {profile.avatar_url ? (
+                  <img src={profile.avatar_url} alt={profile.name} className="w-full h-full object-cover" />
+                ) : (
+                  <AvatarFallback className="text-2xl">
+                    {profile.name.charAt(0).toUpperCase()}
+                  </AvatarFallback>
+                )}
+              </Avatar>
+              <div className="absolute -bottom-2 right-0 bg-magical-gold text-black text-sm px-2 py-0.5 rounded-full flex items-center gap-1">
+                <Coins className="w-4 h-4" />
+                {profile.tokens}
+              </div>
+            </div>
             <span className="mt-2 text-gray-300 group-hover:text-white">
               {profile.name}
             </span>
