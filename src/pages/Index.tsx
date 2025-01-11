@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import MagicBook from "@/components/MagicBook";
 import MagicParticles from "@/components/MagicParticles";
 import StorySelection from "@/components/StorySelection";
@@ -6,6 +7,14 @@ import LibraryBackground from "@/components/LibraryBackground";
 
 const Index = () => {
   const [currentStep, setCurrentStep] = useState<'intro' | 'bookClosed' | 'bookOpen'>('intro');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const profile = localStorage.getItem("currentProfile");
+    if (!profile) {
+      navigate("/profiles");
+    }
+  }, [navigate]);
 
   return (
     <div className="min-h-screen bg-blue-950">
@@ -14,6 +23,14 @@ const Index = () => {
       <MagicParticles />
       
       <div className="fixed inset-x-0 top-0 left-1/2 -translate-x-1/2 w-[70%] z-10 max-h-[95vh] overflow-y-auto mb-[10vh]">
+        <div className="flex justify-end p-4">
+          <button
+            onClick={() => navigate("/profiles")}
+            className="text-white hover:text-gray-300 transition-colors"
+          >
+            Changer de profil
+          </button>
+        </div>
         <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-lg p-6">
           <h1 className="text-5xl font-bold text-magical-gold animate-glow text-center mb-6">
             Le Livre Magique des Contes
