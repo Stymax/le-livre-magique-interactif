@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => ({
     mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),
-  base: "",
+  base: "./", // Modification ici pour utiliser un chemin relatif
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
