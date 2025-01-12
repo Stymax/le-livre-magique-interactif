@@ -120,7 +120,11 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
               <img
                 src={avatar.image_url}
                 alt={avatar.name}
-                className="w-24 h-24 rounded-full mb-2"
+                className="w-24 h-24 rounded-full mb-2 object-cover"
+                onError={(e) => {
+                  console.error(`Failed to load image: ${avatar.image_url}`);
+                  e.currentTarget.src = '/placeholder.svg';
+                }}
               />
               <h3 className="text-white font-medium mb-1">{avatar.name}</h3>
               <div className="flex items-center gap-1 mb-2">
