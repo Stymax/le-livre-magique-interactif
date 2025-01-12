@@ -64,42 +64,47 @@ const TaleStory = ({
   };
 
   return (
-    <div className="relative bg-[url('/lovable-uploads/bg-book.png')] bg-cover bg-center bg-no-repeat">
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex">
-          {content.map((segment, index) => (
-            <div key={index} className="flex-[0_0_100%] min-w-0">
-              <div className="grid grid-cols-2 gap-4 h-[calc(100vh-300px)] px-12">
-                <div className="flex items-center justify-center p-4">
-                  {!failedImages.has(index) && (
+    <div className="relative bg-[url('/lovable-uploads/bg-book.png')] bg-cover bg-center bg-no-repeat h-screen">
+    <div className="overflow-hidden h-full" ref={emblaRef}>
+      <div className="flex h-full">
+        {content.map((segment, index) => (
+          <div key={index} className="flex-[0_0_100%] min-w-0 h-full">
+            <div className="grid grid-cols-2 gap-4 h-full px-12">
+              {/* Colonne Image */}
+              <div className="flex items-center justify-center p-4">
+                {!failedImages.has(index) && (
+                  <div className="flex items-center justify-center max-w-full max-h-full">
                     <TaleImage
                       image={segment.image}
                       title={title}
                       index={index}
                       onError={handleImageError}
                     />
-                  )}
-                </div>
-
-                <div className="flex items-center">
-                  <div className="p-4 mr-8 h-[80%] flex items-center">
-                    <div className="prose prose-invert max-w-none">
-                      <div className="text-lg text-[#000000] leading-relaxed">
-                        <TaleText
-                          text={fullText}
-                          highlighted={highlightedText}
-                          isPlaying={isPlaying}
-                        />
-                      </div>
+                  </div>
+                )}
+              </div>
+  
+              {/* Colonne Texte */}
+              <div className="flex items-center justify-center">
+                <div className="p-4 h-[80%] w-full flex items-center">
+                  <div className="prose prose-invert max-w-none text-center">
+                    <div className="text-lg text-[#000000] leading-relaxed">
+                      <TaleText
+                        text={fullText}
+                        highlighted={highlightedText}
+                        isPlaying={isPlaying}
+                      />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
+  </div>
+  
   );
 };
 
