@@ -22,7 +22,7 @@ const Index = () => {
       
       <MagicParticles />
       
-      <div className="fixed inset-x-0 top-0 left-1/2 -translate-x-1/2 w-[70%] z-10 max-h-[95vh] overflow-y-auto mb-[10vh]">
+      <div className="fixed inset-x-0 top-0 left-1/2 -translate-x-1/2 w-[70%] z-10 max-h-[100vh] overflow-y-auto mb-[10vh]">
         
         <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-lg p-6">
         <div className="flex justify-end p-4">
