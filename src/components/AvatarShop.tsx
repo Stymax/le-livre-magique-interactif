@@ -35,7 +35,14 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
         .order('price', { ascending: true });
 
       if (error) throw error;
-      setAvatars(data || []);
+      
+      // Ensure we have valid image URLs
+      const processedAvatars = data?.map(avatar => ({
+        ...avatar,
+        image_url: avatar.image_url.startsWith('/') ? avatar.image_url : `/${avatar.image_url}`
+      })) || [];
+      
+      setAvatars(processedAvatars);
     } catch (error) {
       console.error('Error fetching avatars:', error);
       toast.error("Erreur lors du chargement des avatars");
@@ -65,7 +72,6 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
     }
 
     try {
-      // Insérer l'achat
       const { error: purchaseError } = await supabase
         .from('user_avatars')
         .insert([{
@@ -75,7 +81,6 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
 
       if (purchaseError) throw purchaseError;
 
-      // Mettre à jour les jetons
       const { error: updateError } = await supabase
         .from('profiles')
         .update({ tokens: currentTokens - avatar.price })
