@@ -35,14 +35,7 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
         .order('price', { ascending: true });
 
       if (error) throw error;
-      
-      // Ensure we have valid image URLs
-      const processedAvatars = data?.map(avatar => ({
-        ...avatar,
-        image_url: avatar.image_url.startsWith('/') ? avatar.image_url : `/${avatar.image_url}`
-      })) || [];
-      
-      setAvatars(processedAvatars);
+      setAvatars(data || []);
     } catch (error) {
       console.error('Error fetching avatars:', error);
       toast.error("Erreur lors du chargement des avatars");
