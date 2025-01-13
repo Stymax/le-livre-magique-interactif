@@ -116,7 +116,6 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
             : avatar.image_url.startsWith('/') 
               ? avatar.image_url 
               : `/${avatar.image_url}`;
-          
           return (
             <div
               key={avatar.id}
