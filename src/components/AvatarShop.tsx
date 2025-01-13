@@ -113,7 +113,7 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
           const isPurchased = purchasedAvatars.includes(avatar.id);
           const imageUrl = avatar.image_url.startsWith('http') 
             ? avatar.image_url 
-            : `lovable-uploads/avatars/${avatar.image_url}`;
+            : `/lovable-uploads/avatars/${avatar.image_url}`;
 
           return (
             <div
@@ -126,7 +126,7 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
                 className="w-24 h-24 rounded-full mb-2 object-cover"
                 onError={(e) => {
                   console.error(`Failed to load image: ${imageUrl}`);
-                  e.currentTarget.src = 'placeholder.svg';
+                  e.currentTarget.src = '/placeholder.svg';
                 }}
               />
               <h3 className="text-white font-medium mb-1">{avatar.name}</h3>
