@@ -71,9 +71,9 @@ const TaleStory = ({
           {content.map((segment, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0">
               <div className="grid grid-cols-2 gap-4 h-[calc(100vh-300px)] px-12">
-                <div className="flex items-center justify-center p-4 relative left-4"> 
+              <div className="flex items-center justify-center p-4 relative left-4 flex-col space-y-4">
                   {index === 0 && ( // Vérifie si c'est la première page
-                    <h2 className="text-3xl font-bold text-magical-gold mb-4 text-center">
+                    <h2 className="text-3xl font-bold text-magical-gold mb-4 text-center font-neueZier">
                       {title}
                     </h2>
                   )}

@@ -59,6 +59,10 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      fontFamily: {
+        sans: ["Inter", "sans-serif"], 
+        neueZier: ["'Neue Zier Schrift'", "serif"], 
+      },
       typography: {
         DEFAULT: {
           css: {
