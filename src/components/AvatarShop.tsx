@@ -113,7 +113,9 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
           const isPurchased = purchasedAvatars.includes(avatar.id);
           const imageUrl = avatar.image_url.startsWith('http') 
             ? avatar.image_url 
-            : `/lovable-uploads/avatars/${avatar.image_url}`;
+            : avatar.image_url.startsWith('/') 
+              ? avatar.image_url
+              : `/lovable-uploads/avatars/${avatar.image_url}`;
 
           return (
             <div
