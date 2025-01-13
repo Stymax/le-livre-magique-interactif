@@ -111,11 +111,11 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {avatars.map((avatar) => {
           const isPurchased = purchasedAvatars.includes(avatar.id);
+          // Simplified URL handling
           const imageUrl = avatar.image_url.startsWith('http') 
             ? avatar.image_url 
-            : avatar.image_url.startsWith('/') 
-              ? avatar.image_url 
-              : `/${avatar.image_url}`;
+            : `/lovable-uploads/avatars/${avatar.image_url}`;
+
           return (
             <div
               key={avatar.id}
