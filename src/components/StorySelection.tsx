@@ -31,6 +31,18 @@ const storyOptions = [
     name: "Contes d'Afrique",
     description: "Sagesse et magie du continent africain",
     color: "from-yellow-500/20 to-yellow-700/20"
+  },
+  {
+    "id": "generated",
+    "name": "Contes générés",
+    "description": "Génération de contes",
+    "color": "from-green-500/20 to-green-700/20"
+  },
+  {
+    "id": "avatars",
+    "name": "Boutique d'avatar",
+    "description": "Personnalisez votre profil avec des avatars uniques",
+    "color": "from-orange-500/20 to-orange-700/20"
   }
 ];
 
