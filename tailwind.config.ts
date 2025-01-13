@@ -62,6 +62,7 @@ export default {
       fontFamily: {
         sans: ["Inter", "sans-serif"], 
         neueZier: ["'Neue Zier Schrift'", "serif"], 
+        gloria: ["'Gloria'", "sans-serif"], 
       },
       typography: {
         DEFAULT: {
