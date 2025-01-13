@@ -111,6 +111,11 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {avatars.map((avatar) => {
           const isPurchased = purchasedAvatars.includes(avatar.id);
+          const imageUrl = avatar.image_url.startsWith('http') 
+            ? avatar.image_url 
+            : avatar.image_url.startsWith('/') 
+              ? avatar.image_url 
+              : `/${avatar.image_url}`;
           
           return (
             <div
@@ -118,11 +123,11 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
               className="bg-gray-800 rounded-lg p-4 flex flex-col items-center"
             >
               <img
-                src={avatar.image_url}
+                src={imageUrl}
                 alt={avatar.name}
                 className="w-24 h-24 rounded-full mb-2 object-cover"
                 onError={(e) => {
-                  console.error(`Failed to load image: ${avatar.image_url}`);
+                  console.error(`Failed to load image: ${imageUrl}`);
                   e.currentTarget.src = '/placeholder.svg';
                 }}
               />
