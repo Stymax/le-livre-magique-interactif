@@ -110,7 +110,7 @@ const TaleStory = ({
 
                   {/* Boutons de navigation sous le texte */}
                   <div className="flex justify-center mt-4 space-x-2">
-                    {!showMoralPage && currentPage < content.length - 1 && (
+                    {currentPage < content.length - 1 && (
                       <Button
                         onClick={() => onPageChange(currentPage + 1)}
                         className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
@@ -119,7 +119,7 @@ const TaleStory = ({
                       </Button>
                     )}
 
-                    {isLastStoryPage && !showMoralPage && (
+                    {currentPage === content.length - 1 && (
                       <Button
                         onClick={() => onPageChange(content.length)}
                         className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
@@ -128,7 +128,7 @@ const TaleStory = ({
                       </Button>
                     )}
 
-                    {showMoralPage && (
+                    {currentPage === content.length && (
                       <Button
                         onClick={() => onPageChange(0)}
                         className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
