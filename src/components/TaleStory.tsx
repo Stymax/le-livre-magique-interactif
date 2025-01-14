@@ -101,7 +101,7 @@ const TaleStory = ({
                     {currentPage > 0 && (
                       <Button
                         onClick={() => onPageChange(currentPage - 1)}
-                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-[rgb(171,0,255)] font-medium"
+                        className="bg-[rgba(171,0,255,0.2)] hover:bg-[rgba(171,0,255,0.4)] border-[1px] border-[rgb(171,0,255)] rounded text-[rgb(171,0,255)] font-medium"
                       >
                         Retour
                       </Button>
@@ -125,7 +125,7 @@ const TaleStory = ({
                     {currentPage < content.length - 1 && (
                      <Button
                         onClick={() => onPageChange(currentPage + 1)}
-                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-[rgb(171,0,255)] font-medium"
+                        className="bg-[rgba(171,0,255,0.2)] hover:bg-[rgba(171,0,255,0.4)] border-[1px] border-[rgb(171,0,255)] rounded text-[rgb(171,0,255)] font-medium"
                       >
                         Suivant
                       </Button>
@@ -135,7 +135,7 @@ const TaleStory = ({
                     {currentPage === content.length - 1 && (
                       <Button
                         onClick={() => onPageChange(content.length)}
-                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-[rgb(171,0,255)] font-medium"
+                        className="bg-[rgba(171,0,255,0.2)] hover:bg-[rgba(171,0,255,0.4)] border-[1px] border-[rgb(171,0,255)] rounded text-[rgb(171,0,255)] font-medium"
                       >
                         Voir la morale
                       </Button>
@@ -144,7 +144,7 @@ const TaleStory = ({
                     {currentPage === content.length && (
                       <Button
                         onClick={() => onPageChange(0)}
-                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-[rgb(171,0,255)] font-medium"
+                        className="bg-[rgba(171,0,255,0.2)] hover:bg-[rgba(171,0,255,0.4)] border-[1px] border-[rgb(171,0,255)] rounded text-[rgb(171,0,255)] font-medium"
                       >
                         Début
                       </Button>
