@@ -84,7 +84,7 @@ const TaleStory = ({
                   
                   {/* Image */}
                   <div className="flex-1 flex items-center justify-center w-full">
-                    <div className="max-w-[80%] h-auto rounded-lg overflow-hidden">
+                    <div className="max-w-[80%] h-auto rounded-lg overflow-hidden flex items-center justify-center">
                       {!failedImages.has(index) && (
                         <TaleImage
                           image={segment.image}
@@ -101,7 +101,7 @@ const TaleStory = ({
                     {currentPage > 0 && (
                       <Button
                         onClick={() => onPageChange(currentPage - 1)}
-                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-[rgb(171,0,255)] font-medium"
                       >
                         Retour
                       </Button>
@@ -112,7 +112,7 @@ const TaleStory = ({
                 {/* Page droite */}
                 <div className="flex flex-col justify-between px-4 custom-padding-right">
                   <div className="prose prose-invert max-w-none flex-1 overflow-hidden">
-                    <div className="h-full text-lg text-[#000000] leading-relaxed overflow-y-auto pr-4">
+                    <div className="h-full text-lg text-[#000000] leading-relaxed overflow-y-auto pr-8">
                       <TaleText
                         text={fullText}
                         highlighted={highlightedText}
@@ -123,18 +123,19 @@ const TaleStory = ({
           
                   <div className="h-[50px] flex justify-center space-x-2 items-center mt-6">
                     {currentPage < content.length - 1 && (
-                      <Button
+                     <Button
                         onClick={() => onPageChange(currentPage + 1)}
-                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-[rgb(171,0,255)] font-medium"
                       >
                         Suivant
                       </Button>
+                   
                     )}
           
                     {currentPage === content.length - 1 && (
                       <Button
                         onClick={() => onPageChange(content.length)}
-                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-[rgb(171,0,255)] font-medium"
                       >
                         Voir la morale
                       </Button>
@@ -143,7 +144,7 @@ const TaleStory = ({
                     {currentPage === content.length && (
                       <Button
                         onClick={() => onPageChange(0)}
-                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-[rgb(171,0,255)] font-medium"
                       >
                         Début
                       </Button>
