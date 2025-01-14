@@ -91,6 +91,11 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
   };
 
   const getImageUrl = (imageUrl: string) => {
+    if (!imageUrl) return '/placeholder.svg';
+    
+    // Remove any trailing colons that might cause URL issues
+    imageUrl = imageUrl.replace(/:$/, '');
+    
     if (imageUrl.startsWith('http')) {
       return imageUrl;
     }
