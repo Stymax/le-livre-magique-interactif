@@ -65,100 +65,93 @@ const TaleStory = ({
   };
 
   return (
-    <div className="relative bg-[url('/lovable-uploads/bg-book.png')] bg-cover bg-center bg-no-repeat p-8">
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex">
+    <div className="relative min-h-screen bg-[url('/lovable-uploads/bg-book.png')] bg-cover bg-center bg-no-repeat">
+      <div className="overflow-hidden h-full" ref={emblaRef}>
+        <div className="flex h-full">
           {content.map((segment, index) => (
-            <div key={index} className="flex-[0_0_100%] min-w-0">
-            <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
-              <div className="w-full max-w-4xl bg-white/90 rounded-lg shadow-xl">
-                <div className="grid grid-cols-2 gap-4 h-[calc(100vh-300px)] px-12">
-                  {/* Page de gauche */}
-                  <div className="flex flex-col items-center justify-between p-6 relative space-y-4">
-                    {/* Div pour le titre */}
-                    <div className="w-full text-center mb-6">
-                      {index === 0 && (
-                        <h2 className="text-2xl font-bold text-purple-600 font-gloria">
-                          {title}
-                        </h2>
-                      )}
-                    </div>
-          
-                    {/* Div pour l'image */}
-                    <div className="flex-grow flex justify-center items-center mb-6">
-                      <div className="max-w-full h-auto rounded-lg shadow-md">
-                        {!failedImages.has(index) && (
-                          <TaleImage
-                            image={segment.image}
-                            title={title}
-                            index={index}
-                            onError={handleImageError}
-                          />
-                        )}
-                      </div>
-                    </div>
-          
-                    {/* Bouton retour */}
-                    <div className="flex items-center justify-center">
-                      {currentPage > 0 && (
-                        <Button
-                          onClick={() => onPageChange(currentPage - 1)}
-                          className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg transition-colors"
-                        >
-                          Retour
-                        </Button>
+            <div key={index} className="flex-[0_0_100%] min-w-0 flex items-center justify-center">
+              <div className="grid grid-cols-2 gap-4 h-[calc(100vh-300px)] w-full max-w-6xl px-12">
+                {/* Page de gauche */}
+                <div className="flex flex-col items-center justify-between p-4 relative">
+                  {/* Titre */}
+                  <div className="min-h-[30px] w-full text-center mb-6">
+                    {index === 0 && (
+                      <h2 className="text-3xl font-bold text-[rgb(171,0,255)] font-gloria">
+                        {title}
+                      </h2>
+                    )}
+                  </div>
+                  
+                  {/* Image */}
+                  <div className="flex-1 flex items-center justify-center w-full">
+                    <div className="max-w-[80%] h-auto rounded-lg overflow-hidden">
+                      {!failedImages.has(index) && (
+                        <TaleImage
+                          image={segment.image}
+                          title={title}
+                          index={index}
+                          onError={handleImageError}
+                        />
                       )}
                     </div>
                   </div>
           
-                  {/* Page de droite */}
-                  <div className="flex flex-col justify-between p-6">
-                    {/* Texte avec scroll */}
-                    <div className="flex-grow overflow-y-auto mb-6">
-                      <div className="text-gray-800 leading-relaxed">
-                        <TaleText
-                          text={fullText}
-                          highlighted={highlightedText}
-                          isPlaying={isPlaying}
-                        />
-                      </div>
+                  {/* Navigation */}
+                  <div className="h-[50px] flex items-center justify-center mt-6">
+                    {currentPage > 0 && (
+                      <Button
+                        onClick={() => onPageChange(currentPage - 1)}
+                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+                      >
+                        Retour
+                      </Button>
+                    )}
+                  </div>
+                </div>
+          
+                {/* Page droite */}
+                <div className="flex flex-col justify-between p-4">
+                  <div className="prose prose-invert max-w-none flex-1 overflow-hidden">
+                    <div className="h-full text-lg text-[#000000] leading-relaxed overflow-y-auto pr-4">
+                      <TaleText
+                        text={fullText}
+                        highlighted={highlightedText}
+                        isPlaying={isPlaying}
+                      />
                     </div>
+                  </div>
           
-                    {/* Boutons de navigation */}
-                    <div className="flex justify-center space-x-2">
-                      {currentPage < content.length - 1 && (
-                        <Button
-                          onClick={() => onPageChange(currentPage + 1)}
-                          className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg transition-colors"
-                        >
-                          Suivant
-                        </Button>
-                      )}
+                  <div className="h-[50px] flex justify-center space-x-2 items-center mt-6">
+                    {currentPage < content.length - 1 && (
+                      <Button
+                        onClick={() => onPageChange(currentPage + 1)}
+                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+                      >
+                        Suivant
+                      </Button>
+                    )}
           
-                      {currentPage === content.length - 1 && (
-                        <Button
-                          onClick={() => onPageChange(content.length)}
-                          className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg transition-colors"
-                        >
-                          Voir la morale
-                        </Button>
-                      )}
+                    {currentPage === content.length - 1 && (
+                      <Button
+                        onClick={() => onPageChange(content.length)}
+                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+                      >
+                        Voir la morale
+                      </Button>
+                    )}
           
-                      {currentPage === content.length && (
-                        <Button
-                          onClick={() => onPageChange(0)}
-                          className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg transition-colors"
-                        >
-                          Début
-                        </Button>
-                      )}
-                    </div>
+                    {currentPage === content.length && (
+                      <Button
+                        onClick={() => onPageChange(0)}
+                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+                      >
+                        Début
+                      </Button>
+                    )}
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-         
           ))}
         </div>
       </div>
