@@ -88,12 +88,12 @@ const TaleStory = ({
 
                   {/* Bouton "Retour" sous l'image */}
                   {currentPage > 0 && (
-                    <TaleNavigation
-                      currentPage={currentPage}
-                      totalPages={content.length}
-                      showMoralPage={false} // Gérer la page morale si nécessaire
-                      onPageChange={(page) => onPageChange(page - 1)}
-                    />
+                    <Button
+                      onClick={() => onPageChange(currentPage - 1)}
+                      className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium mt-4"
+                    >
+                      Retour
+                    </Button>
                   )}
                 </div>
 
@@ -109,13 +109,33 @@ const TaleStory = ({
                   </div>
 
                   {/* Boutons de navigation sous le texte */}
-                  <div className="flex justify-center mt-4">
-                    <TaleNavigation
-                      currentPage={currentPage}
-                      totalPages={content.length}
-                      showMoralPage={currentPage === content.length}
-                      onPageChange={onPageChange}
-                    />
+                  <div className="flex justify-center mt-4 space-x-2">
+                    {!showMoralPage && currentPage < content.length - 1 && (
+                      <Button
+                        onClick={() => onPageChange(currentPage + 1)}
+                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+                      >
+                        Suivant
+                      </Button>
+                    )}
+
+                    {isLastStoryPage && !showMoralPage && (
+                      <Button
+                        onClick={() => onPageChange(content.length)}
+                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+                      >
+                        Voir la morale
+                      </Button>
+                    )}
+
+                    {showMoralPage && (
+                      <Button
+                        onClick={() => onPageChange(0)}
+                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+                      >
+                        Début
+                      </Button>
+                    )}
                   </div>
                 </div>
               </div>
