@@ -5,7 +5,6 @@ import { taleContents } from "@/data/tales";
 import { Progress } from "./ui/progress";
 import TaleStory from "./TaleStory";
 import TaleHeader from "./tale/TaleHeader";
-import TaleNavigation from "./tale/TaleNavigation";
 import TaleMoral from "./tale/TaleMoral";
 import TaleAudioManager from "./tale/TaleAudioManager";
 
@@ -67,16 +66,7 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       />
 
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          
-          <TaleNavigation
-            currentPage={currentPage}
-            totalPages={tale.content.length}
-            showMoralPage={showMoralPage}
-            onPageChange={setCurrentPage}
-          />
-        </div>
-
+       
         <Progress 
           value={progress} 
           className="h-2 bg-magical-gold/20" 
