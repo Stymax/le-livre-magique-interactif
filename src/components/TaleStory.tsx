@@ -65,7 +65,7 @@ const TaleStory = ({
   };
 
   return (
-    <div className="relative min-h-screen bg-[url('/lovable-uploads/bg-book.png')] bg-cover bg-center bg-no-repeat">
+    <div className="relative bg-[url('/lovable-uploads/bg-book.png')] bg-cover bg-center bg-no-repeat p-8">
       <div className="overflow-hidden h-full" ref={emblaRef}>
         <div className="flex h-full">
           {content.map((segment, index) => (
