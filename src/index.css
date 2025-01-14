@@ -63,3 +63,11 @@
   font-weight: normal;
   font-style: normal;
 }
+.custom-padding-left {
+  padding-top: 1rem; 
+  padding-bottom: 4rem; 
+}
+.custom-padding-right {
+  padding-top: 2rem; 
+  padding-bottom: 4rem; 
+}

@@ -72,7 +72,7 @@ const TaleStory = ({
             <div key={index} className="flex-[0_0_100%] min-w-0 flex items-center justify-center">
               <div className="grid grid-cols-2 gap-4 h-[calc(100vh-300px)] w-full max-w-6xl px-12">
                 {/* Page de gauche */}
-                <div className="flex flex-col items-center justify-between p-4 relative">
+                <div className="flex flex-col items-center justify-between px-4 relative custom-padding-left">
                   {/* Titre */}
                   <div className="min-h-[30px] w-full text-center mb-6">
                     {index === 0 && (
@@ -110,7 +110,7 @@ const TaleStory = ({
                 </div>
           
                 {/* Page droite */}
-                <div className="flex flex-col justify-between p-4">
+                <div className="flex flex-col justify-between px-4 custom-padding-right">
                   <div className="prose prose-invert max-w-none flex-1 overflow-hidden">
                     <div className="h-full text-lg text-[#000000] leading-relaxed overflow-y-auto pr-4">
                       <TaleText
