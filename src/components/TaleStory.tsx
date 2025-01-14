@@ -70,15 +70,20 @@ const TaleStory = ({
         <div className="flex">
           {content.map((segment, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0">
-            <div className="grid grid-cols-2 gap-4 h-[calc(100vh-300px)] px-12">
-              {/* Colonne de gauche : Image et bouton Retour */}
-              <div className="flex flex-col justify-between p-4 relative left-4">
-                {index === 0 && (
-                  <h2 className="text-3xl font-bold text-[rgb(171,0,255)] mb-4 text-center font-gloria">
-                    {title}
-                  </h2>
-                )}
-                <div className="flex-grow flex items-center justify-center">
+              <div className="grid grid-cols-2 gap-4 h-[calc(100vh-300px)] px-12">
+              {/* Page de gauche */}
+              <div className="flex flex-col items-center justify-between p-4 relative space-y-4">
+                {/* Div pour le titre avec une hauteur fixe */}
+                <div className="h-[30px] w-full text-center">
+                  {index === 0 && (
+                    <h2 className="text-3xl font-bold text-[rgb(171,0,255)] mb-4 text-center font-gloria">
+                      {title}
+                    </h2>
+                  )}
+                </div>
+                
+                {/* Div pour l'image */}
+                <div className="flex items-center justify-center flex-grow">
                   {!failedImages.has(index) && (
                     <TaleImage
                       image={segment.image}
@@ -88,21 +93,25 @@ const TaleStory = ({
                     />
                   )}
                 </div>
-                {currentPage > 0 && (
-                  <Button
-                    onClick={() => onPageChange(currentPage - 1)}
-                    className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium mt-4"
-                  >
-                    Retour
-                  </Button>
-                )}
+          
+                {/* Bouton retour en bas */}
+                <div className="h-[50px] flex items-center justify-center">
+                  {currentPage > 0 && (
+                    <Button
+                      onClick={() => onPageChange(currentPage - 1)}
+                      className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+                    >
+                      Retour
+                    </Button>
+                  )}
+                </div>
               </div>
           
-              {/* Colonne de droite : Texte et boutons */}
+              {/* Page de droite */}
               <div className="flex flex-col justify-between p-4">
-                {/* Texte défilant */}
-                <div className="flex-grow overflow-auto prose prose-invert max-w-none h-[calc(100%-60px)]">
-                  <div className="text-lg text-[#000000] leading-relaxed">
+                {/* Texte dans une div avec gestion des débordements */}
+                <div className="prose prose-invert max-w-none overflow-hidden flex-grow h-[calc(100%-50px)]">
+                  <div className="text-lg text-[#000000] leading-relaxed overflow-y-auto">
                     <TaleText
                       text={fullText}
                       highlighted={highlightedText}
@@ -111,8 +120,8 @@ const TaleStory = ({
                   </div>
                 </div>
           
-                {/* Boutons de navigation */}
-                <div className="flex justify-center mt-4 space-x-2">
+                {/* Boutons en bas */}
+                <div className="h-[50px] flex justify-center space-x-2 items-center">
                   {currentPage < content.length - 1 && (
                     <Button
                       onClick={() => onPageChange(currentPage + 1)}
@@ -121,6 +130,7 @@ const TaleStory = ({
                       Suivant
                     </Button>
                   )}
+          
                   {currentPage === content.length - 1 && (
                     <Button
                       onClick={() => onPageChange(content.length)}
@@ -129,6 +139,7 @@ const TaleStory = ({
                       Voir la morale
                     </Button>
                   )}
+          
                   {currentPage === content.length && (
                     <Button
                       onClick={() => onPageChange(0)}
@@ -139,9 +150,9 @@ const TaleStory = ({
                   )}
                 </div>
               </div>
+              </div>
             </div>
-          </div>
-          
+         
           ))}
         </div>
       </div>
