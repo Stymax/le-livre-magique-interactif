@@ -93,16 +93,24 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
   const getImageUrl = (imageUrl: string) => {
     if (!imageUrl) return '/placeholder.svg';
     
-    // Clean the URL by removing any trailing colons and extra slashes
-    const cleanUrl = imageUrl.replace(/[:]+$/, '').replace(/([^:]\/)\/+/g, '$1');
+    // First, remove any trailing colons and normalize slashes
+    const cleanUrl = imageUrl.trim()
+      .replace(/[:]+$/, '')
+      .replace(/([^:]\/)\/+/g, '$1')
+      .replace(/^\/+/, '/');
     
     if (cleanUrl.startsWith('http')) {
       return cleanUrl;
     }
+    
+    // Handle local paths
     if (cleanUrl.startsWith('/lovable-uploads')) {
       return cleanUrl;
     }
-    return `/lovable-uploads/avatars/${cleanUrl}`;
+    
+    // Ensure we don't have any leading slashes when joining paths
+    const avatarPath = cleanUrl.replace(/^\/+/, '');
+    return `/lovable-uploads/avatars/${avatarPath}`;
   };
 
   if (isLoading) {
