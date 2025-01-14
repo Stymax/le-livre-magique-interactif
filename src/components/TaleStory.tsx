@@ -70,14 +70,15 @@ const TaleStory = ({
         <div className="flex">
           {content.map((segment, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0">
-              <div className="grid grid-cols-2 gap-4 h-[calc(100vh-300px)] px-12">
-                {/* Colonne pour l'image et le bouton "Retour" */}
-                <div className="flex flex-col items-center justify-between p-4 relative left-4 space-y-4">
-                  {index === 0 && (
-                    <h2 className="text-3xl font-bold text-[rgb(171,0,255)] mb-4 text-center font-gloria">
-                      {title}
-                    </h2>
-                  )}
+            <div className="grid grid-cols-2 gap-4 h-[calc(100vh-300px)] px-12">
+              {/* Colonne de gauche : Image et bouton Retour */}
+              <div className="flex flex-col justify-between p-4 relative left-4">
+                {index === 0 && (
+                  <h2 className="text-3xl font-bold text-[rgb(171,0,255)] mb-4 text-center font-gloria">
+                    {title}
+                  </h2>
+                )}
+                <div className="flex-grow flex items-center justify-center">
                   {!failedImages.has(index) && (
                     <TaleImage
                       image={segment.image}
@@ -86,58 +87,60 @@ const TaleStory = ({
                       onError={handleImageError}
                     />
                   )}
-                  {currentPage > 0 && (
+                </div>
+                {currentPage > 0 && (
+                  <Button
+                    onClick={() => onPageChange(currentPage - 1)}
+                    className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium mt-4"
+                  >
+                    Retour
+                  </Button>
+                )}
+              </div>
+          
+              {/* Colonne de droite : Texte et boutons */}
+              <div className="flex flex-col justify-between p-4">
+                {/* Texte défilant */}
+                <div className="flex-grow overflow-auto prose prose-invert max-w-none h-[calc(100%-60px)]">
+                  <div className="text-lg text-[#000000] leading-relaxed">
+                    <TaleText
+                      text={fullText}
+                      highlighted={highlightedText}
+                      isPlaying={isPlaying}
+                    />
+                  </div>
+                </div>
+          
+                {/* Boutons de navigation */}
+                <div className="flex justify-center mt-4 space-x-2">
+                  {currentPage < content.length - 1 && (
                     <Button
-                      onClick={() => onPageChange(currentPage - 1)}
-                      className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium mt-4"
+                      onClick={() => onPageChange(currentPage + 1)}
+                      className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
                     >
-                      Retour
+                      Suivant
+                    </Button>
+                  )}
+                  {currentPage === content.length - 1 && (
+                    <Button
+                      onClick={() => onPageChange(content.length)}
+                      className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+                    >
+                      Voir la morale
+                    </Button>
+                  )}
+                  {currentPage === content.length && (
+                    <Button
+                      onClick={() => onPageChange(0)}
+                      className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
+                    >
+                      Début
                     </Button>
                   )}
                 </div>
-            
-                {/* Colonne pour le texte et les boutons "Suivant/Morale" */}
-                <div className="flex flex-col justify-between p-4 h-full">
-                  <div className="prose prose-invert max-w-none h-[calc(100%-60px)] overflow-auto">
-                    <div className="text-lg text-[#000000] leading-relaxed">
-                      <TaleText
-                        text={fullText}
-                        highlighted={highlightedText}
-                        isPlaying={isPlaying}
-                      />
-                    </div>
-                  </div>
-            
-                  {/* Boutons de navigation */}
-                  <div className="flex justify-center mt-4 space-x-2">
-                    {currentPage < content.length - 1 && (
-                      <Button
-                        onClick={() => onPageChange(currentPage + 1)}
-                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
-                      >
-                        Suivant
-                      </Button>
-                    )}
-                    {currentPage === content.length - 1 && (
-                      <Button
-                        onClick={() => onPageChange(content.length)}
-                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
-                      >
-                        Voir la morale
-                      </Button>
-                    )}
-                    {currentPage === content.length && (
-                      <Button
-                        onClick={() => onPageChange(0)}
-                        className="bg-magical-gold/20 hover:bg-magical-gold/40 border-none text-magical-gold font-medium"
-                      >
-                        Début
-                      </Button>
-                    )}
-                  </div>
-                </div>
               </div>
             </div>
+          </div>
           
           ))}
         </div>
