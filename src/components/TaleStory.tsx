@@ -5,7 +5,7 @@ import { ScrollArea } from "./ui/scroll-area";
 import useEmblaCarousel from 'embla-carousel-react';
 import TaleImage from "./tale/TaleImage";
 import TaleText from "./tale/TaleText";
-
+import TaleNavigation from "./tale/TaleNavigation";
                 
 interface TaleStoryProps {
   content: TaleSegment[];
@@ -71,8 +71,8 @@ const TaleStory = ({
           {content.map((segment, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0">
               <div className="grid grid-cols-2 gap-4 h-[calc(100vh-300px)] px-12">
-              <div className="flex items-center justify-center p-4 relative left-4 flex-col space-y-4">
-                  {index === 0 && ( // Vérifie si c'est la première page
+                <div className="flex flex-col items-center justify-center p-4 relative left-4 space-y-4">
+                  {index === 0 && (
                     <h2 className="text-3xl font-bold text-[rgb(171,0,255)] mb-4 text-center font-gloria">
                       {title}
                     </h2>
@@ -85,19 +85,37 @@ const TaleStory = ({
                       onError={handleImageError}
                     />
                   )}
+
+                  {/* Bouton "Retour" sous l'image */}
+                  {currentPage > 0 && (
+                    <TaleNavigation
+                      currentPage={currentPage}
+                      totalPages={content.length}
+                      showMoralPage={false} // Gérer la page morale si nécessaire
+                      onPageChange={(page) => onPageChange(page - 1)}
+                    />
+                  )}
                 </div>
 
-                <div className="flex items-center mr-8">
-                  <div className="p-4 mr-8 h-[80%] flex items-center">
-                    <div className="prose prose-invert max-w-none">
-                      <div className="text-lg text-[#000000] leading-relaxed">
-                        <TaleText
-                          text={fullText}
-                          highlighted={highlightedText}
-                          isPlaying={isPlaying}
-                        />
-                      </div>
+                <div className="flex flex-col justify-between p-4 h-[80%]">
+                  <div className="prose prose-invert max-w-none">
+                    <div className="text-lg text-[#000000] leading-relaxed">
+                      <TaleText
+                        text={fullText}
+                        highlighted={highlightedText}
+                        isPlaying={isPlaying}
+                      />
                     </div>
+                  </div>
+
+                  {/* Boutons de navigation sous le texte */}
+                  <div className="flex justify-center mt-4">
+                    <TaleNavigation
+                      currentPage={currentPage}
+                      totalPages={content.length}
+                      showMoralPage={currentPage === content.length}
+                      onPageChange={onPageChange}
+                    />
                   </div>
                 </div>
               </div>
