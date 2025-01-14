@@ -90,6 +90,16 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
     }
   };
 
+  const getImageUrl = (imageUrl: string) => {
+    if (imageUrl.startsWith('http')) {
+      return imageUrl;
+    }
+    if (imageUrl.startsWith('/lovable-uploads')) {
+      return imageUrl;
+    }
+    return `/lovable-uploads/avatars/${imageUrl}`;
+  };
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -111,11 +121,7 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {avatars.map((avatar) => {
           const isPurchased = purchasedAvatars.includes(avatar.id);
-          const imageUrl = avatar.image_url.startsWith('http') 
-            ? avatar.image_url 
-            : avatar.image_url.startsWith('/lovable-uploads') 
-              ? avatar.image_url
-              : `/lovable-uploads/avatars/${avatar.image_url}`;
+          const imageUrl = getImageUrl(avatar.image_url);
 
           return (
             <div
