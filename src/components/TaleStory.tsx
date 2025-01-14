@@ -5,7 +5,7 @@ import { ScrollArea } from "./ui/scroll-area";
 import useEmblaCarousel from 'embla-carousel-react';
 import TaleImage from "./tale/TaleImage";
 import TaleText from "./tale/TaleText";
-import TaleNavigation from "./tale/TaleNavigation";
+
                 
 interface TaleStoryProps {
   content: TaleSegment[];
