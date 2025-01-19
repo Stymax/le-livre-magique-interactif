@@ -93,24 +93,24 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
   const getImageUrl = (imageUrl: string) => {
     if (!imageUrl) return '/placeholder.svg';
     
-    // Clean the URL by removing whitespace and normalizing
-    const cleanUrl = imageUrl.trim()
-      .replace(/[:]+$/, '') // Remove trailing colons
-      .replace(/\/+/g, '/') // Normalize multiple slashes to single slash
-      .replace(/:\//g, '://'); // Fix protocol separator if needed
+    // First, remove any whitespace and normalize the URL
+    let cleanUrl = imageUrl.trim();
     
-    // Handle absolute URLs
+    // Handle absolute URLs (starting with http:// or https://)
     if (cleanUrl.startsWith('http')) {
-      return cleanUrl;
+      // Ensure proper protocol separator
+      return cleanUrl.replace(/:\/{1,2}/, '://');
     }
     
-    // Handle local paths
+    // Handle complete local paths
     if (cleanUrl.startsWith('/lovable-uploads')) {
       return cleanUrl;
     }
     
-    // For relative paths, ensure proper joining
-    return `/lovable-uploads/avatars/${cleanUrl.replace(/^\/+/, '')}`;
+    // For relative paths, ensure proper path joining
+    // Remove any leading slashes and join with the base path
+    cleanUrl = cleanUrl.replace(/^\/+/, '');
+    return `/lovable-uploads/avatars/${cleanUrl}`;
   };
 
   if (isLoading) {
