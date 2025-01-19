@@ -1,8 +1,7 @@
 import { TaleSegment } from "@/types/tale";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
-import { ScrollArea } from "./ui/scroll-area";
-import useEmblaCarousel from 'embla-carousel-react';
+import useEmblaCarousel from "embla-carousel-react";
 import TaleImage from "./tale/TaleImage";
 import TaleText from "./tale/TaleText";
 import { Button } from "./ui/button";
@@ -16,38 +15,42 @@ interface TaleStoryProps {
   currentAudioTime?: number;
 }
 
-const TaleStory = ({ 
-  content, 
-  title, 
-  currentPage, 
+const TaleStory = ({
+  content,
+  title,
+  currentPage,
   onPageChange,
   isPlaying = false,
-  currentAudioTime = 0
+  currentAudioTime = 0,
 }: TaleStoryProps) => {
   const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
   const [emblaRef, emblaApi] = useEmblaCarousel({ startIndex: currentPage });
   const [highlightedText, setHighlightedText] = useState("");
   const [fullText, setFullText] = useState("");
- 
+
+  // Synchronise `currentPage` avec Embla
   useEffect(() => {
     if (emblaApi) {
-      emblaApi.scrollTo(currentPage);
+      emblaApi.scrollTo(currentPage, false); // Désactive l'animation
     }
   }, [currentPage, emblaApi]);
 
+  // Met à jour `currentPage` quand Embla change de slide
   useEffect(() => {
     if (emblaApi) {
-      emblaApi.on('select', () => {
-        onPageChange(emblaApi.selectedScrollSnap());
+      emblaApi.on("select", () => {
+        const selectedPage = emblaApi.selectedScrollSnap();
+        onPageChange(selectedPage);
       });
     }
   }, [emblaApi, onPageChange]);
 
+  // Gère le texte surligné selon `isPlaying` et `currentAudioTime`
   useEffect(() => {
     if (isPlaying && content[currentPage]) {
-      const text = content[currentPage].text;
+      const text = content[currentPage]?.text || "";
       setFullText(text);
-      
+
       const hasDialogue = text.includes("-");
       const charsPerSecond = hasDialogue ? 12 : 18;
       const highlightLength = Math.floor(currentAudioTime * charsPerSecond);
@@ -58,8 +61,9 @@ const TaleStory = ({
     }
   }, [isPlaying, currentPage, content, currentAudioTime]);
 
+  // Gère les erreurs de chargement d'image
   const handleImageError = (index: number) => {
-    setFailedImages(prev => new Set([...prev, index]));
+    setFailedImages((prev) => new Set([...prev, index]));
     toast.error(`Impossible de charger l'image ${index + 1} pour ${title}`);
     console.error(`Error loading image for ${title}, segment ${index + 1}`);
   };
@@ -68,7 +72,10 @@ const TaleStory = ({
     <div className="book-wrapper">
       <div className="book" ref={emblaRef}>
         {content.map((segment, index) => (
-          <div key={index} className="flex-[0_0_100%] min-w-0 flex items-center justify-center">
+          <div
+            key={index}
+            className="embla__slide flex-[0_0_100%] flex items-center justify-center"
+          >
             {/* Page gauche */}
             <div className="page page-left">
               <div className="stack-left"></div>
@@ -88,17 +95,6 @@ const TaleStory = ({
                   />
                 )}
               </div>
-              {/* Bouton Retour */}
-              {currentPage > 0 && (
-                <div className="h-[50px] flex items-center justify-center mt-6">
-                  <Button
-                    onClick={() => onPageChange(currentPage - 1)}
-                    className="bg-[rgba(171,0,255,0.2)] hover:bg-[rgba(171,0,255,0.4)] border-[1px] border-[rgb(171,0,255)] rounded text-[rgb(171,0,255)] hover:text-[rgb(172, 170, 173)] font-medium"
-                  >
-                    Retour
-                  </Button>
-                </div>
-              )}
             </div>
             {/* Reliure */}
             <div className="binding"></div>
@@ -112,27 +108,35 @@ const TaleStory = ({
                   isPlaying={isPlaying}
                 />
               </div>
-              {/* Boutons de navigation */}
-              <div className="h-[50px] flex justify-center space-x-2 items-center mt-6">
-                {currentPage < content.length - 1 ? (
-                  <Button
-                    onClick={() => onPageChange(currentPage + 1)}
-                    className="bg-[rgba(171,0,255,0.2)] hover:bg-[rgba(171,0,255,0.4)] border-[1px] border-[rgb(171,0,255)] rounded text-[rgb(171,0,255)] hover:text-[rgb(172, 170, 173)] font-medium"
-                  >
-                    Suivant
-                  </Button>
-                ) : (
-                  <Button
-                    onClick={() => onPageChange(0)}
-                    className="bg-[rgba(171,0,255,0.2)] hover:bg-[rgba(171,0,255,0.4)] border-[1px] border-[rgb(171,0,255)] rounded text-[rgb(171,0,255)] hover:text-[rgb(172, 170, 173)] font-medium"
-                  >
-                    Début
-                  </Button>
-                )}
-              </div>
             </div>
           </div>
         ))}
+      </div>
+      {/* Boutons de navigation */}
+      <div className="navigation-buttons flex justify-center mt-6">
+        {currentPage > 0 && (
+          <Button
+            onClick={() => onPageChange(currentPage - 1)}
+            className="bg-[rgba(171,0,255,0.2)] hover:bg-[rgba(171,0,255,0.4)] border-[1px] border-[rgb(171,0,255)] rounded text-[rgb(171,0,255)] hover:text-[rgb(172, 170, 173)] font-medium"
+          >
+            Retour
+          </Button>
+        )}
+        {currentPage < content.length - 1 ? (
+          <Button
+            onClick={() => onPageChange(currentPage + 1)}
+            className="bg-[rgba(171,0,255,0.2)] hover:bg-[rgba(171,0,255,0.4)] border-[1px] border-[rgb(171,0,255)] rounded text-[rgb(171,0,255)] hover:text-[rgb(172, 170, 173)] font-medium"
+          >
+            Suivant
+          </Button>
+        ) : (
+          <Button
+            onClick={() => onPageChange(0)}
+            className="bg-[rgba(171,0,255,0.2)] hover:bg-[rgba(171,0,255,0.4)] border-[1px] border-[rgb(171,0,255)] rounded text-[rgb(171,0,255)] hover:text-[rgb(172, 170, 173)] font-medium"
+          >
+            Début
+          </Button>
+        )}
       </div>
     </div>
   );
