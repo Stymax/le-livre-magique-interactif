@@ -57,7 +57,7 @@ const TaleStory = ({
           <div className="stack-left"></div>
           <div className="min-h-[30px] w-full text-center mb-6">
             {currentPage === 0 && (
-              <h2 className="text-3xl font-bold text-[rgb(171,0,255)] font-gloria">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[rgb(171,0,255)] font-gloria">
                 {title}
               </h2>
             )}
