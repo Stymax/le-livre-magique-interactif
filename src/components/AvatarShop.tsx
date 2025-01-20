@@ -102,12 +102,12 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
     }
     
     // Handle complete local paths
-    if (cleanUrl.startsWith('/lovable-uploads')) {
+    if (cleanUrl.startsWith('/images')) {
       return cleanUrl;
     }
     
     // For relative paths, ensure proper path joining
-    return `/lovable-uploads/avatars/${cleanUrl.replace(/^\/+/, '')}`;
+    return `/images/avatars/${cleanUrl.replace(/^\/+/, '')}`;
   };
 
   if (isLoading) {

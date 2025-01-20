@@ -9,10 +9,10 @@ interface GenerateAndSaveImageProps {
 export const generateAndSaveImage = async ({ fileName, title }: GenerateAndSaveImageProps) => {
   try {
     // Vérifier si l'image existe déjà
-    const response = await fetch(`/lovable-uploads/${fileName}`);
+    const response = await fetch(`/images/${fileName}`);
     if (response.ok) {
       console.log(`Image ${fileName} already exists`);
-      return `/lovable-uploads/${fileName}`;
+      return `/images/${fileName}`;
     } else {
       toast.error(`Image ${fileName} non trouvée pour ${title}`);
       return null;

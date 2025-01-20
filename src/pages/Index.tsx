@@ -33,7 +33,7 @@ const Index = () => {
             Changer de profil
           </button>
         </div>
-          <h1 className="text-5xl font-bold text-magical-gold animate-glow text-center mb-6">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold text-magical-gold animate-glow text-center mb-6">
             Le Livre Magique des Contes
           </h1>
           
@@ -62,7 +62,7 @@ const Index = () => {
             <div className="flex flex-col items-center space-y-8 animate-fade-in">
               <div className="relative w-full h-[400px] mx-auto">
                 <img 
-                  src="/lovable-uploads/2d336b02-5dde-4b75-96f7-ba33c3f66b25.png"
+                  src="/images/2d336b02-5dde-4b75-96f7-ba33c3f66b25.png"
                   alt="La magie du livre s'éveille"
                   className="w-full h-full object-contain animate-float"
                 />
