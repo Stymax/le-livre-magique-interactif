@@ -93,21 +93,21 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
   const getImageUrl = (imageUrl: string) => {
     if (!imageUrl) return '/placeholder.svg';
     
-    // Remove any whitespace and normalize the URL
+    // Remove any whitespace
     const cleanUrl = imageUrl.trim();
     
-    // Handle absolute URLs (starting with http:// or https://)
+    // Handle absolute URLs
     if (cleanUrl.startsWith('http')) {
       return cleanUrl;
     }
     
-    // Handle complete local paths
+    // Handle local paths
     if (cleanUrl.startsWith('/images')) {
       return cleanUrl;
     }
     
-    // For relative paths, ensure proper path joining
-    return `/images/avatars/${cleanUrl.replace(/^\/+/, '')}`;
+    // For relative paths
+    return `/images/avatars/${cleanUrl}`;
   };
 
   if (isLoading) {
