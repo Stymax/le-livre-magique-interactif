@@ -41,7 +41,7 @@ const Index = () => {
             <div className="space-y-6 flex flex-col items-center">
               <div className="relative w-full h-[400px] mx-auto">
                 <img 
-                  src="/lovable-uploads/761141cc-ceb1-430d-91d1-9cf151edff86.png"
+                  src="/images/761141cc-ceb1-430d-91d1-9cf151edff86.png"
                   alt="Léa découvrant le livre magique"
                   className="w-full h-full object-contain animate-float"
                 />
