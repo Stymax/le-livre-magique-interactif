@@ -93,20 +93,20 @@ export default function AvatarShop({ profileId, currentTokens, onAvatarPurchased
   const getImageUrl = (imageUrl: string) => {
     if (!imageUrl) return '/placeholder.svg';
     
-    // Clean the URL by removing whitespace
+    // Basic URL cleaning
     const cleanUrl = imageUrl.trim();
     
-    // If it's an absolute URL, return it as is
-    if (cleanUrl.startsWith('http')) {
+    // Handle absolute URLs (must start with http or https)
+    if (cleanUrl.startsWith('http://') || cleanUrl.startsWith('https://')) {
       return cleanUrl;
     }
     
-    // If it's already a complete path starting with /images, return it as is
-    if (cleanUrl.startsWith('/images')) {
+    // Handle local paths that start with a forward slash
+    if (cleanUrl.startsWith('/')) {
       return cleanUrl;
     }
     
-    // For relative paths, simply prepend the base path
+    // For relative paths, prepend the base path
     return `/images/avatars/${cleanUrl}`;
   };
 
