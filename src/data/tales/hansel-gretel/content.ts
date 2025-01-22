@@ -8,12 +8,12 @@ export const hanselGretelContent: TaleSegment[] = [
       },
       {
         text: "Il dit à sa femme\n- Qu'allons-nous devenir ? Comment nourrir nos pauvres enfants, quand nous n'avons plus rien pour nous-mêmes ?\n- Eh bien, mon homme, dit la femme, sais-tu ce que nous allons faire ? Dès l'aube, nous conduirons les enfants au plus profond de la forêt nous leur allumerons un feu et leur donnerons à chacun un petit morceau de pain. ",
-        image: "/images/hansel-gretel/hansel-gretel-1.png",
+        image: "/images/hansel-gretel/hansel-gretel-2.png",
         imagePrompt: "A poor woodcutter's family in their humble home at night, looking worried and hungry"
       },
       {
         text: "Puis nous irons à notre travail et les laisserons seuls. Ils ne retrouveront plus leur chemin et nous en serons débarrassés.\n- Non, femme, dit le bûcheron. je ne ferai pas cela ! Comment pourrais-je me résoudre à laisser nos enfants tout seuls dans la forêt ! Les bêtes sauvages ne tarderaient pas à les dévorer. ",
-        image: "/images/hansel-gretel/hansel-gretel-1.png",
+        image: "/images/hansel-gretel/hansel-gretel-3.png",
         imagePrompt: "A poor woodcutter's family in their humble home at night, looking worried and hungry"
       },
       {
