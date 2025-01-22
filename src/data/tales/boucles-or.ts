@@ -9,7 +9,7 @@ export const bouclesOr: Tale = {
     },
     {
       text: "Un jour, alors qu'ils attendaient que leur soupe refroidisse, ils partirent se promener. C'est alors qu'une petite fille aux boucles d'or, passant par là, découvrit leur maison.",
-      image: "/images/45bf91a3-7f5c-4572-9623-7a83450b7556.png"
+      image: "/images/home_empty.png"
     },
     {
       text: "Curieuse, elle entra et vit trois bols de soupe. Elle goûta \ncelui de Papa Ours - trop chaud ! \nCelui de Maman Ours - trop froid ! \nCelui de Bébé Ours - parfait !",
@@ -24,7 +24,8 @@ export const bouclesOr: Tale = {
       image: "/images/91045606-b24c-4a13-82fc-4e5f2dc79283.png"
     },
     {
-      text: "Quand les trois ours rentrèrent, ils découvrirent le désordre. Boucles d'or, réveillée par leurs voix, s'enfuit effrayée, promettant de ne plus jamais entrer chez des inconnus sans permission."
+      text: "Quand les trois ours rentrèrent, ils découvrirent le désordre. Boucles d'or, réveillée par leurs voix, s'enfuit effrayée, promettant de ne plus jamais entrer chez des inconnus sans permission.",
+      image: "/images/return_bear.png"
     },
   ],
   moral: "Il faut respecter la propriété d'autrui et ne pas entrer chez les gens sans y être invité."
