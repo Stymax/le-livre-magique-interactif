@@ -18,17 +18,17 @@ export const hanselGretelContent: TaleSegment[] = [
       },
       {
         text: "- Oh ! fou, rétorqua-t-elle, tu préfères donc que nous mourions de faim tous les quatre ? Alors, il ne te reste qu'à raboter les planches de nos cercueils.\nElle n'eut de cesse qu'il n'acceptât ce qu'elle proposait.\n- Mais j'ai quand même pitié de ces pauvres enfants, dit le bûcheron.\nLes deux petits n'avaient pas pu s'endormir tant ils avaient faim. ",
-        image: "/images/hansel-gretel/hansel-gretel-1.png",
+        image: "/images/hansel-gretel/hansel-gretel-4.png",
         imagePrompt: "A poor woodcutter's family in their humble home at night, looking worried and hungry"
       },
       {
         text: "Ils avaient entendu ce que la marâtre disait à leur père. Grethel pleura des larmes amères et dit à son frère :\n- C'en est fait de nous\n- Du calme, Grethel, dit Hansel. Ne t'en fais pas ; Je trouverai un moyen de nous en tirer.\nQuand les parents furent endormis, il se leva, enfila ses habits, ouvrit la chatière et se glissa dehors. ",
-        image: "/images/hansel-gretel-2.png",
+        image: "/images/hansel-gretel-5.png",
         imagePrompt: "Hansel dropping white pebbles on a forest path in the moonlight"
       },
       {
         text: "La lune brillait dans le ciel et les graviers blancs, devant la maison, étincelaient comme des diamants. Hansel se pencha et en mit dans ses poches autant qu'il put. Puis il rentra dans la maison et dit à Grethel :\n- Aie confiance, chère petite soeur, et dors tranquille. Dieu ne nous abandonnera pas.\nEt lui-même se recoucha.",
-        image: "/images/hansel-gretel-2.png",
+        image: "/images/hansel-gretel/hansel-gretel-6.png",
         imagePrompt: "Hansel dropping white pebbles on a forest path in the moonlight"
       },
       {
