@@ -33,22 +33,22 @@ export const hanselGretelContent: TaleSegment[] = [
       },
       {
         text: "Quand vint le jour, avant même que le soleil ne se levât, la femme réveilla les deux enfants :\n- Debout, paresseux ! Nous allons aller dans la forêt pour y chercher du bois. Elle leur donna un morceau de pain à chacun et dit :\n- Voici pour le repas de midi ; ne mangez pas tout avant, car vous n'aurez rien d'autre.",
-        image: "/images/hansel-gretel-2.png",
+        image: "/images/hansel-gretel/hansel-gretel-7.png",
         imagePrompt: "Hansel dropping white pebbles on a forest path in the moonlight"
       },
       {
         text: "Comme les poches de Hansel étaient pleines de cailloux, Grethel mit le pain dans son tablier. Puis, ils se mirent tous en route pour la forêt. Au bout de quelque temps, Hansel s'arrêta et regarda en direction de la maison. Et sans cesse, il répétait ce geste. Le père dit :\n- Que regardes-tu, Hansel, et pourquoi restes-tu toujours en arrière ? ",
-        image: "/images/hansel-gretel-2.png",
+        image: "/images/hansel-gretel/hansel-gretel-8.png",
         imagePrompt: "Hansel dropping white pebbles on a forest path in the moonlight"
       },
       {
         text: "Fais attention à toi et n'oublie pas de marcher !\n- Ah ! père dit Hansel, Je regarde mon petit chat blanc qui est perché là-haut sur le toit et je lui dis au revoir.\nLa femme dit :\n- Fou que tu es ! ce n'est pas le chaton, c'est un reflet de soleil sur la cheminée. Hansel, en réalité, n'avait pas vu le chat. Mais, à chaque arrêt, il prenait un caillou blanc dans sa poche et le jetait sur le chemin.",
-        image: "/images/hansel-gretel-2.png",
+        image: "/images/hansel-gretel/hansel-gretel-9.png",
         imagePrompt: "Hansel dropping white pebbles on a forest path in the moonlight"
       },
       {
         text: "Quand ils furent arrivés au milieu de la forêt, le père dit :\n- Maintenant, les enfants, ramassez du bois ! je vais allumer un feu pour que vous n'ayez pas froid.\nHansel et Grethel amassèrent des brindilles au sommet d'une petite colline. Quand on y eut mit le feu et qu'il eut bien pris, la femme dit :\n- Couchez-vous auprès de lui, les enfants, et reposez-vous. ",
-        image: "/images/hansel-gretel-3.png",
+        image: "/images/hansel-gretel/hansel-gretel-10.png",
         imagePrompt: "Hansel and Gretel sitting by a fire in the forest at night"
       }
     ];
