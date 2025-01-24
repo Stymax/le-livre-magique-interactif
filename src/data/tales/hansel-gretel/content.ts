@@ -23,7 +23,7 @@ export const hanselGretelContent: TaleSegment[] = [
       },
       {
         text: "Ils avaient entendu ce que la marâtre disait à leur père. Grethel pleura des larmes amères et dit à son frère :\n- C'en est fait de nous\n- Du calme, Grethel, dit Hansel. Ne t'en fais pas ; Je trouverai un moyen de nous en tirer.\nQuand les parents furent endormis, il se leva, enfila ses habits, ouvrit la chatière et se glissa dehors. ",
-        image: "/images/hansel-gretel-5.png",
+        image: "/images/hansel-gretel/hansel-gretel-5.png",
         imagePrompt: "Hansel dropping white pebbles on a forest path in the moonlight"
       },
       {
