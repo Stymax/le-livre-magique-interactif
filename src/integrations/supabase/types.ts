@@ -92,6 +92,62 @@ export type Database = {
         }
         Relationships: []
       }
+      tale_segments: {
+        Row: {
+          created_at: string
+          id: string
+          image: string
+          segment_order: number
+          tale_id: string
+          text: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          image: string
+          segment_order: number
+          tale_id: string
+          text: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          image?: string
+          segment_order?: number
+          tale_id?: string
+          text?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tale_segments_tale_id_fkey"
+            columns: ["tale_id"]
+            isOneToOne: false
+            referencedRelation: "tales"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tales: {
+        Row: {
+          created_at: string
+          id: string
+          moral: string
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          id: string
+          moral: string
+          title: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          moral?: string
+          title?: string
+        }
+        Relationships: []
+      }
       user_avatars: {
         Row: {
           avatar_id: string | null

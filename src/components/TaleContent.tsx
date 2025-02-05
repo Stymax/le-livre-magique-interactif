@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
-import { taleContents } from "@/data/tales";
 import { Progress } from "./ui/progress";
 import TaleStory from "./TaleStory";
 import TaleHeader from "./tale/TaleHeader";
 import TaleMoral from "./tale/TaleMoral";
 import TaleAudioManager from "./tale/TaleAudioManager";
+import { useTale } from "@/hooks/use-tales";
 
 interface TaleContentProps {
   id: string;
@@ -18,14 +18,22 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentAudioTime, setCurrentAudioTime] = useState(0);
   
-  const tale = taleContents[id as keyof typeof taleContents];
+  const { data: tale, isLoading, error } = useTale(id);
   
   useEffect(() => {
-    if (!tale) {
+    if (error) {
       toast.error("Histoire non trouvée");
       onBack();
     }
-  }, [tale, onBack]);
+  }, [error, onBack]);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[200px]">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-magical-gold"></div>
+      </div>
+    );
+  }
 
   if (!tale) {
     return null;
@@ -66,7 +74,6 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       />
 
       <div className="space-y-4">
-       
         <Progress 
           value={progress} 
           className="h-2 bg-magical-gold/20" 
