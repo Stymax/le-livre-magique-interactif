@@ -5,16 +5,21 @@ interface TaleTextProps {
 }
 
 const TaleText = ({ text, highlighted, isPlaying }: TaleTextProps) => {
+  const splitText = (text: string) => {
+    // First replace <br> with \n, then split on \n
+    return text.replace(/<br>/g, '\n').split('\\n');
+  };
+
   if (!isPlaying) {
-    return text.split('\\n').map((line, index) => (
+    return splitText(text).map((line, index) => (
       <div key={index} className="mb-4 whitespace-pre-line">
         {line.trim()}
       </div>
     ));
   }
 
-  const highlightedLines = highlighted.split('\\n');
-  const fullLines = text.split('\\n');
+  const highlightedLines = splitText(highlighted);
+  const fullLines = splitText(text);
   
   return fullLines.map((line, index) => {
     const highlightedPart = highlightedLines[index] || '';
