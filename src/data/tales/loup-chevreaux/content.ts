@@ -48,5 +48,5 @@ export const loupChevreauxContent: TaleSegment[] = [
     image: "/images/loup-chevreaux-7.png",
     imagePrompt: "The goat finding the last chevreau hiding in the clock"
   }
-  
+
 ];
