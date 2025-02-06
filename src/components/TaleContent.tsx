@@ -42,6 +42,13 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
   const progress = showMoralPage ? 100 : ((currentPage + 1) / tale.content.length) * 100;
   const totalSteps = tale.content.length + 1; // +1 pour la page morale
 
+  const getProgressColor = (percentage: number) => {
+    if (percentage <= 25) return "bg-[#7FFF00]"; // Vert lime
+    if (percentage <= 50) return "bg-[#FFD700]"; // Jaune doré
+    if (percentage <= 75) return "bg-[#FFA500]"; // Orange
+    return "bg-[#FF4500]"; // Orange foncé
+  };
+
   const handleNarration = async () => {
     if (isPlaying) {
       setIsPlaying(false);
@@ -83,23 +90,38 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
               {Math.round(progress)}%
             </span>
           </div>
-          <div className="h-2 bg-magical-gold/10 rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-gradient-to-r from-magical-gold/60 to-magical-gold transition-all duration-300 rounded-full"
-              style={{ width: `${progress}%` }}
-            />
+          <div className="h-3 rounded-full overflow-hidden flex">
+            {[25, 50, 75, 100].map((threshold, index) => {
+              const isActive = progress >= threshold;
+              const prevThreshold = index === 0 ? 0 : [25, 50, 75, 100][index - 1];
+              const width = Math.min(Math.max(progress - prevThreshold, 0), threshold - prevThreshold);
+              
+              return (
+                <div
+                  key={threshold}
+                  className={`${getProgressColor(threshold)} transition-all duration-300`}
+                  style={{
+                    width: `${25}%`,
+                    opacity: isActive ? 1 : 0.2
+                  }}
+                />
+              );
+            })}
           </div>
-          <div className="flex justify-between mt-1">
-            {Array.from({ length: totalSteps }).map((_, index) => (
-              <div
-                key={index}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index <= currentPage
-                    ? "bg-magical-gold"
-                    : "bg-magical-gold/20"
-                }`}
-              />
-            ))}
+          <div className="flex justify-between mt-2">
+            {Array.from({ length: 4 }).map((_, index) => {
+              const stepProgress = (index + 1) * 25;
+              return (
+                <div
+                  key={index}
+                  className={`text-xs ${
+                    progress >= stepProgress ? "text-magical-gold" : "text-magical-gold/40"
+                  }`}
+                >
+                  {stepProgress}%
+                </div>
+              );
+            })}
           </div>
         </div>
 
