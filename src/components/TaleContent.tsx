@@ -93,14 +93,22 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
                 className="flex-1"
               >
                 <div 
-                  className={`h-4 w-4 mx-auto rounded-full transition-all duration-300 ${
+                  className={`h-3 rounded-full transition-all duration-300 ${
                     index === currentPage 
                       ? getProgressColor(index)
                       : index < currentPage 
                         ? getProgressColor(index)
                         : 'bg-gray-600/20'
                   }`}
-                />
+                >
+                  <div 
+                    className={`h-full rounded-full transition-all duration-300 ${getProgressColor(index)}`}
+                    style={{
+                      width: index === currentPage ? '100%' : '0%',
+                      opacity: index <= currentPage ? 1 : 0.2
+                    }}
+                  />
+                </div>
                 <div className="text-center mt-2">
                   <span className={`text-xs ${
                     index <= currentPage ? 'text-magical-gold' : 'text-magical-gold/40'
