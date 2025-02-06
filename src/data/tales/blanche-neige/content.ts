@@ -2,27 +2,27 @@ import { TaleSegment } from "@/types/tale";
 
 export const blancheNeigeContent: TaleSegment[] = [
   {
-    text: "Cela se passait en plein hiver et les flocons de neige tombaient du ciel comme un duvet léger. Une reine était assise à sa fenêtre encadrée de bois d'ébène et cousait.\n\nTout en tirant l'aiguille, elle regardait voler les blancs flocons.\n\nElle se piqua au doigt et trois gouttes de sang tombèrent sur la neige. Ce rouge sur ce blanc faisait si bel effet qu'elle se dit :",
+    text: "Cela se passait en plein hiver et les flocons de neige tombaient du ciel comme un duvet léger. Une reine était assise à sa fenêtre encadrée de bois d'ébène et cousait.\n\nTout en tirant l'aiguille, elle regardait voler les blancs flocons.\n\nElle se piqua au doigt et trois gouttes de sang tombèrent sur la neige. Ce rouge sur ce blanc faisait si bel effet qu'elle se dit : -\"Si seulement j'avais un enfant aussi blanc que la neige, aussi rose que le sang, aussi noir que le bois de ma fenêtre !\"\n\nPeu de temps après, une fille lui naquit ; elle était blanche comme neige, rose comme sang et ses cheveux étaient noirs comme de l'ébène. On l'appela Blanche-Neige.",
     image: "/images/blanche-neige-1.png",
     imagePrompt: "A queen by a dark ebony window, three drops of blood on white snow, ethereal winter scene."
   },
   {
-    text: "\"Si seulement j'avais un enfant aussi blanc que la neige, aussi rose que le sang, aussi noir que le bois de ma fenêtre !\"\n\nPeu de temps après, une fille lui naquit ; elle était blanche comme neige, rose comme sang et ses cheveux étaient noirs comme de l'ébène. On l'appela Blanche-Neige.",
+    text: "Mais la reine mourut en lui donnant le jour. \n\nAu bout d'une année, le roi épousa une autre femme.\n\nElle était très belle ; mais elle était fière et vaniteuse et ne pouvait souffrir que quelqu'un la surpassât en beauté. Elle possédait un miroir magique. Quand elle s'y regardait en disant :\n\n\"Miroir, miroir joli, Qui est la plus belle au pays ?\"\n\nLe miroir répondait :\n\n\"Madame la reine, vous êtes la plus belle au pays.\"\n\nEt elle était contente. Elle savait que le miroir disait la vérité.",
     image: "/images/blanche-neige-2.png",
     imagePrompt: "A queen by a dark ebony window, three drops of blood on white snow, ethereal winter scene."
   },
   {
-    text: "Mais la reine mourut en lui donnant le jour. Au bout d'une année, le roi épousa une autre femme.\n\nElle était très belle ; mais elle était fière et vaniteuse et ne pouvait souffrir que quelqu'un la surpassât en beauté.",
+    text: "Blanche-Neige, cependant, grandissait et devenait de plus en plus belle. Quand elle eut atteint ses dix-sept ans, elle était déjà plus jolie que le jour et plus belle que la reine elle-même.\n\nUn jour que celle-ci demandait au miroir :\n\n\"Miroir, miroir joli, Qui est la plus belle au pays ?\"\n\nCelui-ci répondit : <br>Madame la reine, vous êtes la plus belle ici mais Blanche-Neige est encore mille fois plus belle. <br>La reine en fut épouvantée. Elle devint jaune et verte de jalousie. À partir de là, chaque fois qu'elle apercevait Blanche-Neige, son coeur se retournait dans sa poitrine tant elle éprouvait de haine à son égard. La jalousie et l'orgueil croissaient en elle comme mauvaise herbe. Elle en avait perdu le repos, le jour et la nuit. Elle fit venir un chasseur et lui dit :",
     image: "/images/blanche-neige-3.png",
     imagePrompt: "A queen by a dark ebony window, three drops of blood on white snow, ethereal winter scene."
   },
   {
-    text: "Elle possédait un miroir magique. Quand elle s'y regardait en disant :\n\n\"Miroir, miroir joli, Qui est la plus belle au pays ?\"\n\nLe miroir répondait :\n\n\"Madame la reine, vous êtes la plus belle au pays.\"\n\nEt elle était contente. Elle savait que le miroir disait la vérité.",
+    text: "",
     image: "/images/blanche-neige-4.png",
     imagePrompt: "A queen by a dark ebony window, three drops of blood on white snow, ethereal winter scene."
   },
   {
-    text: "Blanche-Neige, cependant, grandissait et devenait de plus en plus belle. Quand elle eut atteint ses dix-sept ans, elle était déjà plus jolie que le jour et plus belle que la reine elle-même.\n\nUn jour que celle-ci demandait au miroir :\n\n\"Miroir, miroir joli, Qui est la plus belle au pays ?\"",
+    text: "",
     image: "/images/blanche-neige-5.png",
     imagePrompt: "A queen by a dark ebony window, three drops of blood on white snow, ethereal winter scene."
   },
