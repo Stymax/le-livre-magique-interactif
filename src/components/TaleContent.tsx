@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
-import { Progress } from "./ui/progress";
 import TaleStory from "./TaleStory";
 import TaleHeader from "./tale/TaleHeader";
 import TaleMoral from "./tale/TaleMoral";
@@ -41,6 +40,7 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
 
   const showMoralPage = currentPage === tale.content.length;
   const progress = showMoralPage ? 100 : ((currentPage + 1) / tale.content.length) * 100;
+  const totalSteps = tale.content.length + 1; // +1 pour la page morale
 
   const handleNarration = async () => {
     if (isPlaying) {
@@ -74,10 +74,34 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
       />
 
       <div className="space-y-4">
-        <Progress 
-          value={progress} 
-          className="h-2 bg-magical-gold/20" 
-        />
+        <div className="relative">
+          <div className="flex justify-between mb-2">
+            <span className="text-magical-gold text-sm">
+              Page {currentPage + 1} sur {totalSteps}
+            </span>
+            <span className="text-magical-gold text-sm">
+              {Math.round(progress)}%
+            </span>
+          </div>
+          <div className="h-2 bg-magical-gold/10 rounded-full overflow-hidden">
+            <div 
+              className="h-full bg-gradient-to-r from-magical-gold/60 to-magical-gold transition-all duration-300 rounded-full"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+          <div className="flex justify-between mt-1">
+            {Array.from({ length: totalSteps }).map((_, index) => (
+              <div
+                key={index}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index <= currentPage
+                    ? "bg-magical-gold"
+                    : "bg-magical-gold/20"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
 
         <div className="space-y-8">
           {!showMoralPage ? (
