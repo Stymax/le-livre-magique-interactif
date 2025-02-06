@@ -2,53 +2,23 @@ import { TaleSegment } from "@/types/tale";
 
 export const blancheNeigeContent3: TaleSegment[] = [
   {
-    text: "Elle se déguisa à nouveau et prit l'aspect d'une autre vieille femme. Elle franchit ainsi les sept montagnes en direction de la maison des sept nains, frappa à la porte et cria :\n\n\"Bonne marchandise à vendre !\"",
+    text: "Quand, au soir, les petits nains arrivèrent chez eux, ils trouvèrent Blanche-Neige étendue sur le sol, sans souffle. Ils la soulevèrent, cherchèrent s'il y avait quelque chose d'empoisonné, défirent son corselet, coiffèrent ses cheveux, la lavèrent avec de l'eau et du vin. Mais rien n'y fit : la chère enfant était morte et morte elle restait. Ils la placèrent sur une civière, s'assirent tous les sept autour d'elle et pleurèrent trois jours durant. Puis ils se préparèrent à l'enterrer. Mais elle était restée fraîche comme un être vivant et ses jolies joues étaient roses comme auparavant.<br>Ils dirent :\n\n- Nous ne pouvons la mettre dans la terre noire.",
     image: "/images/blanche-neige-21.png",
     imagePrompt: "The disguised queen offering Snow White the poisoned comb."
   },
   {
-    text: "Blanche-Neige regarda par la fenêtre et dit : \"Passez votre chemin ! je n'ai le droit d'ouvrir à quiconque.\"\n\n\"Mais tu peux bien regarder\", dit la vieille en lui montrant le peigne empoisonné. \"Je vais te peigner joliment.\"",
+    text: "Ils fabriquèrent un cercueil de verre transparent où on pourrait la voir de tous les côtés, l'y installèrent et écrivirent dessus son nom en lettres d'or, en ajoutant qu'elle était fille de roi. Ils portèrent le cercueil en haut de la montagne et l'un d'eux, sans cesse, monta la garde auprès de lui.Longtemps Blanche-Neige resta ainsi dans son cercueil toujours aussi jolie. Il arriva qu'un jour un prince qui chevauchait par la forêt s'arrêta à la maison des nains pour y passer la nuit. Il vit le cercueil au sommet de la montagne, et la jolie Blanche-Neige. Il dit aux nains :\n\n- Laissez-moi le cercueil ; je vous en donnerai ce que vous voudrez.<br>Mais les nains répondirent :\n\n- Nous ne vous le donnerons pas pour tout l'or du monde.",
     image: "/images/blanche-neige-22.png",
     imagePrompt: "The disguised queen offering Snow White the poisoned comb."
   },
   {
-    text: "La pauvre Blanche-Neige ne se douta de rien et laissa faire la vieille ; à peine le peigne eut-il touché ses cheveux que le poison agit et que la jeune fille tomba sans connaissance.\n\n\"Et voilà !\" dit la méchante femme, \"c'en est fait de toi, prodige de beauté !\" Et elle s'en alla.",
+    text: "Il dit :\n\n - Alors donnez-le-moi pour rien ; car je ne pourrai plus vivre sans voir Blanche-Neige ; je veux lui rendre honneur et respect comme à ma bien-aimée.<br>Quand ils entendirent ces mots, les bons petits nains furent saisis de compassion et ils lui donnèrent le cercueil. Le prince le fit emporter sur les épaules de ses serviteurs. Comme ils allaient ainsi, l'un d'eux buta sur une souche. La secousse fit glisser hors de la gorge de Blanche-Neige le morceau de pomme empoisonnée qu'elle avait mangé. Bientôt après, elle ouvrit les yeux, souleva le couvercle du cercueil et se leva. Elle était de nouveau vivante !\n\n- Seigneur, où suis-je ? demanda-t-elle.<br>- Auprès de moi, répondit le prince, plein d'allégresse.",
     image: "/images/blanche-neige-23.png",
     imagePrompt: "Snow White falling unconscious from the poisoned comb."
   },
   {
-    text: "Par bonheur, le soir arriva vite et les sept nains rentrèrent à la maison. Quand ils virent Blanche-Neige étendue comme morte sur le sol, ils songèrent aussitôt à la marâtre, cherchèrent et trouvèrent le peigne empoisonné.\n\nDès qu'ils l'eurent retiré de ses cheveux, Blanche-Neige revint à elle et elle leur raconta ce qui s'était passé.",
+    text: "Il lui raconta ce qui s'était passé, ajoutant :- Je t'aime plus que tout au monde ; viens avec moi, tu deviendras ma femme.<br>Blanche-Neige accepta. Elle l'accompagna et leurs noces furent célébrées avec magnificence et splendeur.<br>La méchante reine, belle-mère de Blanche-Neige, avait également été invitée au mariage. Après avoir revêtu ses plus beaux atours, elle prit place devant le miroir et demanda :\n\nMiroir, miroir joli,Qui est la plus belle au pays ?<br>Le miroir répondit :\n\nMadame la reine, vous êtes la plus belle ici,<br>Mais la jeune souveraine est mille fois plus belle.<br>La méchante femme proféra un affreux juron et elle eut si peur, si peur qu'elle en perdit la tête.",
     image: "/images/blanche-neige-24.png",
     imagePrompt: "The dwarfs finding and removing the poisoned comb."
-  },
-  {
-    text: "Ils lui demandèrent une fois de plus d'être sur ses gardes et de n'ouvrir à personne.\n\nRentrée chez elle, la reine s'était placée devant son miroir et avait demandé :\n\n\"Miroir, miroir joli, Qui est la plus belle au Pays ?\"",
-    image: "/images/blanche-neige-25.png",
-    imagePrompt: "The evil queen consulting her mirror yet again."
-  },
-  {
-    text: "Comme la fois précédente, le miroir répondit :\n\n\"Madame la reine, vous êtes la plus belle ici.\nMais, par-delà les monts d'airain,\nAuprès des gentils petits nains,\nBlanche-Neige est mille fois plus belle.\"",
-    image: "/images/blanche-neige-26.png",
-    imagePrompt: "The evil queen consulting her mirror yet again."
-  },
-  {
-    text: "Quand la reine entendit cela, elle se mit à trembler de colère. \"Il faut que Blanche-Neige meure !\" s'écria-t-elle, \"dussé-je en périr moi-même !\"\n\nElle se rendit dans une chambre sombre et isolée où personne n'allait jamais et y prépara une pomme empoisonnée.",
-    image: "/images/blanche-neige-27.png",
-    imagePrompt: "The evil queen preparing the poisoned apple."
-  },
-  {
-    text: "Extérieurement, elle semblait belle, blanche et rouge, si bien qu'elle faisait envie à quiconque la voyait ; mais il suffisait d'en manger un tout petit morceau pour mourir.\n\nQuand tout fut prêt, la reine se farda le visage et se déguisa en paysanne.",
-    image: "/images/blanche-neige-28.png",
-    imagePrompt: "The evil queen preparing the poisoned apple."
-  },
-  {
-    text: "Ainsi transformée, elle franchit les sept montagnes pour aller chez les sept nains. Elle frappa à la porte.\n\nBlanche-Neige se pencha à la fenêtre et dit : \"Je n'ai le droit de laisser entrer quiconque ici ; les sept nains me l'ont interdit.\"",
-    image: "/images/blanche-neige-29.png",
-    imagePrompt: "The disguised queen offering Snow White the poisoned apple."
-  },
-  {
-    text: "\"D'accord !\" répondit la paysanne. \"J'arriverai bien à vendre mes pommes ailleurs ; mais je vais t'en offrir une.\"\n\n\"Non\", dit Blanche-Neige, \"je n'ai pas le droit d'accepter quoi que ce soit.\"",
-    image: "/images/blanche-neige-30.png",
-    imagePrompt: "The disguised queen offering Snow White the poisoned apple."
   }
 ];
