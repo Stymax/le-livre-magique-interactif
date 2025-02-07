@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import VirtualKeyboard from "./VirtualKeyboard";
@@ -24,6 +25,8 @@ export default function ProfileSelection() {
   const colors = ["bg-blue-500", "bg-yellow-500", "bg-red-500", "bg-purple-500"];
 
   useEffect(() => {
+    // Clear any existing profile when arriving on this page
+    localStorage.removeItem("currentProfile");
     fetchProfiles();
   }, []);
 
