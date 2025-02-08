@@ -74,19 +74,6 @@ const TaleStory = ({
             )}
           </div>
           
-          <div className="flex-1 flex items-center justify-center w-full relative z-10">
-            <div className="max-w-[80%] h-auto rounded-lg overflow-hidden flex items-center justify-center">
-              {segment && !failedImages.has(currentPage) && (
-                <TaleImage
-                  image={segment.image}
-                  title={title}
-                  index={currentPage}
-                  onError={handleImageError}
-                />
-              )}
-            </div>
-          </div>
-  
           <div className="h-[50px] flex items-center justify-center mt-6 relative z-10">
             {currentPage > 0 && (
               <Button
