@@ -51,10 +51,10 @@ const TaleStory = ({
   if (!segment) return null;
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="relative min-h-screen w-full">
       {/* Background Image */}
       <div 
-        className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-500"
+        className="fixed inset-0 w-full h-[50vh] md:h-[60vh] bg-cover bg-center bg-no-repeat transition-opacity duration-500"
         style={{
           backgroundImage: !failedImages.has(currentPage) && segment.image ? 
             `url(${segment.image.startsWith('/') ? segment.image : `/${segment.image}`})` : 
@@ -64,7 +64,7 @@ const TaleStory = ({
       />
 
       {/* Content Container */}
-      <div className="relative flex-1 z-10 container mx-auto px-4 py-8 flex flex-col">
+      <div className="relative z-10 container mx-auto px-4 py-8 flex flex-col min-h-screen">
         {/* Title Section */}
         {currentPage === 0 && (
           <div className="text-center mb-8">
@@ -75,9 +75,9 @@ const TaleStory = ({
         )}
 
         {/* Main Content */}
-        <div className="flex-1 flex flex-col lg:flex-row gap-8 items-center justify-center">
+        <div className="flex-1 flex flex-col items-end justify-center">
           {/* Text Content */}
-          <div className="w-full lg:w-2/3 bg-white/90 rounded-xl p-6 shadow-lg ml-auto">
+          <div className="w-full md:w-2/3 lg:w-1/2 bg-white/90 rounded-xl p-6 shadow-lg ml-auto">
             <div className="prose max-w-none">
               <div className="text-lg text-[#333333] leading-relaxed">
                 <TaleText
