@@ -51,7 +51,7 @@ const TaleStory = ({
   if (!segment) return null;
 
   return (
-    <div className="relative min-h-screen w-full">
+    <div className="min-h-screen flex flex-col">
       {/* Background Image */}
       <div 
         className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-500"
@@ -64,7 +64,7 @@ const TaleStory = ({
       />
 
       {/* Content Container */}
-      <div className="relative z-10 container mx-auto px-4 py-8 flex flex-col min-h-screen">
+      <div className="relative flex-1 z-10 container mx-auto px-4 py-8 flex flex-col">
         {/* Title Section */}
         {currentPage === 0 && (
           <div className="text-center mb-8">
@@ -77,7 +77,7 @@ const TaleStory = ({
         {/* Main Content */}
         <div className="flex-1 flex flex-col lg:flex-row gap-8 items-center justify-center">
           {/* Text Content */}
-          <div className="w-full lg:w-2/3 bg-white/90 rounded-xl p-6 shadow-lg">
+          <div className="w-full lg:w-2/3 bg-white/90 rounded-xl p-6 shadow-lg ml-auto">
             <div className="prose max-w-none">
               <div className="text-lg text-[#333333] leading-relaxed">
                 <TaleText
@@ -134,3 +134,4 @@ const TaleStory = ({
 };
 
 export default TaleStory;
+
