@@ -1,3 +1,4 @@
+
 import { TaleSegment } from "@/types/tale";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
@@ -53,17 +54,27 @@ const TaleStory = ({
     <div className="book-wrapper">
       <div className="book">
         {/* Left page */}
-        <div className="page page-left">
+        <div 
+          className="page page-left"
+          style={{
+            backgroundImage: segment?.image ? `url(${segment.image.startsWith('/') ? segment.image : `/${segment.image}`})` : 'none',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            position: 'relative'
+          }}
+        >
+          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
           <div className="stack-left"></div>
-          <div className="min-h-[30px] w-full text-center mb-6">
+          <div className="min-h-[30px] w-full text-center mb-6 relative z-10">
             {currentPage === 0 && (
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[rgb(171,0,255)] font-gloria">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white font-gloria">
                 {title}
               </h2>
             )}
           </div>
           
-          <div className="flex-1 flex items-center justify-center w-full">
+          <div className="flex-1 flex items-center justify-center w-full relative z-10">
             <div className="max-w-[80%] h-auto rounded-lg overflow-hidden flex items-center justify-center">
               {segment && !failedImages.has(currentPage) && (
                 <TaleImage
@@ -76,11 +87,11 @@ const TaleStory = ({
             </div>
           </div>
   
-          <div className="h-[50px] flex items-center justify-center mt-6">
+          <div className="h-[50px] flex items-center justify-center mt-6 relative z-10">
             {currentPage > 0 && (
               <Button
                 onClick={() => onPageChange(currentPage - 1)}
-                className="bg-[rgba(171,0,255,0.2)] hover:bg-[rgba(171,0,255,0.4)] border-[1px] border-[rgb(171,0,255)] rounded text-[rgb(171,0,255)] hover:text-[rgb(172, 170, 173)] font-medium"
+                className="bg-white/20 hover:bg-white/40 border-[1px] border-white rounded text-white hover:text-white/80 font-medium"
               >
                 Retour
               </Button>
