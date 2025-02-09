@@ -75,7 +75,9 @@ const TaleStory = ({
             )}
           </div>
           
-          <div className="h-[50px] flex items-center justify-center mt-6 relative z-10">
+          <div className="flex-1"></div>
+          
+          <div className="h-[50px] flex items-center justify-center relative z-10">
             {currentPage > 0 && (
               <Button
                 onClick={() => onPageChange(currentPage - 1)}
@@ -87,7 +89,7 @@ const TaleStory = ({
           </div>
         </div>
 
-        <div className="binding"></div>
+        <div className="binding shadow-[0_0_10px_rgba(0,0,0,0.3)]"></div>
   
         <div className="page page-right">
           <div className="prose max-w-none flex-1 overflow-hidden">
@@ -102,7 +104,7 @@ const TaleStory = ({
             </div>
           </div>
   
-          <div className="h-[50px] flex justify-center space-x-2 items-center mt-6">
+          <div className="h-[50px] flex justify-center space-x-2 items-center">
             {currentPage < content.length - 1 && (
               <Button
                 onClick={() => onPageChange(currentPage + 1)}
@@ -139,4 +141,3 @@ const TaleStory = ({
 };
 
 export default TaleStory;
-
