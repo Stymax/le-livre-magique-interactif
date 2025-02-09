@@ -53,6 +53,8 @@ const TaleStory = ({
   return (
     <div className="book-wrapper">
       <div className="book">
+        <div className="stack-left"></div>
+        
         {/* Left page */}
         <div 
           className="page page-left"
@@ -65,7 +67,6 @@ const TaleStory = ({
           }}
         >
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-          <div className="stack-left"></div>
           <div className="min-h-[30px] w-full text-center mb-6 relative z-10">
             {currentPage === 0 && (
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white font-gloria">
@@ -90,7 +91,6 @@ const TaleStory = ({
   
         {/* Right page */}
         <div className="page page-right">
-          <div className="stack-right"></div>
           <div className="prose max-w-none flex-1 overflow-hidden">
             <div className="h-full text-lg text-[#333333] leading-relaxed overflow-y-auto pr-8">
               {segment && (
@@ -132,6 +132,8 @@ const TaleStory = ({
             )}
           </div>
         </div>
+        
+        <div className="stack-right"></div>
       </div>
     </div>
   );
