@@ -51,26 +51,31 @@
     transform: translateY(0);
   }
 }
+
 @font-face {
   font-family: 'Gloria';
   src: url('/fonts/Gloria.ttf') format('truetype'); 
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'Neue Zier Schrift';
   src: url('/fonts/NeueZierSchrift.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
+
 .custom-padding-left {
   padding-top: 1rem; 
   padding-bottom: 4rem; 
 }
+
 .custom-padding-right {
   padding-top: 2rem; 
   padding-bottom: 4rem; 
 }
+
 /* Book styles */
 .book-wrapper {
   width: 100%;
@@ -86,12 +91,13 @@
   max-width: 1200px;
   aspect-ratio: 16/9;
   display: flex;
+  flex-direction: row;
   justify-content: center;
 }
 
 .page {
   position: relative;
-  width: 50%;
+  width: calc(50% - 60px);
   height: 100%;
   background-color: #f4e4bc;
   padding: 40px;
@@ -100,25 +106,21 @@
 }
 
 .page-left {
-  border-radius: 15px 0 0 15px;
-  box-shadow: inset -25px 0 25px rgba(0, 0, 0, 0.1);
+  background-color: #f4e4bc;
 }
 
 .page-right {
-  border-radius: 0 15px 15px 0;
-  box-shadow: inset 25px 0 25px rgba(0, 0, 0, 0.1);
+  background-color: #f4e4bc;
 }
 
 .stack-left,
 .stack-right {
-  position: absolute;
-  top: 10px;
-  bottom: 10px;
+  position: relative;
+  height: 100%;
   width: 30px;
 }
 
 .stack-left {
-  left: 0;
   background: repeating-linear-gradient(
     to right,
     #d4c4ac,
@@ -126,12 +128,10 @@
     #e6d5bc 2px,
     #e6d5bc 4px
   );
-  border-radius: 3px 0 0 3px;
-  z-index: 0;
+  border-radius: 15px 0 0 15px;
 }
 
 .stack-right {
-  right: 0;
   background: repeating-linear-gradient(
     to left,
     #d4c4ac,
@@ -139,14 +139,10 @@
     #e6d5bc 2px,
     #e6d5bc 4px
   );
-  border-radius: 0 3px 3px 0;
-  z-index: 0;
+  border-radius: 0 15px 15px 0;
 }
 
 .binding {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   width: 40px;
   height: 100%;
   background: linear-gradient(
@@ -157,7 +153,6 @@
     rgba(0, 0, 0, 0.1) 80%,
     rgba(0, 0, 0, 0.2)
   );
-  z-index: 1;
 }
 
 @media (max-width: 768px) {

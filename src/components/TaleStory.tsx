@@ -2,7 +2,6 @@
 import { TaleSegment } from "@/types/tale";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
-import TaleImage from "./tale/TaleImage";
 import TaleText from "./tale/TaleText";
 import { Button } from "./ui/button";
 
@@ -54,18 +53,19 @@ const TaleStory = ({
     <div className="book-wrapper">
       <div className="book">
         <div className="stack-left"></div>
-        
-        {/* Left page */}
-        <div 
-          className="page page-left"
-          style={{
-            backgroundImage: segment?.image ? `url(${segment.image.startsWith('/') ? segment.image : `/${segment.image}`})` : 'none',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            position: 'relative'
-          }}
-        >
+        <div className="page page-left">
+          {segment?.image && (
+            <div 
+              style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: `url(${segment.image.startsWith('/') ? segment.image : `/${segment.image}`})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
+          )}
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
           <div className="min-h-[30px] w-full text-center mb-6 relative z-10">
             {currentPage === 0 && (
@@ -89,7 +89,6 @@ const TaleStory = ({
 
         <div className="binding"></div>
   
-        {/* Right page */}
         <div className="page page-right">
           <div className="prose max-w-none flex-1 overflow-hidden">
             <div className="h-full text-lg text-[#333333] leading-relaxed overflow-y-auto pr-8">
@@ -140,3 +139,4 @@ const TaleStory = ({
 };
 
 export default TaleStory;
+
