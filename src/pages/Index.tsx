@@ -21,18 +21,20 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-blue-950">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#f4e4bc]/20 backdrop-blur-sm shadow-lg">
-        <div className="container mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-2">
-          <h1 className="text-2xl font-gloria text-magical-gold text-center flex-grow">
-            Le Livre Magique des Contes
-          </h1>
-          <button
-            onClick={() => navigate("/profiles")}
-            className="flex items-center gap-2 text-white hover:text-magical-gold transition-colors px-4 py-2 rounded-full border border-white/20 hover:border-magical-gold/50"
-          >
-            <User className="w-5 h-5" />
-            <span>Changer de profil</span>
-          </button>
+      <header className="fixed top-0 left-0 right-0 z-50">
+        <div className="container mx-auto px-4 py-3">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <h1 className="text-2xl font-gloria text-magical-gold text-center flex-grow">
+              Le Livre Magique des Contes
+            </h1>
+            <button
+              onClick={() => navigate("/profiles")}
+              className="flex items-center gap-2 text-white hover:text-magical-gold transition-colors px-4 py-2 rounded-full border border-white/20 hover:border-magical-gold/50"
+            >
+              <User className="w-5 h-5" />
+              <span>Changer de profil</span>
+            </button>
+          </div>
         </div>
       </header>
 
