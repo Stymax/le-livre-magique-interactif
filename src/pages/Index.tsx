@@ -42,7 +42,7 @@ const Index = () => {
       
       <MagicParticles />
       
-      <div className="fixed inset-x-0 top-16 left-1/2 -translate-x-1/2 w-[70%] z-10 max-h-[calc(100vh-4rem)] overflow-y-auto mb-[10vh]">
+      <div className="fixed inset-x-0 top-24 left-1/2 -translate-x-1/2 w-[70%] z-10 max-h-[calc(100vh-6rem)] overflow-y-auto mb-[10vh]">
         <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-lg p-6">
           {currentStep === 'intro' && (
             <div className="space-y-6 flex flex-col items-center">
@@ -50,7 +50,7 @@ const Index = () => {
                 <img 
                   src="/images/761141cc-ceb1-430d-91d1-9cf151edff86.png"
                   alt="Léa découvrant le livre magique"
-                  className="w-full h-full object-contain animate-float"
+                  className="w-full h-full object-contain animate-float rounded-lg"
                 />
               </div>
               <p className="text-xl text-white/90 text-center">
@@ -71,7 +71,7 @@ const Index = () => {
                 <img 
                   src="/images/2d336b02-5dde-4b75-96f7-ba33c3f66b25.png"
                   alt="La magie du livre s'éveille"
-                  className="w-full h-full object-contain animate-float"
+                  className="w-full h-full object-contain animate-float rounded-lg"
                 />
               </div>
               <div className="prose prose-invert">
