@@ -1,5 +1,7 @@
+
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { User } from "lucide-react";
 import MagicBook from "@/components/MagicBook";
 import MagicParticles from "@/components/MagicParticles";
 import StorySelection from "@/components/StorySelection";
@@ -18,25 +20,28 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-blue-950">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-blue-900/80 backdrop-blur-sm shadow-lg">
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+          <h1 className="text-2xl font-gloria text-magical-gold">
+            Le Livre Magique des Contes
+          </h1>
+          <button
+            onClick={() => navigate("/profiles")}
+            className="flex items-center gap-2 text-white hover:text-magical-gold transition-colors px-4 py-2 rounded-full border border-white/20 hover:border-magical-gold/50"
+          >
+            <User className="w-5 h-5" />
+            <span>Changer de profil</span>
+          </button>
+        </div>
+      </header>
+
       <LibraryBackground />
       
       <MagicParticles />
       
-      <div className="fixed inset-x-0 top-0 left-1/2 -translate-x-1/2 w-[70%] z-10 max-h-[100vh] overflow-y-auto mb-[10vh]">
-        
+      <div className="fixed inset-x-0 top-16 left-1/2 -translate-x-1/2 w-[70%] z-10 max-h-[calc(100vh-4rem)] overflow-y-auto mb-[10vh]">
         <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-lg p-6">
-        <div className="flex justify-end p-4">
-          <button
-            onClick={() => navigate("/profiles")}
-            className="text-white hover:text-gray-300 transition-colors"
-          >
-            Changer de profil
-          </button>
-        </div>
-          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold text-magical-gold animate-glow text-center mb-6">
-            Le Livre Magique des Contes
-          </h1>
-          
           {currentStep === 'intro' && (
             <div className="space-y-6 flex flex-col items-center">
               <div className="relative w-full h-[400px] mx-auto">
