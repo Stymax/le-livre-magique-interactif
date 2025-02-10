@@ -21,9 +21,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-blue-950">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-blue-900/80 backdrop-blur-sm shadow-lg">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <h1 className="text-2xl font-gloria text-magical-gold">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#f4e4bc]/20 backdrop-blur-sm shadow-lg">
+        <div className="container mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-2">
+          <h1 className="text-2xl font-gloria text-magical-gold text-center flex-grow">
             Le Livre Magique des Contes
           </h1>
           <button
