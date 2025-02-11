@@ -46,11 +46,11 @@ const Index = () => {
         <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-lg p-6">
           {currentStep === 'intro' && (
             <div className="space-y-6 flex flex-col items-center">
-              <div className="relative w-full h-[400px] mx-auto">
+              <div className="relative w-full h-[400px] mx-auto overflow-hidden rounded-lg">
                 <img 
                   src="/images/761141cc-ceb1-430d-91d1-9cf151edff86.png"
                   alt="Léa découvrant le livre magique"
-                  className="w-full h-full object-contain animate-float rounded-lg"
+                  className="w-full h-full object-contain animate-float"
                 />
               </div>
               <p className="text-xl text-white/90 text-center">
@@ -67,11 +67,11 @@ const Index = () => {
 
           {currentStep === 'bookClosed' && (
             <div className="flex flex-col items-center space-y-8 animate-fade-in">
-              <div className="relative w-full h-[400px] mx-auto">
+              <div className="relative w-full h-[400px] mx-auto overflow-hidden rounded-lg">
                 <img 
                   src="/images/2d336b02-5dde-4b75-96f7-ba33c3f66b25.png"
                   alt="La magie du livre s'éveille"
-                  className="w-full h-full object-contain animate-float rounded-lg"
+                  className="w-full h-full object-contain animate-float"
                 />
               </div>
               <div className="prose prose-invert">
@@ -102,4 +102,3 @@ const Index = () => {
 };
 
 export default Index;
-

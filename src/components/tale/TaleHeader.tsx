@@ -1,12 +1,15 @@
+
 import { ChevronLeft, Volume2, VolumeX } from "lucide-react";
 
 interface TaleHeaderProps {
   onBack: () => void;
   isPlaying: boolean;
   onNarrationToggle: () => void;
+  currentPage?: number;
+  totalPages?: number;
 }
 
-const TaleHeader = ({ onBack, isPlaying, onNarrationToggle }: TaleHeaderProps) => {
+const TaleHeader = ({ onBack, isPlaying, onNarrationToggle, currentPage = 1, totalPages = 1 }: TaleHeaderProps) => {
   return (
     <div className="flex items-center justify-between mb-4">
       <button
@@ -16,6 +19,10 @@ const TaleHeader = ({ onBack, isPlaying, onNarrationToggle }: TaleHeaderProps) =
         <ChevronLeft className="w-5 h-5" />
         Retour aux contes
       </button>
+
+      <span className="text-magical-gold text-sm">
+        Page {currentPage} sur {totalPages}
+      </span>
 
       <button
         onClick={onNarrationToggle}
