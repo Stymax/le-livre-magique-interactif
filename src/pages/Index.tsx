@@ -10,7 +10,8 @@ import LibraryBackground from "@/components/LibraryBackground";
 const Index = () => {
   const [currentStep, setCurrentStep] = useState<'intro' | 'bookClosed' | 'bookOpen'>('intro');
   const navigate = useNavigate();
-  const currentProfile = localStorage.getItem("currentProfile");
+  const currentProfileStr = localStorage.getItem("currentProfile");
+  const currentProfile = currentProfileStr ? JSON.parse(currentProfileStr) : null;
 
   useEffect(() => {
     if (!currentProfile) {
@@ -25,7 +26,7 @@ const Index = () => {
         <div className="container mx-auto px-4 py-3">
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 flex flex-col sm:flex-row justify-between items-center gap-2">
             <div className="text-magical-gold text-lg">
-              Bonjour {currentProfile}
+              Bonjour {currentProfile?.name}
             </div>
             <div className="flex-grow text-center">
               <h1 className="text-2xl font-gloria text-magical-gold">
