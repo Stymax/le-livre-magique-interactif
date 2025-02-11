@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
@@ -67,6 +68,8 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
         onBack={onBack}
         isPlaying={isPlaying}
         onNarrationToggle={handleNarration}
+        currentPage={currentPage + 1}
+        totalPages={totalSteps}
       />
 
       <TaleAudioManager
@@ -81,11 +84,6 @@ const TaleContent = ({ id, onBack }: TaleContentProps) => {
 
       <div className="space-y-4">
         <div className="relative">
-          <div className="flex justify-between mb-2">
-            <span className="text-magical-gold text-sm">
-              Page {currentPage + 1} sur {totalSteps}
-            </span>
-          </div>
           <div className="flex justify-between items-center gap-2">
             {Array.from({ length: totalSteps }).map((_, index) => (
               <div
