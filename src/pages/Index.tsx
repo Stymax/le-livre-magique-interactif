@@ -10,10 +10,10 @@ import LibraryBackground from "@/components/LibraryBackground";
 const Index = () => {
   const [currentStep, setCurrentStep] = useState<'intro' | 'bookClosed' | 'bookOpen'>('intro');
   const navigate = useNavigate();
+  const currentProfile = localStorage.getItem("currentProfile");
 
   useEffect(() => {
-    const profile = localStorage.getItem("currentProfile");
-    if (!profile) {
+    if (!currentProfile) {
       navigate("/profiles");
     }
   }, [navigate]);
@@ -24,9 +24,14 @@ const Index = () => {
       <header className="fixed top-0 left-0 right-0 z-50">
         <div className="container mx-auto px-4 py-3">
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 flex flex-col sm:flex-row justify-between items-center gap-2">
-            <h1 className="text-2xl font-gloria text-magical-gold text-center flex-grow">
-              Le Livre Magique des Contes
-            </h1>
+            <div className="text-magical-gold text-lg">
+              Bonjour {currentProfile}
+            </div>
+            <div className="flex-grow text-center">
+              <h1 className="text-2xl font-gloria text-magical-gold">
+                Le Livre Magique des Contes
+              </h1>
+            </div>
             <button
               onClick={() => navigate("/profiles")}
               className="flex items-center gap-2 text-white hover:text-magical-gold transition-colors px-4 py-2 rounded-full border border-white/20 hover:border-magical-gold/50"
@@ -46,12 +51,14 @@ const Index = () => {
         <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-lg p-6">
           {currentStep === 'intro' && (
             <div className="space-y-6 flex flex-col items-center">
-              <div className="relative w-full h-[400px] mx-auto overflow-hidden rounded-lg">
-                <img 
-                  src="/images/761141cc-ceb1-430d-91d1-9cf151edff86.png"
-                  alt="Léa découvrant le livre magique"
-                  className="w-full h-full object-contain animate-float"
-                />
+              <div className="relative w-full h-[400px] mx-auto overflow-hidden rounded-lg flex justify-center items-center">
+                <div className="rounded-lg overflow-hidden">
+                  <img 
+                    src="/images/761141cc-ceb1-430d-91d1-9cf151edff86.png"
+                    alt="Léa découvrant le livre magique"
+                    className="w-auto h-[400px] object-contain animate-float"
+                  />
+                </div>
               </div>
               <p className="text-xl text-white/90 text-center">
                 "Dans une vieille bibliothèque, un livre mystérieux attend d'être découvert..."
@@ -67,12 +74,14 @@ const Index = () => {
 
           {currentStep === 'bookClosed' && (
             <div className="flex flex-col items-center space-y-8 animate-fade-in">
-              <div className="relative w-full h-[400px] mx-auto overflow-hidden rounded-lg">
-                <img 
-                  src="/images/2d336b02-5dde-4b75-96f7-ba33c3f66b25.png"
-                  alt="La magie du livre s'éveille"
-                  className="w-full h-full object-contain animate-float"
-                />
+              <div className="relative w-full h-[400px] mx-auto overflow-hidden rounded-lg flex justify-center items-center">
+                <div className="rounded-lg overflow-hidden">
+                  <img 
+                    src="/images/2d336b02-5dde-4b75-96f7-ba33c3f66b25.png"
+                    alt="La magie du livre s'éveille"
+                    className="w-auto h-[400px] object-contain animate-float"
+                  />
+                </div>
               </div>
               <div className="prose prose-invert">
                 <p className="text-magical-turquoise text-lg">

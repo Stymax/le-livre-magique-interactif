@@ -11,7 +11,7 @@ interface TaleHeaderProps {
 
 const TaleHeader = ({ onBack, isPlaying, onNarrationToggle, currentPage = 1, totalPages = 1 }: TaleHeaderProps) => {
   return (
-    <div className="flex items-center justify-between mb-4">
+    <div className="flex items-center justify-between gap-4 mb-4">
       <button
         onClick={onBack}
         className="text-magical-gold hover:text-magical-gold/80 transition-colors flex items-center gap-2"
