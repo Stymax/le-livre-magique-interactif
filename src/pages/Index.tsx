@@ -48,7 +48,7 @@ const Index = () => {
       
       <MagicParticles />
       
-      <main className="container mx-auto px-4 py-6">
+      <div className="container mx-auto px-4 py-6">
         <div className="w-full lg:w-[70%] mx-auto">
           <div className="h-full bg-white/10 backdrop-blur-sm rounded-lg p-6">
             {currentStep === 'intro' && (
@@ -109,7 +109,7 @@ const Index = () => {
             )}
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };
