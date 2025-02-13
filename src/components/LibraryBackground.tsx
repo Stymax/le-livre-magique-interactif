@@ -8,7 +8,7 @@ const LibraryBackground: React.FC = () => (
       filter: 'brightness(0.5)',
     }}
   >
-    <div className="absolute inset-0 bg-gradient-to-b from-blue-900/50 via-purple-900/50 to-blue-900/50" />
+    <div className="absolute inset-0 bg-gradient-to-b from-blue-900/50 via-purple-900/50 to-blue-900/50 z-0" />
   </div>
 );
 

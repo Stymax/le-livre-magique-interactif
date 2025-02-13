@@ -22,7 +22,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-blue-950">
       {/* Header */}
-      <header className="relative w-full">
+      <header className="relative w-full z-10">
         <div className="container mx-auto px-4 py-4">
           <div className="w-full bg-white/10 backdrop-blur-sm rounded-lg p-3 flex flex-col sm:flex-row justify-between items-center gap-2">
             <div className="text-magical-gold text-lg">
@@ -48,7 +48,7 @@ const Index = () => {
       
       <MagicParticles />
       
-      <div className="container mx-auto px-4 py-6">
+      <main className="container mx-auto px-4 py-6">
         <div className="w-full lg:w-[70%] mx-auto">
           <div className="h-full bg-white/10 backdrop-blur-sm rounded-lg p-6">
             {currentStep === 'intro' && (
@@ -109,7 +109,7 @@ const Index = () => {
             )}
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };
